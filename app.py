@@ -358,3 +358,48 @@ def download_report():
         io.BytesIO(report_txt.encode()),
         mimetype='text/plain',
         as_attachment=True,
+        download_name=f"Report_{latest['student_name'].replace(' ','_')}.txt"
+    )
+
+@app.route('/suggestions')
+def suggestions_page():
+    from utils.project_suggester import get_all_categories
+    from utils.recommendation_engine import generate_advanced_recommendations
+    
+    # Get general platforms
+    import json
+    cert_path = os.path.join(app.root_path, 'data', 'certifications.json')
+    platforms = {}
+    if os.path.exists(cert_path):
+        with open(cert_path, encoding='utf-8') as f:
+            platforms = json.load(f).get('platforms', {})
+            
+    return render_template('suggestions.html', platforms=platforms)
+
+@app.route('/skills')
+def skills_page():
+    from utils.career_score import BANDS
+    return render_template('skills.html', bands=BANDS)
+
+@app.route('/projects')
+def projects_page():
+    cat = request.args.get('cat')
+    from utils.project_suggester import get_all_categories, get_projects_by_category
+    categories = get_all_categories()
+    
+    selected_cat = None
+    projects = []
+    
+    if cat:
+        projects = get_projects_by_category(cat)
+        selected_cat = next((c for c in categories if c['key'] == cat), None)
+        
+    return render_template('projects.html', categories=categories, projects=projects, selected_cat=selected_cat)
+
+@app.route('/api/goal', methods=['POST'])
+def goal_analysis():
+    data = request.get_json()
+    target = float(data.get('target', 80))
+    current_prob = float(data.get('current', 50))
+    
+    gap = target - current_prob
