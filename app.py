@@ -268,3 +268,48 @@ def plan_page():
     
     selected_plan = None
     timeline = []
+    
+    if skill:
+        selected_plan = get_plan(skill)
+        if selected_plan:
+            timeline = generate_combined_timeline([selected_plan])
+            
+    return render_template('plan.html', plans=plans_list, selected_plan=selected_plan, timeline=timeline)
+
+@app.route('/mentor')
+def mentor_dashboard():
+    predictions = get_all_predictions()
+    from utils.weakness_detector import detect_weaknesses, weakness_summary
+    
+    at_risk = []
+    top_students = []
+    common_weaknesses = {}
+    
+    for p in predictions:
+        try:
+            # Map legacy names if needed
+            p_data = {
+                'cgpa': p['cgpa'],
+                'aptitude_score': p['aptitude_score'],
+                'internships': p['internships'],
+                'projects': p['projects'],
+                'backlogs': p['backlogs']
+            }
+            w = detect_weaknesses(p_data)
+            p['weakness_count'] = len(w)
+            p['severity'] = weakness_summary(w)
+            
+            for wk in w:
+                lbl = wk['label']
+                common_weaknesses[lbl] = common_weaknesses.get(lbl, 0) + 1
+                
+            if p['probability'] < 50 or p['backlogs'] > 0:
+                at_risk.append(p)
+            elif p['probability'] > 80:
+                top_students.append(p)
+        except:
+            continue
+            
+    common_weaknesses = sorted(common_weaknesses.items(), key=lambda x: x[1], reverse=True)[:5]
+    
+    return render_template('mentor.html', 
