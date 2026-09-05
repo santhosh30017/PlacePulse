@@ -1,0 +1,260 @@
+{
+  "platforms": {
+    "nptel": {
+      "name": "NPTEL",
+      "logo": "🎓",
+      "url": "https://nptel.ac.in",
+      "description": "IIT & IISc courses with government certification. Highly valued by Indian recruiters.",
+      "cost": "Free (exam fee ₹1000)",
+      "recognized_by": "All major Indian companies and PSUs",
+      "courses": [
+        {
+          "title": "Programming in Python",
+          "duration": "8 weeks",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_projects"],
+          "reason": "Builds strong Python fundamentals needed for most tech roles"
+        },
+        {
+          "title": "Introduction to Machine Learning",
+          "duration": "12 weeks",
+          "difficulty": "Intermediate",
+          "skill_tags": ["low_projects", "low_aptitude"],
+          "reason": "IIT-level ML cert that stands out on resumes"
+        },
+        {
+          "title": "Database Management Systems",
+          "duration": "8 weeks",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_projects", "low_experience"],
+          "reason": "DBMS is tested in almost every placement aptitude round"
+        },
+        {
+          "title": "Data Structures and Algorithms (DSA)",
+          "duration": "8 weeks",
+          "difficulty": "Intermediate",
+          "skill_tags": ["low_aptitude", "low_cgpa"],
+          "reason": "Core skill for technical interviews at product companies"
+        },
+        {
+          "title": "Soft Skills for Placement",
+          "duration": "4 weeks",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_soft_skills"],
+          "reason": "Improves communication, interview readiness and group discussion skills"
+        }
+      ]
+    },
+    "coursera": {
+      "name": "Coursera",
+      "logo": "🌐",
+      "url": "https://coursera.org",
+      "description": "University-backed courses from top institutions like Google, IBM, Stanford, and DeepLearning.AI.",
+      "cost": "Audit free / Certificate paid (Financial aid available)",
+      "recognized_by": "MNC, startups, global companies",
+      "courses": [
+        {
+          "title": "Google Data Analytics Professional Certificate",
+          "duration": "6 months",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_projects"],
+          "reason": "Google-backed, directly hirable certificate for analytics roles"
+        },
+        {
+          "title": "IBM Data Science Professional Certificate",
+          "duration": "5 months",
+          "difficulty": "Beginner-Intermediate",
+          "skill_tags": ["low_projects", "low_experience"],
+          "reason": "10-course IBM badge covering Python, SQL, ML, and capstone project"
+        },
+        {
+          "title": "Deep Learning Specialization (DeepLearning.AI)",
+          "duration": "3 months",
+          "difficulty": "Advanced",
+          "skill_tags": ["low_projects", "low_aptitude"],
+          "reason": "Andrew Ng's course — the gold standard for AI/ML interviews globally"
+        },
+        {
+          "title": "Python for Everybody (University of Michigan)",
+          "duration": "2 months",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_cgpa"],
+          "reason": "Perfect starting point for students with weak programming fundamentals"
+        }
+      ]
+    },
+    "udemy": {
+      "name": "Udemy",
+      "logo": "📚",
+      "url": "https://udemy.com",
+      "description": "Affordable practical courses with lifetime access. Best for hands-on skill building.",
+      "cost": "₹399–₹599 during sale",
+      "recognized_by": "Supplemental — great for skill proof on resume",
+      "courses": [
+        {
+          "title": "The Complete Python Bootcamp",
+          "duration": "22 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_projects"],
+          "reason": "Most comprehensive Python course, builds full project portfolio"
+        },
+        {
+          "title": "Machine Learning A-Z: Python & R",
+          "duration": "44 hours",
+          "difficulty": "Intermediate",
+          "skill_tags": ["low_projects"],
+          "reason": "25+ ML projects to add to GitHub and resume"
+        },
+        {
+          "title": "The Web Developer Bootcamp",
+          "duration": "67 hours",
+          "difficulty": "Beginner-Intermediate",
+          "skill_tags": ["low_projects", "low_experience"],
+          "reason": "Covers HTML, CSS, JS, Node.js — a complete full-stack foundation"
+        },
+        {
+          "title": "100 Days of Code: Python Pro Bootcamp",
+          "duration": "60 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_projects", "low_aptitude"],
+          "reason": "100 daily mini-projects prove consistency and hands-on skill"
+        },
+        {
+          "title": "Communication Skills Masterclass",
+          "duration": "8 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_soft_skills"],
+          "reason": "Targeted for HR interviews, GD rounds, and workplace communication"
+        }
+      ]
+    },
+    "internshala": {
+      "name": "Internshala",
+      "logo": "💼",
+      "url": "https://internshala.com/trainings",
+      "description": "Online trainings and internship platform specifically for Indian students. Certificates are recognized by SMEs and startups.",
+      "cost": "₹500–₹2000",
+      "recognized_by": "SMEs, startups, Indian recruiters",
+      "courses": [
+        {
+          "title": "Web Development Training",
+          "duration": "6 weeks",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_projects", "low_experience", "no_internships"],
+          "reason": "Includes internship placement assistance after completion"
+        },
+        {
+          "title": "Data Science Training",
+          "duration": "6 weeks",
+          "difficulty": "Intermediate",
+          "skill_tags": ["low_projects", "no_internships"],
+          "reason": "Hands-on R + Python training with real-world datasets"
+        },
+        {
+          "title": "Digital Marketing",
+          "duration": "4 weeks",
+          "difficulty": "Beginner",
+          "skill_tags": ["no_internships", "low_experience"],
+          "reason": "High internship placement rate, all-stream students eligible"
+        },
+        {
+          "title": "Programming with Python",
+          "duration": "4 weeks",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_projects"],
+          "reason": "AICTE-recognized certificate with guaranteed internship leads"
+        }
+      ]
+    },
+    "kaggle": {
+      "name": "Kaggle",
+      "logo": "🏆",
+      "url": "https://kaggle.com/learn",
+      "description": "Free, bite-sized ML courses with hands-on notebooks. Kaggle profile acts as a live portfolio.",
+      "cost": "100% Free",
+      "recognized_by": "Data science, analytics, and AI roles globally",
+      "courses": [
+        {
+          "title": "Python",
+          "duration": "5 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_projects"],
+          "reason": "Quick start for Python with runnable notebooks — free certificate"
+        },
+        {
+          "title": "Intro to Machine Learning",
+          "duration": "3 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_projects"],
+          "reason": "Build your first ML model in under 3 hours — instantly deployable"
+        },
+        {
+          "title": "Intermediate Machine Learning",
+          "duration": "4 hours",
+          "difficulty": "Intermediate",
+          "skill_tags": ["low_projects", "low_aptitude"],
+          "reason": "Feature engineering, XGBoost, cross-validation — interview staples"
+        },
+        {
+          "title": "SQL",
+          "duration": "3 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_aptitude", "low_cgpa"],
+          "reason": "SQL is tested in 80% of company aptitude tests — free with certificate"
+        },
+        {
+          "title": "Data Visualization",
+          "duration": "4 hours",
+          "difficulty": "Beginner",
+          "skill_tags": ["low_projects"],
+          "reason": "Seaborn + Plotly skills that make your projects stand out"
+        }
+      ]
+    },
+    "hackathons": {
+      "name": "Hackathons & Competitions",
+      "logo": "⚡",
+      "url": "https://devfolio.co",
+      "description": "Competitive events that give real-world problem solving experience and team skills in 24–48 hours.",
+      "cost": "Free to participate",
+      "recognized_by": "Startups, MNCs, product companies — extremely valuable",
+      "events": [
+        {
+          "title": "Smart India Hackathon (SIH)",
+          "platform": "Government of India",
+          "url": "https://www.sih.gov.in",
+          "skill_tags": ["no_internships", "low_experience", "low_soft_skills"],
+          "reason": "National-level government hackathon, massive resume boost, cash prizes"
+        },
+        {
+          "title": "Kaggle Competitions",
+          "platform": "Kaggle",
+          "url": "https://kaggle.com/competitions",
+          "skill_tags": ["low_aptitude", "low_projects"],
+          "reason": "Global ML competitions with leaderboard rankings — directly visible to recruiters"
+        },
+        {
+          "title": "HackWithInfy (Infosys)",
+          "platform": "Infosys",
+          "url": "https://hackwithinfy.com",
+          "skill_tags": ["no_internships", "low_aptitude"],
+          "reason": "Infosys-hosted competition — winners get direct interview shortlists"
+        },
+        {
+          "title": "Unstop Hackathons",
+          "platform": "Unstop",
+          "url": "https://unstop.com",
+          "skill_tags": ["no_internships", "low_experience", "low_soft_skills"],
+          "reason": "100+ live hackathons, quizzes, case challenges — great for freshers"
+        },
+        {
+          "title": "Devfolio Hackathons",
+          "platform": "Devfolio",
+          "url": "https://devfolio.co/hackathons",
+          "skill_tags": ["low_projects", "no_internships"],
+          "reason": "Online and offline hackathons with project portfolio outcomes"
+        }
+      ]
+    }
+  }
+}

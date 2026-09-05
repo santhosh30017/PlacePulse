@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% block title %}Platform Overview — PlaceIQ{% endblock %}
+{% block page_title %}Platform Overview{% endblock %}
+{% block page_sub %}Intelligent student placement forecasting & career growth suite.{% endblock %}
+
+{% block topbar_actions %}
+<a href="/predict" class="btn btn-primary">✦ New Prediction</a>
+<a href="/upload"  class="btn btn-outline">↑ Update Data</a>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+/* ── HERO ─────────────────────────────── */
+.hero {
+    position: relative; overflow: hidden;
+    border-radius: var(--r-xl);
+    padding: 60px 56px;
+    margin-bottom: 32px;
+    background: linear-gradient(135deg,
+        rgba(14,14,28,0.95) 0%,
+        rgba(20,12,30,0.95) 50%,
+        rgba(10,16,28,0.95) 100%);
+    border: 1px solid var(--border);
+}
+.hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 60% 80% at 0% 50%,   rgba(245,158,11,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 100% 20%,  rgba(236,72,153,0.10)  0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 60%  90%,  rgba(139,92,246,0.08)  0%, transparent 55%);
+    pointer-events: none;
+}
+.hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,158,11,0.6), rgba(236,72,153,0.4), transparent);
+}
+
+/* Animated grid lines */
+.hero-grid {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+.hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+    background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25);
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+    color: var(--amber); text-transform: uppercase;
+}
+.hero-tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+.hero h1 {
+    font-family: var(--font-h); font-size: clamp(36px, 5vw, 58px);
+    font-weight: 900; letter-spacing: -0.04em; line-height: 1.1;
+    margin-bottom: 20px; position: relative;
+}
+.hero h1 span {
+    background: linear-gradient(135deg, var(--amber) 0%, var(--pink) 60%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 28px rgba(245,158,11,0.35));
+}
+
+.hero-desc {
+    font-size: 16px; color: var(--text-m); line-height: 1.7;
+    max-width: 520px; margin-bottom: 40px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-btn-primary {
+    padding: 14px 32px; border-radius: var(--r-md);
+    background: linear-gradient(135deg, var(--amber), #e08800);
+    color: #000; font-weight: 800; font-size: 14px; font-family: var(--font-h);
+    border: none; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: 0 6px 28px rgba(245,158,11,0.45), 0 0 50px rgba(245,158,11,0.15);
+    transition: var(--t); position: relative; overflow: hidden;
+}
+.hero-btn-primary::before {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+}
+.hero-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(245,158,11,0.55); }
+.hero-btn-primary:hover::before { left: 200%; }
+
+.hero-btn-ghost {
+    padding: 14px 32px; border-radius: var(--r-md);
+    background: rgba(255,255,255,0.04); color: var(--text-m);
+    font-weight: 700; font-size: 14px; font-family: var(--font-h);
+    border: 1px solid var(--border); cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: var(--t);
+}
+.hero-btn-ghost:hover {
+    background: rgba(255,255,255,0.08); color: var(--text-h);
+    border-color: rgba(255,255,255,0.2); transform: translateY(-2px);
+}
+
+/* Floating badge top-right */
+.hero-visual {
+    position: absolute; right: 50px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 14px;
+}
+.hero-badge {
+    background: rgba(14,14,28,0.9); border: 1px solid var(--border);
+    border-radius: 16px; padding: 16px 20px; backdrop-filter: blur(12px);
+    min-width: 180px;
+}
+.hero-badge strong { display: block; font-family: var(--font-h); font-size: 24px; font-weight: 900; letter-spacing: -0.03em; }
+.hero-badge span  { font-size: 11px; color: var(--text-m); }
+
+/* ── FEATURE CARDS ──── */
+.feature-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+.feature-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 28px;
+    transition: var(--t); position: relative; overflow: hidden;
+    cursor: default;
+}
+.feature-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 120%, var(--fc-glow, rgba(245,158,11,0.06)), transparent 70%);
+    transition: var(--t);
+}
+.feature-card:hover {
+    border-color: var(--fc-accent, var(--amber));
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 40px var(--fc-glow, rgba(245,158,11,0.1));
+}
+.feature-card:hover::before { opacity: 2; }
+.feature-icon {
+    width: 52px; height: 52px; border-radius: 14px; margin-bottom: 18px;
+    display: flex; align-items: center; justify-content: center; font-size: 24px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+}
+.feature-card h3 { font-family: var(--font-h); font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+.feature-card p  { font-size: 13px; color: var(--text-m); line-height: 1.7; }
+
+/* ── INSIGHTS ──── */
+.insight-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: var(--t);
+}
+.insight-item:hover { padding-left: 6px; }
+.insight-item:last-child { border-bottom: none; }
+.insight-dot {
+    width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0;
+    background: var(--amber); box-shadow: 0 0 10px var(--amber-g);
+}
+.insight-text { font-size: 13.5px; color: var(--text-m); line-height: 1.6; }
+.insight-text strong { color: var(--text-h); }
+
+@media (max-width:1100px) {
+    .hero-visual { display: none; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 30px; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO ────────────────────────────────────────────── -->
+<div class="hero">
+    <div class="hero-grid"></div>
+
+    <div class="hero-tag"><i></i> Engineered for Excellence</div>
+
+    <h1>
+        Elevate Student Outcomes<br>
+        with <span>AI Placement Intelligence</span>
+    </h1>
+
+    <p class="hero-desc">
+        A sophisticated machine learning platform designed for modern engineering institutions. 
+        Analyze datasets, predict success probability, and generate actionable career growth maps.
+    </p>
+
+    <div class="hero-actions">
+        <a href="/predict" class="hero-btn-primary">✦ Start Prediction</a>
+        <a href="/analytics" class="hero-btn-ghost">Explore Insights ◇</a>
+    </div>
+
+    {% if ready %}
+    <div class="hero-visual">
+        <div class="hero-badge" style="border-color:rgba(245,158,11,0.25); box-shadow: 0 0 30px rgba(245,158,11,0.08);">
+            <strong style="color:var(--amber)">{{ stats.total_students or '—' }}</strong>
+            <span>Students Indexed</span>
+        </div>
+        <div class="hero-badge" style="border-color:rgba(16,185,129,0.25); box-shadow: 0 0 30px rgba(16,185,129,0.08);">
+            <strong style="color:var(--emerald)">{{ stats.placement_rate or '—' }}%</strong>
+            <span>Overall Success Rate</span>
+        </div>
+        <div class="hero-badge" style="border-color:rgba(139,92,246,0.25); box-shadow: 0 0 30px rgba(139,92,246,0.08);">
+            <strong style="color:#a78bfa">Live</strong>
+            <span>ML Engine Active</span>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- STAT GRID ───────────────────────────────────────── -->
+<div class="stat-grid">
+    <div class="stat-card" style="--accent-color:var(--amber);--accent-glow:rgba(245,158,11,0.1)">
+        <div class="stat-icon">👥</div>
+        {% if ready %}<div class="stat-delta up">+12%</div>{% endif %}
+        <div class="stat-value"><span class="counter">{{ stats.total_students or 0 }}</span></div>
+        <div class="stat-label">Total Student Profiles</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--emerald);--accent-glow:rgba(16,185,129,0.1)">
+        <div class="stat-icon">✓</div>
+        {% if ready %}<div class="stat-delta ok">Vitals OK</div>{% endif %}
+        <div class="stat-value" style="color:var(--emerald)"><span class="counter" data-decimals="2">{{ stats.best_accuracy or 0 }}</span>%</div>
+        <div class="stat-label">Model Accuracy Rate</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--sky);--accent-glow:rgba(56,189,248,0.1)">
+        <div class="stat-icon">📊</div>
+        <div class="stat-value" style="color:var(--sky)"><span class="counter" data-decimals="2">{{ stats.avg_cgpa or 0 }}</span></div>
+        <div class="stat-label">Average Institution Score</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--violet);--accent-glow:rgba(139,92,246,0.1)">
+        <div class="stat-icon">💼</div>
+        <div class="stat-value" style="color:#a78bfa"><span class="counter" data-decimals="2">{{ stats.avg_internships or 0 }}</span></div>
+        <div class="stat-label">Avg. Industry Exposure</div>
+    </div>
+</div>
+
+<!-- FEATURE CARDS + INSIGHTS ────────────────────────── -->
+<div class="grid-2" style="margin-bottom: 32px;">
+    <div>
+        <div class="card-title" style="margin-bottom:20px">Platform Capabilities</div>
+        <div class="feature-grid">
+            <div class="feature-card" style="--fc-accent:var(--amber);--fc-glow:rgba(245,158,11,0.08)">
+                <div class="feature-icon">◈</div>
+                <h3>Predictive Analytics</h3>
+                <p>Advanced ensemble models provide precision-grade placement probability for every student profile.</p>
+            </div>
+            <div class="feature-card" style="--fc-accent:var(--pink);--fc-glow:rgba(236,72,153,0.08)">
+                <div class="feature-icon">✨</div>
+                <h3>Improvement Engine</h3>
+                <p>AI-driven roadmaps that identify critical skill gaps and provide actionable certification paths.</p>
+            </div>
+            <div class="feature-card" style="--fc-accent:var(--cyan);--fc-glow:rgba(6,182,212,0.08)">
+                <div class="feature-icon">💡</div>
+                <h3>SHAP Explainability</h3>
+                <p>Transparent AI that reveals the "Why" behind every prediction, identifying key success drivers.</p>
+            </div>
+            <div class="feature-card" style="--fc-accent:var(--violet);--fc-glow:rgba(139,92,246,0.08)">
+                <div class="feature-icon">⚡</div>
+                <h3>Proactive Risk Assessment</h3>
+                <p>Identify at-risk students before critical windows close, allowing for timely mentor intervention.</p>
+            </div>
+        </div>
+    </div>
+
+    {% if insights_global or (stats and ready) %}
+    <div class="card">
+        <div class="card-title">✦ Neural Insights Engine</div>
+        <p style="font-size:12px; color:var(--text-l); margin-bottom:20px;">
+            Key patterns and hidden correlations discovered by our deep-analysis pipeline.
+        </p>
+        <div>
+            {% for ins in (insights_global or []) %}
+            <div class="insight-item">
+                <div class="insight-dot" style="background:{{ ['#f59e0b','#10b981','#38bdf8','#ec4899','#8b5cf6','#fb7185'][loop.index0 % 6] }}; box-shadow: 0 0 10px {{ ['rgba(245,158,11,0.5)','rgba(16,185,129,0.5)','rgba(56,189,248,0.5)','rgba(236,72,153,0.5)','rgba(139,92,246,0.5)','rgba(251,113,133,0.5)'][loop.index0 % 6] }};"></div>
+                <div class="insight-text">{{ ins }}</div>
+            </div>
+            {% else %}
+            <div style="text-align:center; padding:40px 0; color:var(--text-l)">
+                <div style="font-size:36px; margin-bottom:14px; opacity:0.4">⚡</div>
+                <div style="font-size:13px">Upload a dataset to generate AI insights.</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Re-init counters after DOM ready (base loads them via observer)
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.counter').forEach(el => {
+        el.dataset.target = el.textContent;
+        counterObserver.observe(el);
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}Strategic Recommendations – PlaceIQ{% endblock %}
+{% block page_title %}Resource Synthesis{% endblock %}
+{% block page_sub %}Curated industrial platforms and certifications to enhance institutional candidacy.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .syn-banner {
+        background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(251,113,133,0.05));
+        border: 1px solid var(--border-glass); border-radius: var(--radius-lg);
+        padding: 40px; margin-bottom: 32px; display: flex; gap: 32px; align-items: center;
+        backdrop-filter: blur(12px);
+    }
+    .syn-banner i { font-size: 48px; opacity: 0.8; }
+    .syn-banner h3 { font-family: var(--font-head); font-size: 20px; color: var(--primary); margin-bottom: 4px; }
+    .syn-banner p { color: var(--text-mid); font-size: 14px; line-height: 1.6; max-width: 600px; }
+
+    .platform-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .matrix-card {
+        background: var(--card-glass); border: 1px solid var(--border-glass);
+        border-radius: 20px; padding: 28px; transition: var(--transition);
+        cursor: pointer; position: relative; overflow: hidden;
+    }
+    .matrix-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    
+    .matrix-top { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .matrix-logo {
+        width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.03);
+        display: flex; align-items: center; justify-content: center; font-size: 24px;
+        border: 1px solid var(--border-glass);
+    }
+    .matrix-name { font-family: var(--font-head); font-size: 18px; color: var(--text-high); }
+
+    .matrix-desc { font-size: 13px; color: var(--text-low); line-height: 1.6; margin-bottom: 20px; height: 60px; overflow: hidden; }
+
+    .tag-array { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+    .tag-hex { font-size: 10px; font-weight: 700; padding: 4px 10px; background: rgba(245,158,11,0.08); color: var(--primary); border-radius: 6px; }
+
+    .meta-list { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border-glass); padding-top: 20px; }
+    .meta-point { display: flex; align-items: center; gap: 10px; font-size: 11.5px; color: var(--text-mid); }
+    .meta-point i { color: var(--primary); font-size: 10px; }
+
+    .incentive-box { margin-top: 32px; padding: 32px; text-align: center; background: rgba(255,255,255,0.01); border: 1px solid var(--border-glass); border-radius: 20px; }
+    .incentive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 24px; }
+    .incentive-col i { font-size: 24px; margin-bottom: 12px; display: block; }
+    .incentive-col h4 { font-family: var(--font-head); font-size: 14px; margin-bottom: 8px; color: var(--text-high); }
+    .incentive-col p { font-size: 12px; color: var(--text-low); line-height: 1.6; }
+
+    @media (max-width: 768px) { .syn-banner { flex-direction: column; text-align: center; } .incentive-grid { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="syn-banner">
+    <i>📜</i>
+    <div style="flex:1">
+        <h3>Institutional Certification Protocol</h3>
+        <p>Recruiters prioritize autonomous learning vectors. Synthesize knowledge from these globally recognized platforms to demonstrate technical velocity beyond academic baselines.</p>
+    </div>
+    <a href="/projects" class="btn btn-primary" style="border-radius:12px; padding:16px 32px;">◈ Architecture Explorer</a>
+</div>
+
+<div class="platform-matrix">
+    {% for key, p in platforms.items() %}
+    <div class="matrix-card" onclick="window.open('{{ p.url }}', '_blank')">
+        <div class="matrix-top">
+            <div class="matrix-logo">{{ p.logo }}</div>
+            <div class="matrix-name">{{ p.name }}</div>
+        </div>
+        <p class="matrix-desc">{{ p.description }}</p>
+        
+        <div class="tag-array">
+            {% if p.courses %}
+                {% for course in p.courses[:3] %}
+                <span class="tag-hex">{{ course.title.upper() }}</span>
+                {% endfor %}
+            {% elif p.events %}
+                {% for event in p.events[:3] %}
+                <span class="tag-hex">{{ event.title.upper() }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div class="meta-list">
+            <div class="meta-point"><i>◈</i> {{ p.cost }}</div>
+            <div class="meta-point"><i>◈</i> {{ p.recognized_by }}</div>
+        </div>
+        
+        <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+            <span style="color:var(--primary); font-family:var(--font-mono); font-size:11px; font-weight:800; letter-spacing:0.1em;">INITIALIZE_ACCESS ◈</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="incentive-box">
+    <div class="card-title">Candidacy Optimization Matrix</div>
+    <div class="incentive-grid">
+        <div class="incentive-col">
+            <i>🔍</i>
+            <h4>Cognitive Visibility</h4>
+            <p>Domain-specific vectors normalize your profile across automated ATS evaluation protocols.</p>
+        </div>
+        <div class="incentive-col">
+            <i>💼</i>
+            <h4>Evidence of Depth</h4>
+            <p>Third-party institutional validation serves as a hard evidence layer for your technical architecture.</p>
+        </div>
+        <div class="incentive-col">
+            <i>🚀</i>
+            <h4>Execution Advantage</h4>
+            <p>Advanced specializations provide a deeper semantic layer for high-density technical interviews.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

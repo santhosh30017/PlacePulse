@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block title %}Dataset Intelligence — PlaceIQ{% endblock %}
+{% block page_title %}Dataset Intelligence{% endblock %}
+{% block page_sub %}Comprehensive analytics and model performance metrics.{% endblock %}
+
+{% block topbar_actions %}
+<a href="/predict"        class="btn btn-primary">✦ New Prediction</a>
+<a href="/export/predictions" class="btn btn-outline">↓ Export Dataset</a>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.ai-bar { height: 5px; border-radius: 100px; overflow: hidden; background: rgba(255,255,255,0.05); margin-top: 10px; }
+.ai-bar-fill {
+    height: 100%; border-radius: 100px; width: 0%;
+    background: linear-gradient(90deg, var(--bar-from, var(--amber)), var(--bar-to, var(--pink)));
+    box-shadow: 0 0 12px var(--bar-from, var(--amber-g));
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.model-ring {
+    display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 24px;
+}
+.m-pill {
+    flex: 1; min-width: 110px; padding: 16px 20px;
+    border-radius: var(--r-md); border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02); text-align: center;
+    transition: var(--t); cursor: default;
+}
+.m-pill:hover { border-color: var(--mp-color,var(--amber)); box-shadow: 0 0 24px var(--mp-glow, rgba(245,158,11,0.12)); }
+.m-pill strong { display: block; font-family: var(--font-h); font-size: 22px; font-weight: 900; letter-spacing: -0.03em; }
+.m-pill span   { font-size: 10px; color: var(--text-l); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.algo-table-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 120px; gap: 12px; align-items: center; }
+.algo-table-row + .algo-table-row { border-top: 1px solid rgba(255,255,255,0.04); }
+.algo-name { font-weight: 700; font-size: 14px; }
+
+.graph-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.graph-tile {
+    background: rgba(255,255,255,0.01); border: 1px solid var(--border);
+    border-radius: var(--r-md); padding: 16px; overflow: hidden;
+    transition: var(--t);
+}
+.graph-tile:hover { border-color: var(--border-h); transform: scale(1.01); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+.graph-tile img { width: 100%; border-radius: 8px; display: block; }
+.graph-tile-label { font-size: 11px; font-weight: 700; color: var(--text-l); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+
+.insight-chip {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 12px 16px; border-radius: 10px; margin-bottom: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid transparent;
+    transition: var(--t);
+}
+.insight-chip:hover { border-color: var(--border); background: rgba(255,255,255,0.04); }
+
+@media(max-width:900px){
+    .algo-table-row { grid-template-columns: 2fr 1fr 1fr; }
+    .algo-table-row > *:nth-child(4), .algo-table-row > *:nth-child(5) { display: none; }
+    .graph-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- STAT KPIS ─────────────────────────────────────── -->
+<div class="stat-grid">
+    <div class="stat-card" style="--accent-color:var(--amber);--accent-glow:rgba(245,158,11,0.1)">
+        <div class="stat-icon">👥</div>
+        <div class="stat-value"><span class="counter">{{ stats.total_students or 0 }}</span></div>
+        <div class="stat-label">Candidate Count</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--emerald);--accent-glow:rgba(16,185,129,0.1)">
+        <div class="stat-icon">✓</div>
+        <div class="stat-value" style="color:var(--emerald)"><span class="counter" data-decimals="2">{{ stats.best_accuracy or 0 }}</span>%</div>
+        <div class="stat-label">Success Density</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--sky);--accent-glow:rgba(56,189,248,0.1)">
+        <div class="stat-icon">📐</div>
+        <div class="stat-value" style="color:var(--sky)"><span class="counter" data-decimals="2">{{ stats.avg_cgpa or 0 }}</span></div>
+        <div class="stat-label">Mean CGPA</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--violet);--accent-glow:rgba(139,92,246,0.1)">
+        <div class="stat-icon">🏭</div>
+        <div class="stat-value" style="color:#a78bfa"><span class="counter" data-decimals="2">{{ stats.avg_internships or 0 }}</span></div>
+        <div class="stat-label">Avg Exposure</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--emerald);--accent-glow:rgba(16,185,129,0.08)">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-value" style="color:var(--emerald)"><span class="counter">{{ analytics.placed_count or 0 }}</span></div>
+        <div class="stat-label">Placed (N)</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--rose);--accent-glow:rgba(251,113,133,0.1)">
+        <div class="stat-icon">⚠</div>
+        <div class="stat-value" style="color:var(--rose)"><span class="counter">{{ analytics.not_placed_count or 0 }}</span></div>
+        <div class="stat-label">Unplaced (N)</div>
+    </div>
+</div>
+
+<!-- MODEL PERFORMANCE ──────────────────────────────── -->
+{% if metrics and metrics.models %}
+<div class="card" style="padding:28px; margin-bottom:28px;">
+    <div class="card-title">Model Performance Registry</div>
+    <p style="font-size:12px; color:var(--text-l); margin-bottom:20px;">
+        Ensemble Leaderboard &nbsp;|&nbsp; Best: <strong style="color:var(--amber)">{{ metrics.best_model }}</strong>
+    </p>
+
+    <div class="model-ring">
+        {% for m in metrics.models %}
+        {% set pill_colors = [('var(--amber)','rgba(245,158,11,0.12)'),('var(--sky)','rgba(56,189,248,0.12)'),('var(--emerald)','rgba(16,185,129,0.12)'),('var(--rose)','rgba(251,113,133,0.12)')] %}
+        <div class="m-pill" style="--mp-color:{{ pill_colors[loop.index0%4][0] }}; --mp-glow:{{ pill_colors[loop.index0%4][1] }}">
+            <strong style="color:{{ pill_colors[loop.index0%4][0] }}">{{ (m.accuracy*100)|round(1) }}%</strong>
+            <span>{{ m.name }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div style="border:1px solid var(--border); border-radius:var(--r-md); overflow:hidden;">
+        <div class="algo-table-row" style="padding:12px 20px; background:rgba(255,255,255,0.02);">
+            <div style="font-size:10px;font-weight:800;color:var(--text-l);text-transform:uppercase;letter-spacing:0.08em">Algorithm</div>
+            <div style="font-size:10px;font-weight:800;color:var(--text-l);text-transform:uppercase;letter-spacing:0.08em">Accuracy</div>
+            <div style="font-size:10px;font-weight:800;color:var(--text-l);text-transform:uppercase;letter-spacing:0.08em">F1 Score</div>
+            <div style="font-size:10px;font-weight:800;color:var(--text-l);text-transform:uppercase;letter-spacing:0.08em">Precision</div>
+            <div style="font-size:10px;font-weight:800;color:var(--text-l);text-transform:uppercase;letter-spacing:0.08em">Status</div>
+        </div>
+        {% for m in metrics.models %}
+        <div class="algo-table-row" style="padding:18px 20px;">
+            <div>
+                <div class="algo-name">{{ m.name }}</div>
+                <div class="ai-bar"><div class="ai-bar-fill" data-pct="{{ (m.accuracy*100)|round|int }}" style="--bar-from:{{ ['#f59e0b','#38bdf8','#10b981','#fb7185'][loop.index0%4] }}; --bar-to:{{ ['#ec4899','#8b5cf6','#06b6d4','#f59e0b'][loop.index0%4] }}"></div></div>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:13px; color:{{ ['#f59e0b','#38bdf8','#10b981','#fb7185'][loop.index0%4] }}">{{ (m.accuracy*100)|round(1) }}%</div>
+            <div style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:{{ ['#f59e0b','#38bdf8','#10b981','#fb7185'][loop.index0%4] }}">{{ (m.f1*100)|round(1) }}%</div>
+            <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-m)">{{ (m.precision*100)|round(1) }}%</div>
+            <div>
+                {% if m.name == metrics.best_model %}
+                <span class="badge badge-amber">✓ ALPHA</span>
+                {% else %}
+                <span style="font-size:10px;color:var(--text-l);text-transform:uppercase;letter-spacing:0.06em">Active</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- FEATURE IMPORTANCE ─────────────────────────────── -->
+{% if fi %}
+<div class="card" style="padding:28px; margin-bottom:28px;">
+    <div class="card-title">Global Feature Weighting</div>
+    <p style="font-size:12px;color:var(--text-l);margin-bottom:24px;">Institutional success drivers across complete historical archive.</p>
+    {% set fi_colors = ['#f59e0b','#ec4899','#10b981','#38bdf8','#8b5cf6','#fb7185','#06b6d4','#f97316'] %}
+    {% for feature, score in fi.items()|sort(attribute='1', reverse=True) %}
+    <div style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:12px;font-weight:700;color:var(--text-m);text-transform:uppercase;letter-spacing:0.08em">{{ feature }}</span>
+            <span style="font-family:var(--font-mono);font-size:12px;font-weight:800;color:{{ fi_colors[loop.index0%8] }}">{{ (score*100)|round(2) }}%</span>
+        </div>
+        <div class="ai-bar">
+            <div class="ai-bar-fill" data-pct="{{ [((score*100)|round|int), 100]|min }}" 
+                 style="--bar-from:{{ fi_colors[loop.index0%8] }}; --bar-to:{{ fi_colors[(loop.index0+3)%8] }}"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- VISUAL GRAPHS ──────────────────────────────────── -->
+{% if graphs %}
+<div class="card-title" style="margin-bottom:16px;">Data Visualizations</div>
+<div class="graph-grid">
+    {% for g,l in graphs %}
+    <div class="graph-tile">
+        <div class="graph-tile-label">{{ l }}</div>
+        <img src="/static/graphs/{{ g }}.png" alt="{{ l }}" loading="lazy" onerror="this.parentElement.style.display='none'">
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- INSIGHTS PANEL ─────────────────────────────────── -->
+{% if insights %}
+<div class="card" style="padding:28px;">
+    <div class="card-title">✦ Neural Pattern Recognition</div>
+    <p style="font-size:12px;color:var(--text-l);margin-bottom:20px;">Automated heuristics derived from training data distributions.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        {% for ins in insights %}
+        <div class="insight-chip">
+            <span style="font-size:18px;opacity:0.7;flex-shrink:0">{{ ['📊','📈','🎯','⚠','🔧','🏆','📚','🌐'][loop.index0%8] }}</span>
+            <span style="font-size:12.5px;color:var(--text-m);line-height:1.6">{{ ins }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // animate stat counters
+    document.querySelectorAll('.counter').forEach(el => {
+        el.dataset.target = el.textContent;
+        counterObserver.observe(el);
+    });
+    // animate progress bars
+    const bars = document.querySelectorAll('.ai-bar-fill');
+    setTimeout(() => {
+        bars.forEach(b => { b.style.width = b.dataset.pct + '%'; });
+    }, 400);
+});
+</script>
+{% endblock %}

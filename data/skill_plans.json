@@ -1,0 +1,436 @@
+{
+  "plans": {
+    "low_cgpa": {
+      "title": "Academic Recovery Plan",
+      "icon": "🎓",
+      "target": "Raise CGPA above 7.5",
+      "total_weeks": 8,
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Diagnose & Plan",
+          "focus": "CGPA Improvement",
+          "tasks": [
+            "List all subjects with low marks and identify recurring weak topics",
+            "Request previous year question papers from faculty/seniors",
+            "Create a subject-wise study timetable with daily 3-hour blocks",
+            "Join a subject-specific study group or find a peer tutor"
+          ],
+          "goal": "Have a clear map of what to study and a working timetable"
+        },
+        {
+          "week": 2,
+          "theme": "Foundation Repair",
+          "focus": "Core Concepts",
+          "tasks": [
+            "Re-study Chapter 1 fundamentals of your weakest 2 subjects",
+            "Watch NPTEL/YouTube lectures at 1.5x speed for concept clarity",
+            "Solve 10 basic problems per subject daily",
+            "Take handwritten notes — proven to improve retention by 40%"
+          ],
+          "goal": "Clear conceptual doubts in at least 1 subject"
+        },
+        {
+          "week": 3,
+          "theme": "Practice Mode ON",
+          "focus": "Previous Year Paper Solving",
+          "tasks": [
+            "Solve 5 years of previous exam papers for 2 subjects",
+            "Time yourself — simulate actual exam conditions",
+            "Review wrong answers immediately and note the concept gap",
+            "Prepare a 1-page formula/shortcut cheatsheet per subject"
+          ],
+          "goal": "Attempt at least 3 full mock papers"
+        },
+        {
+          "week": 4,
+          "theme": "Faculty Engagement",
+          "focus": "Targeted Help",
+          "tasks": [
+            "Visit professors during office hours — ask specific questions",
+            "Request internal test re-evaluation if marks were unfair",
+            "Complete all pending assignments and lab records",
+            "Submit extra assignments or project work to improve internal marks"
+          ],
+          "goal": "Secure maximum internal/continuous assessment marks"
+        },
+        {
+          "week": 5,
+          "theme": "Project Submission",
+          "focus": "Internal Score Boost",
+          "tasks": [
+            "Submit a mini-project or add-on assignment to show initiative",
+            "Participate in department seminars and note attendance-linked marks",
+            "Review your current internal marks and calculate required end-sem score",
+            "Focus heavy revision on high-weightage chapters"
+          ],
+          "goal": "Know exact score needed from end-sem exam"
+        },
+        {
+          "week": 6,
+          "theme": "Deep Revision",
+          "focus": "Exam Preparation",
+          "tasks": [
+            "Revise all chapters using active recall — no passive reading",
+            "Create topic-wise mind maps for each subject",
+            "Solve 20 MCQs/day from online test portals (TCS NQT, GeeksforGeeks)",
+            "Form a small study group for peer testing"
+          ],
+          "goal": "Complete at least 80% of syllabus revision"
+        },
+        {
+          "week": 7,
+          "theme": "Mock Exam Sprint",
+          "focus": "Full Syllabus Tests",
+          "tasks": [
+            "Take one full-length mock exam per day",
+            "Analyze and correct mistakes within 30 minutes of completing test",
+            "Focus on speed + accuracy — manage time per question",
+            "Revise weak chapters based on mock results"
+          ],
+          "goal": "Score 70%+ in mock exams consistently"
+        },
+        {
+          "week": 8,
+          "theme": "Exam Week",
+          "focus": "Light Revision + Confidence",
+          "tasks": [
+            "No new topics — only revision of already-studied material",
+            "Sleep 7-8 hours — critical for memory consolidation",
+            "Read your cheatsheets and formula lists daily",
+            "Visualize scoring high and stay calm"
+          ],
+          "goal": "Perform at peak in actual examinations"
+        }
+      ]
+    },
+    "low_aptitude": {
+      "title": "Aptitude Mastery Plan",
+      "icon": "🧠",
+      "target": "Score 75+ in aptitude tests",
+      "total_weeks": 6,
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Aptitude Audit",
+          "focus": "Find Weak Areas",
+          "tasks": [
+            "Take a full TCS NQT diagnostic test online",
+            "Identify which sections you're weakest in: Quant, LR, or Verbal?",
+            "Bookmark IndiaBix.com and set daily goal of 30 questions",
+            "Download free aptitude app (Pocket Aptitude or PrepInsta)"
+          ],
+          "goal": "Know your current aptitude baseline score"
+        },
+        {
+          "week": 2,
+          "theme": "Quantitative Foundations",
+          "focus": "Numbers & Math",
+          "tasks": [
+            "Study: Number System, LCM/HCF, Percentage, Profit/Loss",
+            "Solve 20 quant problems daily on IndiaBix",
+            "Learn shortcut tricks for multiplication, division, and squares",
+            "Watch R.S. Aggarwal topic videos on YouTube"
+          ],
+          "goal": "Achieve 70% accuracy in Quant fundamentals"
+        },
+        {
+          "week": 3,
+          "theme": "Core Quant Topics",
+          "focus": "Time, Work & Speed",
+          "tasks": [
+            "Study: Time & Work, Speed-Distance-Time, Mixtures, Ratios",
+            "Solve 25 problems/day across these topics",
+            "Take 1 timed quant mini-test (20 questions in 15 minutes)",
+            "Review all wrong answers on the same day"
+          ],
+          "goal": "Complete top 10 high-frequency aptitude chapters"
+        },
+        {
+          "week": 4,
+          "theme": "Logical Reasoning",
+          "focus": "Patterns & Sequences",
+          "tasks": [
+            "Study: Blood Relations, Seating Arrangement, Syllogisms, Coding-Decoding",
+            "Solve 30 LR questions/day on PrepInsta or GeeksforGeeks",
+            "Take one LR-focused mock test",
+            "Practice with Puzzles from TCS NQT and Infosys sample papers"
+          ],
+          "goal": "Complete LR section with 75%+ accuracy"
+        },
+        {
+          "week": 5,
+          "theme": "Verbal Ability",
+          "focus": "English & Communication",
+          "tasks": [
+            "Study: Reading Comprehension, Fill-in-the-blanks, Sentence correction",
+            "Read one English news article daily (The Hindu or Economics Times)",
+            "Learn 10 new vocabulary words/day using Memrise or Anki",
+            "Practice 20 verbal questions/day on IndiaBix"
+          ],
+          "goal": "Achieve 70% accuracy in verbal/English sections"
+        },
+        {
+          "week": 6,
+          "theme": "Full Mock Sprint",
+          "focus": "Complete Tests",
+          "tasks": [
+            "Take 1 full TCS NQT/Infosys/Wipro mock test daily",
+            "Analyze score, topic-wise accuracy, and time taken",
+            "Review category-wise performance — focus on weakest section",
+            "Aim to reduce per-question time to under 60 seconds"
+          ],
+          "goal": "Score 75+ consistently in full mock tests"
+        }
+      ]
+    },
+    "no_internships": {
+      "title": "Internship Acquisition Plan",
+      "icon": "💼",
+      "target": "Land your first internship within 4 weeks",
+      "total_weeks": 4,
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Profile Setup",
+          "focus": "Build Your Online Presence",
+          "tasks": [
+            "Create/update LinkedIn profile with a professional photo and bio",
+            "Upload resume to Internshala, Naukri, and LinkedIn",
+            "Create a GitHub profile and upload any existing mini projects",
+            "Draft a strong internship cover letter template"
+          ],
+          "goal": "Have an active LinkedIn & Internshala profile live"
+        },
+        {
+          "week": 2,
+          "theme": "Application Sprint",
+          "focus": "Apply at Scale",
+          "tasks": [
+            "Apply to 10 internships/day on Internshala (target remote/virtual roles)",
+            "Use filters: 0–1 year experience, remote, stipend ≥ ₹5000",
+            "Connect with 5 alumni from your college working in target companies on LinkedIn",
+            "Check company career pages of top 20 Indian companies for intern openings"
+          ],
+          "goal": "Apply to at least 50 internships by end of week"
+        },
+        {
+          "week": 3,
+          "theme": "Skill Demonstration",
+          "focus": "Build Proof of Work",
+          "tasks": [
+            "Complete one small project relevant to your target internship domain",
+            "Upload project on GitHub with a clear README",
+            "Write a LinkedIn post about something you built or learned",
+            "Prepare answers for common internship interview questions"
+          ],
+          "goal": "Have at least 1 project live on GitHub to showcase"
+        },
+        {
+          "week": 4,
+          "theme": "Interview Readiness",
+          "focus": "Convert Opportunities",
+          "tasks": [
+            "Practice mock interviews using Pramp or InterviewBuddy",
+            "Research each company before attending their interview",
+            "Follow up on applications via email 48 hours after submitting",
+            "Consider applying to college-offered internship programs via TPO"
+          ],
+          "goal": "Secure at least 1 internship offer or project work"
+        }
+      ]
+    },
+    "low_soft_skills": {
+      "title": "Communication & Soft Skills Plan",
+      "icon": "🗣",
+      "target": "Build confident communication for interviews and workplace",
+      "total_weeks": 4,
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Self-Assessment",
+          "focus": "Identify Gaps",
+          "tasks": [
+            "Record yourself speaking for 2 minutes on any topic — review the recording",
+            "Take a free communication assessment on Coursera or Udemy",
+            "List your top 3 weaknesses: clarity, confidence, vocabulary, or speed",
+            "Start reading English news (The Hindu) for 15 minutes daily"
+          ],
+          "goal": "Clearly know which communication areas to improve"
+        },
+        {
+          "week": 2,
+          "theme": "Verbal Skills",
+          "focus": "Speaking Fluency",
+          "tasks": [
+            "Join a Toastmasters club or online speaking group",
+            "Give a 3-minute speech on any topic daily — record and review",
+            "Learn 5 new English words/day — use in conversation",
+            "Practice STAR (Situation-Task-Action-Result) answers for HR questions"
+          ],
+          "goal": "Be able to speak fluently on any topic for 3 minutes"
+        },
+        {
+          "week": 3,
+          "theme": "Interview Skills",
+          "focus": "HR & Group Discussion",
+          "tasks": [
+            "Practice 20 common HR questions (Tell me about yourself, strengths, weaknesses)",
+            "Participate in mock GD sessions (college, online groups, or YouTube GD topics)",
+            "Watch 5 successful interview videos on YouTube for body language tips",
+            "Learn the STAR method and practice 5 behavioral questions using it"
+          ],
+          "goal": "Confidently answer 20 common interview questions"
+        },
+        {
+          "week": 4,
+          "theme": "Professional Polish",
+          "focus": "Email, LinkedIn, Body Language",
+          "tasks": [
+            "Learn professional email writing — practice writing 3 emails/day",
+            "Improve LinkedIn profile with recommendations and endorsements",
+            "Practice confident body language: eye contact, posture, handshake",
+            "Do a final mock interview with a friend or career counselor"
+          ],
+          "goal": "Be interview-ready across verbal, written, and body language"
+        }
+      ]
+    },
+    "backlogs": {
+      "title": "Backlog Clearing Strategy",
+      "icon": "📖",
+      "target": "Clear all backlogs in next 60 days",
+      "total_weeks": 8,
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Understand the Backlog Damage",
+          "focus": "Eligibility Research",
+          "tasks": [
+            "Research: which companies filter by backlog count at placement drives?",
+            "Check your current semester regulations — what's the deadline to clear?",
+            "Talk to faculty in charge of supplementary exams",
+            "List all pending backlog subjects with their exam dates"
+          ],
+          "goal": "Have a clear plan for clearing all backlogs before placement season"
+        },
+        {
+          "week": 2,
+          "theme": "Prioritize High-Weightage Subjects",
+          "focus": "Targeted Study",
+          "tasks": [
+            "Identify which backlog subjects are easiest to pass quickly",
+            "Download previous 5 years question papers for each subject",
+            "Focus only on high-probability exam questions — 80/20 rule",
+            "Watch YouTube lectures for fundamental concepts (1.5x speed)"
+          ],
+          "goal": "Study plan created for each backlog subject"
+        },
+        {
+          "week": 3,
+          "theme": "Intensive Revision",
+          "focus": "Core Topics Only",
+          "tasks": [
+            "Spend 4-5 hours/day on backlog subjects — group study if beneficial",
+            "Solve past papers under timed conditions",
+            "Create concise note cards for formulas, key definitions",
+            "Talk to seniors who've cleared the same backlogs for tips"
+          ],
+          "goal": "Cover 80% of syllabus for at least 1 backlog subject"
+        },
+        {
+          "week": 4,
+          "theme": "Mock Exam Simulation",
+          "focus": "Exam Strategy",
+          "tasks": [
+            "Simulate exam conditions: sit for 3 hours with only your notes excluded",
+            "Grade yourself honestly using answer keys or faculty help",
+            "Identify patterns in your errors and revise those topics",
+            "Prepare exam strategy: which questions to attempt first"
+          ],
+          "goal": "Ready to appear in supplementary/backlog exams"
+        }
+      ]
+    },
+    "low_projects": {
+      "title": "Project Portfolio Builder Plan",
+      "icon": "🛠",
+      "target": "Add 3 quality projects to your portfolio in 6 weeks",
+      "total_weeks": 6,
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Pick Your Projects",
+          "focus": "Planning",
+          "tasks": [
+            "Choose 3 project ideas from the PlaceIQ Project Suggestions page",
+            "Create GitHub account and learn basic Git commands (push, pull, commit)",
+            "Watch a 'How to build a portfolio project' YouTube video",
+            "Set up your development environment (VS Code, Python, etc.)"
+          ],
+          "goal": "Have 3 project ideas chosen and GitHub account ready"
+        },
+        {
+          "week": 2,
+          "theme": "Build Project 1 (Mini)",
+          "focus": "Quick Win",
+          "tasks": [
+            "Build your simplest project first — aim for a working prototype in 5 days",
+            "Push all code to GitHub daily — commit with descriptive messages",
+            "Add a README.md with screenshot, what the project does, and how to run it",
+            "Show it to 1 friend or mentor for feedback"
+          ],
+          "goal": "Project 1 live on GitHub with README"
+        },
+        {
+          "week": 3,
+          "theme": "Build Project 2 (Intermediate)",
+          "focus": "Core Skill Demo",
+          "tasks": [
+            "Build an intermediate project related to your stream/target role",
+            "Add a demo GIF or screenshot to README",
+            "Deploy project online (Heroku, Render, or Vercel — all free)",
+            "Write a short LinkedIn post about what you built"
+          ],
+          "goal": "Project 2 live on GitHub + deployed online"
+        },
+        {
+          "week": 4,
+          "theme": "Build Project 3 (Impactful)",
+          "focus": "Resume-Level Project",
+          "tasks": [
+            "Build a project that solves a real problem — bonus if domain-specific",
+            "Add data visualizations, API integration, or ML model to increase complexity",
+            "Record a 2-minute demo video and upload to LinkedIn",
+            "Submit project to a relevant GitHub topic to increase visibility"
+          ],
+          "goal": "Project 3 live with demo video on LinkedIn"
+        },
+        {
+          "week": 5,
+          "theme": "Portfolio Integration",
+          "focus": "Showcasing Your Work",
+          "tasks": [
+            "Update LinkedIn with all 3 projects in the 'Projects' section",
+            "Add projects to your resume under a 'Projects' section with 2-3 bullet points each",
+            "Get at least 2 GitHub stars by sharing projects in relevant forums or Reddit",
+            "Connect with recruiters on LinkedIn and mention your project work"
+          ],
+          "goal": "All 3 projects visible on LinkedIn and resume"
+        },
+        {
+          "week": 6,
+          "theme": "Interview Preparation",
+          "focus": "Explain Your Projects",
+          "tasks": [
+            "Practice explaining each project in 2 minutes: What? Why? How? Results?",
+            "Prepare for common questions: 'What challenges did you face?', 'What would you improve?'",
+            "Review the code you wrote — be ready to explain every function",
+            "Add 1 more feature/improvement to your best project"
+          ],
+          "goal": "Confidently present all 3 projects in any interview"
+        }
+      ]
+    }
+  }
+}

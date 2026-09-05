@@ -1,0 +1,601 @@
+StudentID,Stream,Gender,CGPA,SSC_Marks,HSC_Marks,Internships,Projects,Workshops_Certifications,AptitudeTestScore,SoftSkillsRating,ExtracurricularActivities,PlacementTraining,Backlogs,PlacementStatus
+1,Electronics,Female,8.1,81.1,71.6,0,4,2,68.6,1.0,Yes,No,0,0
+2,Computer Science,Female,7.33,60.9,64.4,3,3,1,47.7,3.6,No,No,3,1
+3,Civil,Female,8.28,82.4,71.6,2,0,2,70.8,3.1,Yes,Yes,0,0
+4,Electronics,Male,9.33,88.3,77.1,1,4,2,61.9,3.8,Yes,No,0,0
+5,Computer Science,Male,7.22,77.0,70.6,2,3,1,91.3,5.0,No,No,1,0
+6,Information Technology,Female,7.22,94.5,70.5,2,2,3,88.6,5.0,Yes,Yes,3,1
+7,Mechanical,Female,9.4,62.7,60.9,0,0,3,58.0,3.4,Yes,No,0,0
+8,Civil,Male,8.42,57.1,61.4,2,0,0,62.7,2.8,Yes,Yes,2,1
+9,Civil,Female,6.94,50.7,51.8,1,2,0,63.9,4.0,Yes,No,0,1
+10,Civil,Female,8.15,90.0,92.7,0,2,3,58.2,3.2,No,Yes,1,0
+11,Mechanical,Female,6.94,79.9,53.8,0,0,4,67.9,3.8,No,No,0,0
+12,Computer Science,Female,6.94,71.3,61.0,3,2,2,53.6,3.0,Yes,No,0,0
+13,Electronics,Male,7.79,75.4,60.7,3,1,4,48.0,3.7,Yes,No,0,1
+14,Computer Science,Male,5.2,58.5,81.6,2,3,2,74.3,2.9,No,Yes,0,1
+15,Electronics,Male,5.43,100.0,66.2,3,3,3,74.4,4.4,Yes,No,3,0
+16,Civil,Female,6.83,73.6,86.2,3,3,0,52.9,3.0,No,Yes,2,0
+17,Computer Science,Female,6.28,73.3,61.2,3,1,0,78.4,4.0,Yes,Yes,0,1
+18,Civil,Male,7.88,80.7,73.6,0,2,4,55.5,2.5,No,Yes,0,0
+19,Information Technology,Male,6.41,77.8,59.1,0,4,0,68.8,4.1,No,Yes,1,0
+20,Civil,Male,5.81,74.7,97.9,0,2,3,77.3,2.7,No,No,3,0
+21,Civil,Female,9.26,62.5,54.6,3,0,4,64.5,3.7,No,No,3,1
+22,Electronics,Male,7.23,77.7,74.0,0,5,2,71.8,4.3,Yes,No,0,0
+23,Information Technology,Female,7.58,94.6,78.2,3,3,0,57.3,3.3,Yes,Yes,3,0
+24,Civil,Female,5.79,88.1,75.4,0,2,1,62.1,2.7,No,No,1,0
+25,Civil,Male,6.85,91.1,67.6,0,4,0,61.9,3.9,No,Yes,0,1
+26,Information Technology,Male,7.63,65.9,68.3,1,0,2,53.8,2.8,No,Yes,0,0
+27,Information Technology,Female,6.12,60.1,70.6,2,1,4,62.3,3.2,No,Yes,3,0
+28,Computer Science,Male,7.95,70.5,68.1,3,1,2,41.8,3.7,Yes,No,3,0
+29,Electronics,Male,6.78,72.7,82.5,1,4,1,57.6,4.6,No,No,1,1
+30,Information Technology,Female,7.15,85.1,98.7,0,0,3,60.7,3.5,No,Yes,2,0
+31,Information Technology,Female,6.78,51.7,62.8,3,3,0,61.2,3.5,No,No,2,0
+32,Mechanical,Female,9.72,90.4,52.2,0,2,4,61.4,4.1,No,No,3,1
+33,Information Technology,Female,7.48,70.1,68.9,2,0,3,64.1,3.5,No,Yes,0,1
+34,Electronics,Female,6.23,66.9,100.0,1,1,2,72.2,4.0,No,Yes,0,0
+35,Civil,Male,8.49,59.9,59.6,2,4,4,78.1,4.4,No,No,3,1
+36,Civil,Female,6.03,52.1,91.3,1,4,3,55.3,3.2,Yes,Yes,0,0
+37,Civil,Female,7.75,81.9,91.8,0,2,4,47.0,1.0,No,Yes,0,0
+38,Civil,Female,5.15,72.9,62.8,2,4,1,49.4,2.8,No,No,2,0
+39,Mechanical,Male,5.91,56.5,77.4,2,4,1,57.7,4.5,No,No,3,1
+40,Information Technology,Female,7.74,56.5,91.2,0,0,0,59.7,3.5,Yes,Yes,1,1
+41,Civil,Female,8.39,68.0,65.1,2,3,0,53.5,3.2,Yes,No,0,0
+42,Computer Science,Female,7.71,92.0,67.4,3,2,1,45.6,4.4,Yes,Yes,3,1
+43,Civil,Male,7.36,68.9,62.4,1,0,4,58.2,3.4,No,Yes,0,0
+44,Information Technology,Female,7.14,54.0,56.8,1,3,1,67.7,1.8,No,No,0,1
+45,Civil,Female,5.73,69.1,61.6,1,0,0,73.9,2.3,No,Yes,3,1
+46,Mechanical,Female,6.64,68.7,54.1,3,5,1,56.6,3.8,Yes,Yes,0,1
+47,Electronics,Male,6.95,40.0,70.4,1,0,1,58.8,3.4,No,Yes,0,0
+48,Electronics,Male,8.77,71.3,60.0,0,4,4,51.1,4.7,Yes,No,0,0
+49,Information Technology,Male,7.91,69.2,73.0,2,3,3,64.5,2.9,Yes,No,0,1
+50,Electronics,Male,5.38,80.4,49.8,3,2,0,52.3,3.3,Yes,No,0,1
+51,Electronics,Female,7.89,94.2,74.3,1,2,4,73.6,2.8,Yes,Yes,0,1
+52,Computer Science,Female,7.04,85.5,80.8,0,3,1,38.2,3.1,Yes,Yes,0,0
+53,Information Technology,Male,6.69,68.8,44.1,2,4,1,59.6,2.0,No,No,2,0
+54,Information Technology,Male,8.23,58.7,74.9,2,1,3,69.5,3.2,No,No,0,0
+55,Electronics,Female,8.74,100.0,86.0,3,0,0,67.8,3.5,Yes,No,3,1
+56,Electronics,Female,8.62,72.7,54.3,3,4,0,100.0,3.4,No,Yes,0,1
+57,Electronics,Male,6.49,72.2,91.7,3,5,2,70.2,5.0,No,No,1,1
+58,Mechanical,Male,7.13,71.7,75.4,0,3,0,49.9,5.0,Yes,Yes,0,0
+59,Civil,Male,7.9,74.4,60.8,0,0,3,63.6,2.9,Yes,No,0,1
+60,Mechanical,Male,8.67,70.3,69.3,3,2,2,38.4,1.9,No,Yes,1,1
+61,Information Technology,Female,6.92,65.1,77.3,1,1,2,63.8,3.4,No,Yes,2,0
+62,Computer Science,Male,7.28,65.4,71.0,2,5,1,52.5,3.8,No,No,1,0
+63,Civil,Male,6.17,71.6,77.0,2,2,1,78.7,2.8,No,Yes,0,1
+64,Computer Science,Female,6.06,65.5,58.0,0,3,0,56.8,2.9,Yes,No,1,0
+65,Information Technology,Female,8.48,63.4,72.2,2,0,2,63.2,4.8,No,Yes,0,0
+66,Information Technology,Female,9.13,73.3,51.6,1,3,1,55.5,3.3,Yes,Yes,1,1
+67,Computer Science,Female,7.41,68.9,68.6,2,0,3,91.1,4.0,Yes,No,0,0
+68,Computer Science,Female,8.7,90.0,58.2,0,4,1,60.2,2.8,No,Yes,3,0
+69,Computer Science,Male,7.93,40.2,60.4,0,1,1,92.5,3.5,No,No,0,0
+70,Information Technology,Male,6.73,85.1,86.1,1,4,2,77.2,3.2,No,No,1,1
+71,Electronics,Male,7.93,87.0,84.2,1,4,2,72.2,3.0,Yes,No,0,1
+72,Computer Science,Female,9.35,47.1,77.9,2,3,4,70.5,4.4,Yes,Yes,3,0
+73,Civil,Male,7.46,67.9,55.8,2,1,3,70.9,2.4,Yes,Yes,0,1
+74,Information Technology,Female,9.38,67.5,65.9,0,0,2,36.1,3.7,Yes,Yes,0,1
+75,Mechanical,Male,4.36,55.1,85.8,1,0,0,60.8,3.2,No,No,2,0
+76,Mechanical,Male,8.49,62.7,71.8,1,5,3,77.7,3.8,Yes,No,0,0
+77,Civil,Female,7.6,58.7,100.0,1,2,3,64.3,3.2,Yes,Yes,2,0
+78,Electronics,Female,7.14,93.0,75.1,2,5,2,43.9,4.2,No,Yes,0,0
+79,Computer Science,Male,7.61,83.2,72.5,1,5,3,64.2,2.7,Yes,No,1,1
+80,Information Technology,Male,5.11,87.3,66.0,0,0,2,90.6,4.4,Yes,Yes,0,1
+81,Computer Science,Male,7.24,80.7,71.7,0,3,1,83.7,3.5,No,No,1,1
+82,Information Technology,Male,7.93,58.5,68.0,2,4,4,64.1,2.4,Yes,Yes,0,1
+83,Mechanical,Male,9.27,65.7,79.2,3,4,1,79.3,4.0,Yes,No,0,1
+84,Computer Science,Female,6.88,77.9,82.4,2,4,2,59.5,3.3,Yes,Yes,0,1
+85,Civil,Female,6.53,57.3,59.8,3,1,2,39.4,2.1,Yes,Yes,3,0
+86,Electronics,Female,6.9,80.6,52.7,1,0,1,51.1,3.8,No,No,0,0
+87,Civil,Female,8.6,69.1,46.1,2,3,0,88.4,4.3,Yes,No,0,0
+88,Electronics,Male,7.89,67.5,76.6,0,1,0,60.9,4.5,No,No,1,1
+89,Computer Science,Male,6.86,80.5,55.7,1,2,0,61.3,3.2,Yes,Yes,1,1
+90,Computer Science,Female,8.12,77.3,42.0,0,3,2,60.5,3.6,No,No,2,1
+91,Electronics,Male,7.62,67.7,75.1,1,5,3,93.6,3.5,No,No,0,0
+92,Mechanical,Female,8.66,85.9,100.0,2,3,2,89.4,4.7,No,Yes,0,0
+93,Information Technology,Male,6.66,59.0,69.9,3,3,3,98.3,2.9,Yes,No,0,1
+94,Civil,Male,7.11,79.4,80.9,1,4,1,62.6,3.1,Yes,No,1,1
+95,Civil,Male,7.03,79.1,71.1,3,3,4,69.4,2.8,Yes,No,2,1
+96,Civil,Female,5.74,68.3,68.7,1,5,3,42.3,2.3,No,Yes,0,1
+97,Computer Science,Female,7.86,75.9,81.9,0,5,0,87.2,3.7,Yes,Yes,3,1
+98,Civil,Female,7.81,57.0,66.2,0,0,2,47.5,4.8,Yes,Yes,0,0
+99,Information Technology,Female,7.51,83.1,73.5,1,3,1,68.3,3.3,Yes,No,0,0
+100,Information Technology,Male,7.22,69.8,74.2,3,4,0,48.5,2.8,Yes,Yes,1,1
+101,Electronics,Male,5.8,65.7,61.3,2,3,1,56.2,3.6,No,No,3,1
+102,Computer Science,Male,7.0,84.6,82.9,2,2,4,52.4,4.0,No,No,3,0
+103,Information Technology,Male,7.09,63.5,67.7,0,2,2,55.9,3.4,Yes,No,3,0
+104,Mechanical,Female,6.54,55.1,60.2,2,4,2,56.9,4.6,Yes,Yes,0,1
+105,Computer Science,Male,7.31,53.3,77.0,0,0,4,56.8,2.9,Yes,Yes,0,1
+106,Computer Science,Male,7.98,79.3,58.3,2,0,2,77.5,3.3,No,No,1,1
+107,Information Technology,Male,9.76,56.6,70.4,1,5,3,48.4,3.7,Yes,No,1,1
+108,Mechanical,Female,7.71,93.1,69.9,0,5,1,68.3,3.8,No,Yes,3,0
+109,Electronics,Female,7.81,47.0,84.1,0,1,0,83.3,3.5,No,Yes,1,1
+110,Information Technology,Female,7.41,92.4,76.2,1,4,4,57.3,2.5,Yes,Yes,0,1
+111,Mechanical,Male,5.2,74.5,69.7,0,3,3,54.2,5.0,Yes,No,0,0
+112,Computer Science,Female,7.47,70.8,80.6,2,4,0,61.5,3.3,Yes,Yes,2,1
+113,Mechanical,Male,7.57,65.5,88.1,2,1,0,82.7,3.6,No,Yes,2,0
+114,Computer Science,Male,10.0,76.8,77.3,0,5,4,67.9,4.0,No,Yes,0,0
+115,Information Technology,Male,7.27,71.5,70.1,2,4,3,57.0,3.0,Yes,No,0,1
+116,Information Technology,Female,7.86,85.2,52.9,3,4,0,72.3,3.5,No,Yes,0,0
+117,Civil,Female,7.46,73.4,56.2,0,5,0,48.5,3.0,Yes,No,0,0
+118,Civil,Male,6.1,73.8,66.0,1,1,3,75.2,3.8,Yes,No,2,0
+119,Civil,Male,8.87,67.6,62.1,3,5,2,71.1,3.3,No,No,3,1
+120,Information Technology,Female,8.4,71.3,67.6,0,0,0,60.4,3.7,No,Yes,3,0
+121,Electronics,Female,8.45,75.7,70.7,1,3,1,52.4,2.7,No,Yes,1,0
+122,Information Technology,Female,6.41,51.5,76.9,2,5,3,51.7,2.8,No,Yes,3,1
+123,Mechanical,Male,9.18,55.8,69.1,1,1,0,73.0,2.4,Yes,No,0,1
+124,Information Technology,Male,5.82,80.9,76.3,3,2,4,83.4,2.9,Yes,Yes,2,0
+125,Information Technology,Male,8.2,74.1,70.8,2,0,1,55.4,1.4,Yes,No,0,0
+126,Computer Science,Female,10.0,69.8,44.3,0,2,0,71.9,3.3,No,Yes,3,1
+127,Computer Science,Female,6.31,72.2,57.8,2,5,1,33.7,3.1,Yes,Yes,2,0
+128,Computer Science,Female,6.82,76.2,68.1,0,0,1,56.2,3.6,No,Yes,3,0
+129,Information Technology,Male,7.62,65.5,54.3,0,3,2,64.5,3.5,No,Yes,0,1
+130,Electronics,Male,6.9,62.7,77.8,1,5,1,51.4,4.5,No,No,0,1
+131,Mechanical,Female,5.64,74.4,89.9,1,3,2,51.0,5.0,Yes,No,0,1
+132,Mechanical,Male,7.58,60.3,85.8,1,4,3,55.0,4.4,No,No,0,0
+133,Electronics,Female,6.23,76.9,67.2,3,2,2,69.4,3.1,No,No,2,1
+134,Electronics,Male,8.07,51.6,89.4,3,0,4,62.2,3.1,No,Yes,1,0
+135,Mechanical,Female,6.4,84.3,71.9,1,3,0,31.4,4.2,No,No,3,1
+136,Civil,Male,9.36,77.7,65.6,3,1,3,33.2,2.2,No,No,3,1
+137,Computer Science,Male,6.56,75.1,62.0,2,3,3,55.9,3.2,No,No,0,1
+138,Computer Science,Female,7.11,83.8,66.1,2,1,4,71.9,3.3,No,Yes,0,1
+139,Mechanical,Female,8.48,92.0,65.0,3,5,2,23.8,4.0,No,No,3,1
+140,Electronics,Female,6.02,84.2,72.2,3,0,0,57.5,4.0,No,No,2,1
+141,Civil,Female,7.77,49.9,72.1,2,3,2,57.1,2.9,No,Yes,1,0
+142,Mechanical,Female,9.07,56.6,70.0,0,3,1,85.8,3.2,No,Yes,2,1
+143,Computer Science,Male,5.57,64.5,75.7,2,0,2,59.2,3.9,No,No,0,0
+144,Information Technology,Female,7.72,72.3,85.5,2,3,3,70.7,2.9,Yes,No,0,1
+145,Electronics,Female,7.81,78.2,82.3,3,1,0,67.1,4.5,Yes,Yes,3,0
+146,Information Technology,Female,8.44,63.3,50.7,2,3,2,33.0,4.0,No,No,2,0
+147,Mechanical,Male,6.02,74.2,40.0,3,2,0,76.5,3.6,No,Yes,0,1
+148,Computer Science,Female,5.92,62.9,82.1,3,5,0,68.2,3.8,No,No,1,1
+149,Civil,Female,8.13,64.7,52.2,1,4,1,72.6,3.1,Yes,No,2,1
+150,Information Technology,Female,7.86,55.1,67.1,2,1,1,100.0,3.0,Yes,No,1,0
+151,Civil,Male,7.8,60.9,54.8,0,2,3,33.7,3.2,Yes,No,3,1
+152,Computer Science,Male,7.92,55.8,46.6,1,5,4,90.9,3.9,No,No,0,1
+153,Information Technology,Female,6.68,60.3,77.0,3,0,0,60.7,3.7,No,Yes,0,1
+154,Civil,Male,7.78,84.6,79.9,3,1,4,69.3,3.2,No,Yes,0,1
+155,Civil,Female,7.85,60.6,62.5,0,4,3,64.3,4.1,No,No,0,1
+156,Information Technology,Male,6.64,100.0,40.0,3,5,0,58.6,3.4,Yes,No,1,0
+157,Computer Science,Female,9.74,77.9,62.9,2,4,0,56.5,2.9,No,No,3,1
+158,Civil,Male,8.07,74.2,75.1,1,0,4,69.9,3.7,Yes,Yes,2,0
+159,Mechanical,Female,6.07,61.7,50.8,3,0,2,42.2,2.7,Yes,Yes,0,1
+160,Information Technology,Female,8.29,80.4,72.4,3,1,1,76.3,2.2,No,Yes,0,1
+161,Electronics,Male,6.33,65.1,69.8,0,3,2,58.8,3.5,Yes,Yes,1,0
+162,Electronics,Female,8.44,73.5,77.5,2,0,4,48.0,3.0,Yes,Yes,0,1
+163,Computer Science,Female,8.89,100.0,71.6,3,5,1,58.2,3.3,Yes,Yes,0,1
+164,Mechanical,Female,6.52,70.8,57.4,0,3,2,83.9,2.7,Yes,Yes,0,0
+165,Civil,Female,8.66,85.8,85.6,3,2,1,57.0,4.5,No,Yes,1,1
+166,Electronics,Male,8.0,63.6,67.9,0,4,0,70.4,3.0,No,No,0,0
+167,Computer Science,Female,8.49,71.6,69.6,0,3,2,54.0,3.2,Yes,Yes,0,1
+168,Mechanical,Male,9.78,93.2,57.9,2,4,1,76.4,3.8,No,Yes,1,0
+169,Mechanical,Male,7.21,64.5,64.2,3,3,1,75.3,2.4,Yes,Yes,0,1
+170,Computer Science,Male,6.6,93.7,58.5,2,2,1,92.7,2.3,No,Yes,0,0
+171,Computer Science,Male,6.43,80.5,67.8,0,0,2,62.4,3.8,No,No,2,1
+172,Civil,Female,6.52,65.3,92.3,1,2,3,75.0,3.1,No,Yes,3,0
+173,Computer Science,Female,7.41,79.6,52.2,3,0,2,66.5,2.8,No,No,0,0
+174,Civil,Male,7.91,83.7,49.0,1,0,4,84.4,4.0,No,No,1,0
+175,Civil,Female,7.83,79.5,89.1,3,4,2,54.2,2.9,Yes,No,3,0
+176,Information Technology,Male,8.49,53.2,67.3,2,5,1,76.2,3.3,No,Yes,0,0
+177,Mechanical,Female,7.52,63.3,61.3,2,2,0,62.1,2.8,Yes,Yes,0,0
+178,Mechanical,Female,9.24,69.0,83.5,2,3,2,64.0,3.7,Yes,Yes,0,1
+179,Mechanical,Female,7.18,71.1,62.1,2,2,2,66.4,4.6,No,No,2,1
+180,Information Technology,Male,10.0,79.4,93.7,2,4,1,68.8,2.0,Yes,No,0,1
+181,Civil,Male,8.25,74.1,78.8,1,0,0,63.3,3.6,No,No,3,0
+182,Civil,Female,6.47,56.0,63.7,2,4,0,68.2,4.2,Yes,No,1,1
+183,Computer Science,Male,6.21,76.6,98.0,0,1,4,88.7,3.2,Yes,Yes,1,0
+184,Information Technology,Male,8.08,79.3,62.1,0,1,2,79.8,2.6,No,Yes,0,1
+185,Computer Science,Female,7.23,78.7,79.6,1,3,0,78.0,3.8,No,Yes,0,0
+186,Information Technology,Male,8.36,85.0,73.9,3,4,0,58.2,4.3,No,No,0,1
+187,Computer Science,Female,8.07,82.0,86.9,0,3,3,51.7,4.2,No,No,0,1
+188,Electronics,Female,7.41,77.5,90.3,3,3,3,79.3,3.8,Yes,Yes,2,1
+189,Mechanical,Female,6.48,71.2,70.4,1,1,0,78.1,3.6,No,Yes,3,0
+190,Mechanical,Male,5.68,52.1,60.2,3,3,4,87.1,2.8,Yes,No,2,0
+191,Civil,Female,6.96,77.2,76.0,3,1,0,55.9,4.2,Yes,Yes,2,0
+192,Electronics,Female,8.53,74.5,61.2,3,0,1,61.6,4.1,Yes,Yes,0,1
+193,Mechanical,Male,7.76,75.3,96.2,3,4,2,40.4,2.6,Yes,No,2,1
+194,Civil,Male,6.01,56.7,71.8,1,3,4,59.1,3.8,Yes,No,0,1
+195,Electronics,Male,7.71,59.0,65.3,0,1,1,79.9,4.0,Yes,No,0,1
+196,Mechanical,Male,7.96,84.6,72.4,2,2,4,58.0,4.2,No,Yes,0,1
+197,Computer Science,Female,6.44,71.5,52.5,3,3,1,74.6,3.4,Yes,No,0,1
+198,Information Technology,Male,7.68,80.2,57.4,0,5,2,62.1,2.8,Yes,Yes,2,1
+199,Electronics,Male,7.57,72.3,85.6,0,0,2,69.9,3.1,Yes,Yes,0,0
+200,Civil,Male,6.13,72.4,61.5,1,0,3,47.8,2.7,No,No,0,0
+201,Electronics,Male,7.93,83.3,56.4,0,2,1,66.3,3.5,No,Yes,0,1
+202,Civil,Female,8.17,65.8,77.0,1,1,3,20.1,3.3,Yes,No,0,1
+203,Electronics,Male,8.8,73.2,85.4,3,3,1,62.2,5.0,No,No,1,1
+204,Civil,Female,8.76,66.5,79.3,3,1,3,40.5,4.2,Yes,Yes,2,1
+205,Mechanical,Male,5.85,66.8,82.9,2,0,2,83.1,4.3,No,Yes,0,0
+206,Computer Science,Female,6.37,68.3,60.2,2,1,4,76.7,3.9,Yes,No,3,1
+207,Mechanical,Female,8.12,74.7,51.5,2,0,3,72.0,3.2,No,No,1,0
+208,Computer Science,Male,8.12,66.3,89.5,0,1,1,87.8,3.3,No,No,3,1
+209,Mechanical,Female,8.12,87.1,65.8,3,2,1,50.8,3.4,No,No,2,0
+210,Mechanical,Male,10.0,61.3,66.7,1,4,2,91.2,3.7,Yes,No,2,1
+211,Electronics,Female,8.19,69.8,87.3,2,2,1,79.0,3.8,Yes,No,0,0
+212,Information Technology,Female,8.86,66.7,77.2,1,2,0,61.5,3.5,Yes,Yes,0,1
+213,Civil,Female,8.64,89.4,75.9,1,4,4,82.0,3.3,No,Yes,0,1
+214,Civil,Male,8.28,74.4,98.1,2,4,3,48.4,3.0,No,Yes,1,1
+215,Civil,Female,7.12,84.4,61.6,3,3,4,52.6,2.4,Yes,Yes,1,1
+216,Computer Science,Male,8.41,54.2,82.1,2,3,2,55.9,4.5,No,No,0,0
+217,Civil,Female,6.57,75.2,70.7,1,2,3,57.1,5.0,Yes,Yes,2,0
+218,Civil,Female,7.22,82.7,73.5,2,2,3,49.2,4.5,Yes,Yes,0,0
+219,Electronics,Female,6.92,73.0,89.9,1,0,0,83.3,2.5,Yes,No,2,0
+220,Mechanical,Female,7.6,84.8,76.6,1,0,2,61.1,4.1,Yes,Yes,2,0
+221,Civil,Female,10.0,65.8,77.0,2,3,1,70.3,4.3,No,No,0,1
+222,Information Technology,Female,5.26,88.9,83.9,0,5,0,56.4,3.2,No,No,0,1
+223,Civil,Male,8.32,99.6,65.3,2,5,0,37.7,3.9,No,No,1,1
+224,Computer Science,Male,5.56,67.6,59.1,0,3,4,69.1,3.1,Yes,No,3,0
+225,Computer Science,Male,6.93,66.7,56.4,1,0,4,36.3,4.7,No,No,2,0
+226,Computer Science,Female,8.81,89.4,44.4,1,0,4,64.0,3.8,Yes,Yes,2,1
+227,Civil,Male,7.58,91.0,96.7,0,5,0,44.5,2.8,Yes,Yes,0,0
+228,Electronics,Female,6.21,65.7,55.7,1,1,1,94.8,4.0,Yes,Yes,3,0
+229,Information Technology,Male,6.64,67.0,67.1,0,1,3,78.7,4.3,Yes,No,0,0
+230,Civil,Male,8.32,68.6,66.4,0,0,4,66.6,3.7,Yes,Yes,0,1
+231,Electronics,Female,6.62,55.9,74.0,1,1,1,84.0,3.9,Yes,Yes,3,1
+232,Electronics,Female,7.76,61.0,80.6,3,4,2,52.3,3.4,No,Yes,0,1
+233,Civil,Male,7.55,60.0,81.2,0,3,4,73.2,2.6,No,Yes,2,1
+234,Civil,Male,6.72,62.8,62.4,2,3,3,68.0,3.4,No,No,1,0
+235,Electronics,Male,10.0,71.6,67.8,2,0,2,69.0,3.9,No,Yes,0,1
+236,Electronics,Male,8.26,74.8,73.7,1,2,2,84.1,3.4,Yes,No,0,0
+237,Electronics,Female,5.07,90.6,66.8,3,5,3,76.0,4.1,Yes,No,0,1
+238,Civil,Male,7.72,60.0,90.9,1,0,4,69.3,3.2,No,Yes,3,0
+239,Electronics,Female,6.71,83.8,76.4,3,1,0,40.2,3.2,No,No,0,1
+240,Computer Science,Female,8.52,69.4,79.6,0,5,3,50.6,4.2,No,No,0,1
+241,Civil,Male,6.55,71.4,78.6,0,2,3,63.2,3.7,No,No,0,0
+242,Computer Science,Female,7.36,80.1,85.3,0,1,3,66.4,3.2,No,No,1,1
+243,Mechanical,Male,8.11,58.5,72.4,0,4,2,48.0,4.3,No,No,0,1
+244,Civil,Female,8.54,76.6,53.1,2,1,1,100.0,2.9,No,No,0,0
+245,Mechanical,Female,6.06,74.0,75.2,2,4,0,87.7,2.9,No,No,1,1
+246,Electronics,Male,7.1,77.9,61.5,1,5,4,74.0,1.2,Yes,Yes,0,0
+247,Electronics,Female,6.93,75.5,63.1,3,4,4,66.1,3.1,Yes,Yes,3,1
+248,Information Technology,Female,6.72,100.0,77.6,0,5,1,61.8,4.5,Yes,No,3,0
+249,Electronics,Male,9.62,64.3,86.1,0,5,3,50.7,1.8,Yes,No,0,1
+250,Mechanical,Female,7.99,65.6,70.3,3,5,0,66.2,2.7,No,Yes,1,1
+251,Electronics,Female,5.99,64.5,74.0,3,5,4,68.9,3.9,Yes,Yes,0,1
+252,Civil,Male,8.6,65.3,92.1,1,5,4,46.4,1.7,No,Yes,0,1
+253,Electronics,Male,10.0,64.4,73.1,3,1,3,70.0,3.1,Yes,Yes,3,1
+254,Information Technology,Female,8.74,86.3,100.0,0,5,1,62.7,4.4,No,No,2,1
+255,Electronics,Female,5.68,89.0,77.4,0,1,0,36.4,5.0,No,No,0,1
+256,Mechanical,Female,6.92,65.2,47.1,0,5,1,52.1,3.7,Yes,Yes,0,1
+257,Mechanical,Male,9.02,62.0,79.8,0,4,1,58.8,2.8,Yes,Yes,0,1
+258,Electronics,Female,6.65,77.7,75.0,0,5,0,93.3,2.7,No,Yes,3,0
+259,Mechanical,Female,8.03,65.4,86.8,1,2,0,73.3,3.6,No,Yes,2,1
+260,Mechanical,Female,8.43,79.6,78.8,0,5,4,45.0,3.7,No,No,0,1
+261,Information Technology,Female,6.39,74.4,68.2,1,5,4,72.3,5.0,Yes,Yes,3,1
+262,Civil,Female,7.43,53.8,54.1,0,4,0,41.8,4.3,Yes,Yes,1,1
+263,Information Technology,Female,4.0,90.6,67.3,2,3,2,81.2,3.6,No,Yes,0,0
+264,Computer Science,Male,6.27,93.6,58.9,2,4,4,57.9,3.2,Yes,No,0,1
+265,Information Technology,Male,7.2,64.6,62.5,2,2,2,63.6,5.0,No,No,1,0
+266,Electronics,Female,6.0,67.3,77.7,2,3,0,84.9,4.0,Yes,No,0,1
+267,Civil,Female,9.46,75.4,91.7,1,0,4,45.7,3.0,Yes,Yes,1,0
+268,Electronics,Male,5.78,76.0,75.1,1,0,1,44.0,3.3,Yes,Yes,0,0
+269,Computer Science,Male,6.97,79.9,54.5,3,2,0,56.2,2.8,Yes,Yes,0,0
+270,Civil,Male,7.66,96.1,75.8,0,4,3,80.6,1.6,Yes,No,0,1
+271,Mechanical,Female,9.23,69.9,85.6,2,1,2,42.2,3.8,No,No,1,1
+272,Information Technology,Female,5.78,62.4,62.1,1,2,0,22.5,4.9,No,Yes,1,1
+273,Electronics,Female,8.9,55.4,68.3,0,3,0,58.2,2.2,Yes,Yes,0,1
+274,Computer Science,Female,7.51,63.2,70.2,0,3,4,73.3,3.5,No,No,1,0
+275,Mechanical,Male,6.32,71.6,59.8,1,5,4,83.0,2.9,No,Yes,3,1
+276,Information Technology,Male,8.05,93.5,78.4,2,0,4,58.1,3.9,Yes,Yes,0,1
+277,Mechanical,Male,7.74,65.8,68.4,3,3,3,58.8,3.4,No,Yes,0,0
+278,Information Technology,Male,6.78,74.7,75.5,0,2,4,82.3,2.4,Yes,No,0,1
+279,Civil,Female,7.58,71.8,58.5,3,3,0,37.0,2.7,No,Yes,0,0
+280,Mechanical,Female,7.04,86.3,64.3,2,2,4,59.2,2.8,No,Yes,3,0
+281,Mechanical,Male,7.64,100.0,79.4,2,1,1,67.9,4.6,No,Yes,3,0
+282,Mechanical,Male,8.29,65.6,65.2,3,5,4,71.7,4.5,No,Yes,2,0
+283,Civil,Male,9.4,66.1,92.5,2,0,3,57.4,3.3,No,No,2,1
+284,Computer Science,Male,6.01,84.5,64.8,0,3,1,65.5,4.5,No,No,2,0
+285,Information Technology,Male,10.0,80.2,72.9,3,2,0,27.7,3.4,No,No,0,1
+286,Mechanical,Female,5.16,94.2,82.1,2,4,0,55.1,3.2,Yes,Yes,1,1
+287,Civil,Female,7.32,79.0,51.6,3,0,2,71.8,3.5,Yes,No,3,0
+288,Computer Science,Male,8.21,67.7,47.1,0,1,1,50.3,3.7,Yes,Yes,0,0
+289,Information Technology,Male,7.84,79.1,50.2,2,2,2,65.9,3.1,Yes,No,0,1
+290,Civil,Male,6.75,85.3,86.4,0,5,1,71.7,3.5,No,Yes,0,1
+291,Information Technology,Female,7.25,81.8,62.8,2,5,1,59.9,4.1,No,No,0,0
+292,Mechanical,Female,6.91,78.1,100.0,1,1,3,67.6,3.6,No,No,2,0
+293,Computer Science,Female,6.79,84.8,62.7,2,1,2,50.6,3.5,Yes,No,0,0
+294,Civil,Male,8.52,86.0,72.4,3,5,3,61.9,3.9,Yes,Yes,1,1
+295,Computer Science,Female,7.93,88.6,90.0,2,3,1,74.2,4.0,Yes,Yes,2,0
+296,Mechanical,Male,6.67,79.8,96.1,0,3,0,67.4,3.4,No,Yes,0,0
+297,Computer Science,Female,8.58,70.0,96.8,0,2,1,56.2,3.1,Yes,No,0,0
+298,Computer Science,Female,7.87,73.8,85.7,2,4,3,68.4,3.7,No,Yes,0,0
+299,Electronics,Female,8.48,86.5,83.3,3,2,2,75.7,2.2,Yes,Yes,0,1
+300,Computer Science,Male,8.26,62.2,77.7,1,4,2,34.3,3.3,No,Yes,0,1
+301,Information Technology,Male,6.51,76.4,80.1,3,1,3,82.4,1.5,Yes,Yes,2,0
+302,Civil,Female,6.83,67.3,62.8,1,0,2,60.0,2.2,No,Yes,0,0
+303,Electronics,Male,8.4,72.3,59.4,0,2,4,71.4,2.0,Yes,Yes,3,0
+304,Civil,Male,8.23,87.3,70.0,3,2,0,83.0,4.3,Yes,No,3,0
+305,Civil,Male,7.47,74.3,67.8,1,4,0,44.4,3.5,No,No,3,0
+306,Mechanical,Male,7.64,72.6,64.1,2,1,0,54.4,2.5,No,Yes,2,0
+307,Mechanical,Male,9.03,55.7,79.1,0,1,2,60.7,3.9,Yes,No,1,0
+308,Electronics,Male,6.79,81.0,82.4,2,4,2,53.2,4.3,No,No,0,0
+309,Mechanical,Male,8.16,79.7,71.1,0,1,1,91.0,3.9,Yes,Yes,0,1
+310,Mechanical,Female,7.26,98.0,89.2,3,5,1,52.1,3.3,No,Yes,0,1
+311,Mechanical,Male,7.24,68.3,55.2,3,3,0,56.7,3.7,Yes,No,0,1
+312,Civil,Male,8.82,74.6,67.5,0,5,4,68.1,4.2,No,Yes,3,0
+313,Electronics,Female,8.49,75.0,60.7,0,0,1,47.0,3.1,Yes,No,3,0
+314,Civil,Female,8.48,90.9,45.7,0,2,1,59.1,3.5,Yes,No,0,0
+315,Information Technology,Female,9.07,70.9,68.9,3,0,2,69.8,3.3,Yes,No,0,1
+316,Civil,Female,7.53,75.3,68.4,1,2,4,60.0,2.2,No,Yes,1,0
+317,Information Technology,Male,8.32,79.3,89.7,2,3,0,63.6,4.2,Yes,No,1,1
+318,Computer Science,Female,7.13,74.2,78.2,2,1,1,57.1,5.0,No,Yes,1,0
+319,Computer Science,Female,7.89,66.6,56.7,3,5,4,42.3,2.8,No,Yes,1,1
+320,Information Technology,Male,7.34,74.3,94.1,2,4,4,69.8,4.3,No,Yes,0,1
+321,Information Technology,Male,7.62,84.9,85.9,0,5,0,91.3,2.8,Yes,Yes,0,1
+322,Civil,Male,8.21,59.7,77.6,1,3,4,65.3,3.6,No,Yes,0,0
+323,Information Technology,Female,6.52,73.6,67.1,2,0,4,68.4,4.7,No,No,1,0
+324,Electronics,Male,10.0,63.6,57.5,1,4,4,75.4,3.1,No,Yes,0,1
+325,Computer Science,Female,6.29,86.3,65.2,0,1,1,46.0,3.5,Yes,Yes,1,0
+326,Computer Science,Male,6.04,53.7,84.2,2,3,0,90.5,2.1,No,Yes,2,0
+327,Information Technology,Male,8.89,65.3,94.5,3,4,4,68.0,3.0,No,Yes,3,0
+328,Mechanical,Female,8.45,76.5,90.1,1,3,4,89.5,2.0,No,Yes,0,1
+329,Mechanical,Male,8.25,90.8,63.6,0,3,1,54.0,3.8,No,No,2,0
+330,Information Technology,Male,8.25,71.2,55.4,1,1,0,92.3,4.2,Yes,Yes,0,0
+331,Electronics,Male,7.49,65.3,71.8,2,2,2,76.6,3.3,Yes,Yes,0,1
+332,Mechanical,Male,6.42,94.6,47.0,2,4,1,73.3,3.7,No,No,0,0
+333,Information Technology,Male,7.59,54.6,74.2,3,1,0,68.5,3.2,No,Yes,0,1
+334,Electronics,Female,6.69,45.6,68.1,0,3,4,61.3,4.1,No,No,3,0
+335,Electronics,Female,8.67,77.3,63.9,0,1,0,83.0,3.6,No,No,2,1
+336,Civil,Male,7.32,66.0,49.3,3,2,0,67.1,1.9,Yes,No,3,1
+337,Electronics,Female,6.51,59.7,76.7,3,5,0,35.5,4.3,Yes,No,1,1
+338,Mechanical,Female,7.11,80.5,63.1,0,4,2,48.2,3.2,Yes,Yes,3,1
+339,Mechanical,Female,8.0,74.9,54.8,1,2,0,62.2,2.5,Yes,Yes,3,0
+340,Information Technology,Male,6.82,65.2,40.0,1,0,2,69.6,3.1,No,No,1,1
+341,Information Technology,Male,6.51,56.6,69.6,3,4,4,64.2,2.0,No,No,0,0
+342,Electronics,Male,7.79,82.5,93.0,1,2,2,83.3,2.5,Yes,Yes,1,0
+343,Computer Science,Female,7.79,79.8,91.6,0,3,4,35.7,3.6,Yes,No,2,0
+344,Civil,Female,6.89,70.8,64.1,2,4,4,67.2,3.7,No,No,3,1
+345,Computer Science,Male,6.93,94.2,62.2,2,4,2,37.7,3.7,No,No,1,0
+346,Electronics,Male,7.78,59.2,76.1,1,1,1,76.4,3.5,No,Yes,3,0
+347,Electronics,Female,5.76,53.7,57.0,3,3,3,63.6,2.9,No,No,2,0
+348,Computer Science,Female,5.81,63.7,73.9,3,0,0,71.3,3.5,No,Yes,0,0
+349,Civil,Male,6.64,71.5,80.0,3,5,3,52.0,3.2,Yes,Yes,2,0
+350,Computer Science,Female,7.24,74.9,86.0,3,2,0,84.2,2.2,Yes,Yes,0,1
+351,Information Technology,Female,7.87,69.1,68.7,3,1,0,80.6,2.9,No,No,0,1
+352,Mechanical,Female,9.27,76.2,67.4,1,2,4,73.8,4.2,No,No,0,0
+353,Information Technology,Female,8.53,57.0,58.6,2,0,0,63.1,4.8,Yes,Yes,3,1
+354,Mechanical,Female,7.31,89.3,59.3,2,0,0,73.7,4.0,No,Yes,0,0
+355,Electronics,Female,7.48,71.0,67.1,1,4,2,54.4,4.7,Yes,Yes,0,1
+356,Civil,Female,6.3,85.4,74.8,3,0,3,77.8,3.6,Yes,No,0,1
+357,Computer Science,Male,7.48,76.1,81.9,1,2,2,89.7,4.9,Yes,No,3,0
+358,Civil,Male,7.15,77.5,59.6,2,3,0,81.1,5.0,Yes,Yes,2,0
+359,Computer Science,Female,7.89,78.8,89.4,0,3,4,54.1,2.1,No,Yes,0,1
+360,Information Technology,Female,6.51,77.4,66.5,1,4,2,70.4,3.7,No,No,0,1
+361,Information Technology,Female,8.12,79.7,69.7,3,5,2,45.6,3.6,Yes,Yes,0,0
+362,Computer Science,Male,9.34,87.9,60.3,2,2,1,73.6,3.2,No,No,2,1
+363,Civil,Male,7.37,74.4,40.0,2,2,0,71.8,3.9,No,No,0,0
+364,Computer Science,Female,7.98,80.5,81.5,2,0,4,37.0,3.5,No,Yes,0,1
+365,Electronics,Male,8.33,70.9,79.6,2,2,2,47.6,2.9,No,Yes,2,0
+366,Information Technology,Female,7.02,89.3,66.3,3,1,2,60.8,3.5,Yes,No,1,0
+367,Electronics,Female,7.77,63.9,70.9,0,5,4,60.5,4.5,No,No,0,1
+368,Information Technology,Female,7.52,93.6,76.7,2,0,0,46.9,3.6,Yes,No,0,1
+369,Information Technology,Female,7.62,71.5,49.7,1,1,1,70.8,4.0,Yes,No,0,1
+370,Mechanical,Female,6.57,54.8,63.1,0,4,2,68.8,3.3,No,No,0,0
+371,Electronics,Female,7.53,73.5,80.3,2,3,1,62.1,3.9,Yes,Yes,0,1
+372,Electronics,Female,8.1,63.8,53.7,0,4,3,53.7,2.5,No,No,1,0
+373,Mechanical,Male,9.24,82.1,73.8,1,3,0,80.7,3.1,No,No,0,1
+374,Civil,Female,8.65,64.2,52.4,2,4,3,89.8,3.4,Yes,No,3,1
+375,Electronics,Male,10.0,66.6,76.1,1,2,3,57.7,2.5,No,Yes,0,1
+376,Computer Science,Female,6.58,49.3,69.5,3,1,3,55.8,2.8,Yes,Yes,0,1
+377,Mechanical,Female,8.55,66.6,49.0,2,3,0,72.4,3.8,Yes,No,2,0
+378,Electronics,Male,7.72,42.9,85.1,2,0,0,59.6,3.6,No,No,2,0
+379,Civil,Male,10.0,53.0,60.5,2,1,4,62.9,4.1,No,Yes,0,0
+380,Electronics,Female,6.53,81.1,59.5,2,0,1,76.1,3.0,No,Yes,2,0
+381,Information Technology,Male,6.49,81.4,72.6,3,1,1,36.4,3.5,Yes,Yes,0,0
+382,Computer Science,Female,6.78,77.1,84.9,2,1,4,84.8,3.0,No,Yes,2,0
+383,Mechanical,Female,4.95,60.4,56.8,0,4,4,66.1,4.1,Yes,No,2,0
+384,Information Technology,Male,6.87,71.4,70.8,2,3,3,58.8,4.5,Yes,Yes,0,1
+385,Civil,Male,6.59,72.0,75.6,3,3,4,63.7,3.9,No,No,1,1
+386,Information Technology,Male,7.68,58.1,79.0,2,1,2,64.4,4.3,No,No,2,1
+387,Information Technology,Male,7.91,90.0,72.3,0,2,1,39.0,3.5,No,Yes,3,0
+388,Civil,Female,9.75,82.5,65.2,3,2,4,87.4,4.1,Yes,Yes,2,1
+389,Information Technology,Male,8.64,69.3,59.2,3,0,2,65.6,3.6,No,Yes,1,1
+390,Mechanical,Male,6.81,72.3,71.1,0,0,2,71.6,2.7,Yes,Yes,0,0
+391,Electronics,Male,6.42,74.5,56.1,0,4,2,79.3,3.7,No,No,1,0
+392,Information Technology,Male,8.09,47.5,40.0,0,1,2,49.7,2.7,No,No,0,0
+393,Mechanical,Male,5.92,69.0,75.7,0,0,3,72.1,5.0,Yes,No,0,1
+394,Electronics,Female,9.7,63.8,81.8,0,0,2,61.0,3.2,Yes,Yes,0,1
+395,Electronics,Female,8.92,60.0,40.0,3,5,3,77.7,4.0,No,No,0,1
+396,Information Technology,Male,6.94,68.6,56.9,3,1,3,33.1,3.5,No,Yes,0,0
+397,Mechanical,Male,5.44,93.6,78.0,2,4,2,63.5,2.5,No,No,0,0
+398,Information Technology,Female,9.12,79.7,96.7,2,0,1,56.0,2.0,No,Yes,3,0
+399,Civil,Male,7.36,65.1,70.3,1,4,2,71.5,4.1,No,No,0,0
+400,Electronics,Female,8.99,78.9,60.5,2,3,2,72.1,4.7,Yes,No,0,1
+401,Information Technology,Female,5.59,88.8,67.6,2,4,2,54.4,2.9,Yes,Yes,2,1
+402,Electronics,Male,6.78,83.1,87.9,0,2,1,54.3,2.2,Yes,No,3,0
+403,Mechanical,Female,7.51,72.7,61.6,0,2,0,63.3,3.2,Yes,No,3,0
+404,Computer Science,Male,7.56,64.2,59.6,2,4,0,51.6,2.8,No,Yes,2,0
+405,Information Technology,Male,6.96,80.4,63.7,1,2,3,77.6,3.0,Yes,Yes,0,0
+406,Information Technology,Female,8.25,76.7,57.6,0,3,3,59.5,4.0,Yes,Yes,3,0
+407,Electronics,Female,6.22,82.7,71.6,2,1,1,21.4,3.5,Yes,Yes,0,1
+408,Mechanical,Male,7.33,79.6,91.1,2,2,4,59.4,2.8,No,Yes,0,1
+409,Civil,Female,7.64,84.6,74.2,3,2,0,49.4,4.0,Yes,No,2,1
+410,Mechanical,Male,8.12,65.6,66.7,1,4,3,40.5,4.0,No,Yes,0,0
+411,Information Technology,Female,8.35,87.8,66.2,3,3,0,46.4,3.2,Yes,No,0,1
+412,Civil,Female,6.15,74.4,49.7,1,1,1,66.6,3.6,No,No,0,1
+413,Mechanical,Male,5.66,96.9,81.5,0,4,1,84.9,3.9,Yes,Yes,0,1
+414,Computer Science,Male,9.03,63.7,69.0,1,4,4,69.7,3.8,No,No,0,1
+415,Electronics,Male,7.9,92.8,67.7,2,5,4,55.9,3.5,Yes,No,1,1
+416,Mechanical,Female,6.6,74.4,100.0,2,3,1,71.8,4.6,No,Yes,2,1
+417,Mechanical,Male,9.36,64.2,73.9,1,1,3,58.1,4.0,No,No,2,0
+418,Computer Science,Male,7.64,66.2,60.2,1,3,0,54.6,3.1,Yes,Yes,0,1
+419,Information Technology,Female,8.92,68.2,64.5,1,1,2,47.7,3.1,No,Yes,3,0
+420,Electronics,Female,7.58,77.1,84.9,3,3,4,38.7,3.1,No,Yes,0,0
+421,Mechanical,Male,9.97,78.3,71.5,1,4,2,59.2,4.0,Yes,No,1,1
+422,Civil,Male,9.61,65.1,51.3,0,4,3,67.4,3.0,Yes,No,0,1
+423,Mechanical,Male,7.2,71.7,81.9,3,0,4,63.6,3.2,No,No,2,0
+424,Electronics,Male,8.67,97.7,61.3,3,2,2,58.8,4.3,Yes,No,0,1
+425,Mechanical,Female,8.27,92.7,94.4,1,5,3,50.8,3.7,Yes,Yes,1,1
+426,Computer Science,Female,9.14,77.2,84.0,0,3,0,74.1,4.5,Yes,No,3,1
+427,Mechanical,Male,6.34,72.5,64.2,3,5,3,45.2,4.1,No,Yes,0,0
+428,Mechanical,Male,8.32,73.4,86.7,2,0,4,76.6,2.6,No,No,0,1
+429,Civil,Male,8.77,79.4,70.9,3,2,1,50.0,3.4,No,No,0,1
+430,Computer Science,Female,5.39,59.7,81.1,1,3,0,53.7,4.3,No,No,0,0
+431,Computer Science,Male,6.08,68.9,76.3,0,1,2,43.0,2.5,No,No,2,0
+432,Mechanical,Male,5.05,52.0,59.0,1,2,4,57.5,3.8,No,No,0,1
+433,Civil,Female,7.18,76.8,61.6,2,4,1,79.6,3.5,No,Yes,0,0
+434,Mechanical,Female,8.36,79.8,83.4,2,0,3,72.7,2.1,Yes,No,0,1
+435,Mechanical,Male,9.3,66.2,65.6,2,2,1,79.7,3.6,No,No,3,0
+436,Electronics,Male,7.59,90.9,64.8,1,2,4,72.8,2.8,No,No,0,1
+437,Electronics,Female,9.45,57.3,57.6,3,4,4,48.4,2.6,Yes,No,0,1
+438,Civil,Male,5.84,54.4,75.5,1,3,1,60.0,3.5,Yes,Yes,0,0
+439,Information Technology,Male,5.46,74.7,96.8,0,1,3,53.3,2.0,Yes,No,0,1
+440,Electronics,Female,7.43,84.6,56.1,3,4,1,85.0,3.0,No,Yes,0,1
+441,Information Technology,Female,7.96,92.2,70.3,2,1,4,47.0,5.0,Yes,No,0,0
+442,Computer Science,Female,7.46,66.5,88.4,1,3,4,78.4,4.0,No,Yes,0,1
+443,Electronics,Male,5.02,84.9,69.0,2,2,2,78.4,2.8,No,Yes,1,1
+444,Electronics,Female,7.39,71.5,75.9,2,1,2,92.4,4.6,No,Yes,0,1
+445,Civil,Female,5.93,69.9,56.2,0,0,0,58.9,2.7,Yes,Yes,0,0
+446,Information Technology,Male,8.3,82.6,75.6,3,0,4,75.7,3.1,Yes,Yes,0,1
+447,Electronics,Male,7.94,79.8,67.6,0,4,2,99.2,2.6,No,No,2,0
+448,Electronics,Female,6.37,53.1,82.8,0,3,1,55.7,3.7,No,Yes,2,1
+449,Civil,Female,6.88,89.7,85.4,0,4,3,42.0,4.6,No,No,3,1
+450,Civil,Male,6.23,88.6,100.0,2,4,1,36.8,2.7,Yes,Yes,2,1
+451,Information Technology,Male,7.42,64.5,77.5,0,5,3,75.7,1.9,No,Yes,0,0
+452,Computer Science,Female,8.65,76.7,74.2,0,4,2,36.8,4.4,Yes,No,3,1
+453,Computer Science,Female,6.32,77.9,72.5,3,5,0,59.4,4.7,No,Yes,0,1
+454,Mechanical,Male,8.1,75.1,65.4,3,0,1,71.6,1.9,Yes,Yes,0,1
+455,Electronics,Female,6.86,65.4,74.4,0,0,1,67.8,3.9,No,Yes,0,0
+456,Information Technology,Male,6.55,63.9,66.2,3,4,1,71.4,3.7,Yes,Yes,0,1
+457,Electronics,Female,7.37,71.7,72.2,3,0,3,68.3,2.9,Yes,No,3,0
+458,Information Technology,Male,6.26,86.1,87.1,0,3,2,84.2,2.4,Yes,Yes,0,1
+459,Information Technology,Male,6.84,78.5,56.9,2,5,1,50.7,4.3,Yes,Yes,1,1
+460,Information Technology,Female,6.06,67.6,84.8,0,5,1,54.8,3.6,Yes,No,0,0
+461,Electronics,Female,9.86,81.3,87.1,3,4,0,53.4,3.7,Yes,No,1,1
+462,Civil,Male,7.54,40.0,68.5,2,0,0,77.5,3.0,No,Yes,1,1
+463,Electronics,Female,6.66,85.8,42.4,1,1,2,78.5,2.9,No,Yes,2,0
+464,Information Technology,Female,7.76,51.1,62.1,2,5,2,71.8,1.5,No,No,0,1
+465,Mechanical,Female,7.37,67.7,86.9,3,4,4,82.8,3.3,No,Yes,1,1
+466,Computer Science,Male,7.23,58.6,69.7,2,4,0,47.3,4.7,Yes,No,0,1
+467,Information Technology,Female,8.24,56.5,57.0,0,3,4,90.0,2.8,No,Yes,2,0
+468,Mechanical,Female,8.41,85.9,63.4,1,2,3,87.8,2.3,Yes,No,0,0
+469,Civil,Male,6.86,66.4,80.9,1,2,4,76.0,3.8,Yes,No,0,0
+470,Information Technology,Female,6.81,76.2,77.1,1,5,1,91.7,4.0,Yes,No,1,0
+471,Mechanical,Female,7.17,71.4,66.9,3,3,4,40.2,3.0,No,Yes,0,1
+472,Information Technology,Male,4.74,77.7,65.2,3,3,2,57.1,3.2,Yes,Yes,0,0
+473,Electronics,Male,5.68,72.9,64.9,1,3,3,54.0,3.7,No,Yes,0,1
+474,Mechanical,Female,9.14,56.6,58.0,2,5,1,75.8,3.4,No,Yes,1,1
+475,Electronics,Female,9.47,84.0,91.0,1,2,4,49.2,4.3,No,No,2,1
+476,Electronics,Male,7.2,66.1,65.8,2,3,3,76.4,5.0,No,No,2,0
+477,Mechanical,Male,8.19,53.3,85.8,2,0,3,85.6,2.1,No,No,1,0
+478,Computer Science,Female,7.87,66.9,89.8,3,4,1,75.4,4.5,Yes,Yes,0,1
+479,Mechanical,Female,10.0,90.0,83.0,2,4,4,69.3,3.6,Yes,Yes,0,1
+480,Computer Science,Female,8.84,82.2,64.4,1,1,3,50.2,4.6,No,Yes,2,0
+481,Information Technology,Male,7.35,67.8,75.2,3,1,3,52.3,4.1,Yes,No,2,1
+482,Information Technology,Female,6.35,67.8,69.7,0,5,0,83.7,3.5,No,Yes,1,0
+483,Mechanical,Male,5.57,68.1,58.3,0,5,3,76.7,4.1,Yes,Yes,0,0
+484,Information Technology,Male,7.74,96.9,74.2,3,4,0,64.4,3.2,Yes,No,2,1
+485,Civil,Male,6.59,76.6,54.7,1,0,4,58.7,2.9,Yes,No,0,0
+486,Electronics,Female,5.79,77.2,85.4,0,2,4,34.6,4.1,Yes,Yes,2,0
+487,Electronics,Female,6.72,84.4,64.0,0,2,4,48.9,2.8,Yes,No,0,0
+488,Computer Science,Female,6.2,74.9,72.6,2,5,2,93.7,4.0,Yes,Yes,0,0
+489,Information Technology,Male,9.52,68.9,73.7,2,0,4,45.8,3.5,Yes,No,3,0
+490,Computer Science,Female,8.56,69.6,66.6,1,5,3,67.8,1.6,Yes,No,0,1
+491,Electronics,Male,7.49,71.1,77.6,3,2,1,80.1,3.0,Yes,No,3,1
+492,Electronics,Male,9.28,71.6,63.8,1,5,0,46.2,3.8,Yes,Yes,2,1
+493,Information Technology,Male,7.59,80.7,81.3,3,3,2,67.8,3.2,Yes,Yes,0,0
+494,Civil,Male,6.47,72.6,52.5,0,5,4,79.1,1.5,Yes,Yes,0,1
+495,Civil,Male,9.33,80.8,71.6,2,4,4,65.2,4.6,Yes,No,2,1
+496,Information Technology,Male,8.15,71.0,95.2,1,5,1,100.0,3.6,No,No,2,1
+497,Information Technology,Female,6.26,72.9,57.0,1,4,1,40.0,3.9,Yes,No,0,0
+498,Computer Science,Male,7.27,48.0,61.2,3,0,2,80.9,3.1,Yes,No,2,0
+499,Information Technology,Female,6.45,83.0,76.7,3,2,0,62.4,3.9,Yes,Yes,1,0
+500,Civil,Male,5.84,76.2,72.3,1,1,4,76.6,5.0,Yes,Yes,2,1
+501,Information Technology,Female,8.61,84.0,74.6,3,1,2,71.6,2.9,Yes,Yes,1,1
+502,Computer Science,Female,9.79,40.0,76.4,1,2,3,54.0,4.8,Yes,No,2,0
+503,Computer Science,Female,5.82,97.1,78.3,1,1,3,68.4,3.8,No,No,0,0
+504,Computer Science,Female,8.18,70.3,84.4,1,5,2,37.1,2.8,No,Yes,1,0
+505,Computer Science,Male,6.72,85.3,75.3,0,0,4,74.0,5.0,No,No,0,0
+506,Mechanical,Male,6.92,59.5,66.9,3,0,2,69.5,3.8,Yes,Yes,1,0
+507,Information Technology,Male,6.79,79.4,78.7,2,2,4,74.6,4.0,Yes,No,0,0
+508,Electronics,Male,6.46,59.4,94.7,2,1,1,80.9,3.3,Yes,No,3,1
+509,Information Technology,Female,7.56,64.5,68.3,3,5,2,70.5,2.9,No,Yes,1,1
+510,Mechanical,Female,6.5,95.0,57.3,1,0,4,67.2,3.6,Yes,Yes,2,1
+511,Computer Science,Female,7.82,69.7,84.4,2,0,2,51.8,4.8,Yes,No,2,0
+512,Mechanical,Male,7.44,74.6,68.4,2,3,2,54.3,3.3,No,Yes,3,0
+513,Civil,Female,7.21,82.4,41.8,3,3,4,82.8,3.5,No,Yes,0,1
+514,Civil,Male,6.41,77.9,81.0,2,0,4,86.5,4.7,Yes,No,0,1
+515,Information Technology,Female,6.81,73.8,63.0,1,2,0,61.4,3.3,Yes,No,2,1
+516,Information Technology,Female,8.41,76.4,68.8,3,4,2,65.7,3.9,Yes,No,0,1
+517,Electronics,Female,8.1,100.0,74.3,1,4,3,51.4,4.2,Yes,Yes,0,1
+518,Electronics,Female,6.33,71.3,72.5,2,5,2,82.6,3.3,No,No,1,1
+519,Civil,Female,7.62,74.4,79.2,2,0,2,75.0,3.7,Yes,No,1,0
+520,Computer Science,Male,8.4,84.6,64.3,1,0,4,94.1,4.0,Yes,No,0,1
+521,Mechanical,Female,5.5,85.3,76.7,0,0,2,51.8,3.2,No,No,2,0
+522,Electronics,Male,8.15,86.2,66.6,2,2,2,59.3,4.2,Yes,No,0,1
+523,Electronics,Male,6.7,79.7,79.6,0,3,3,68.5,3.1,Yes,Yes,0,1
+524,Computer Science,Male,8.18,58.3,78.0,2,0,4,74.7,3.0,No,No,2,0
+525,Computer Science,Male,6.58,91.6,57.8,0,0,2,61.8,2.3,No,No,0,1
+526,Information Technology,Male,5.33,58.2,84.1,0,1,1,51.9,3.1,Yes,Yes,1,1
+527,Mechanical,Male,5.55,75.6,63.0,0,2,0,78.2,2.8,No,No,0,1
+528,Computer Science,Male,7.56,62.9,80.5,1,5,3,75.8,3.2,No,No,3,0
+529,Electronics,Male,7.81,71.2,74.8,0,0,2,51.3,4.0,Yes,Yes,0,0
+530,Electronics,Female,6.41,75.9,93.9,0,1,1,85.3,2.1,No,No,0,0
+531,Civil,Female,8.27,75.9,67.1,0,4,2,82.6,1.9,Yes,Yes,0,1
+532,Computer Science,Male,5.51,77.1,65.5,2,5,2,67.0,2.9,Yes,No,0,1
+533,Information Technology,Male,7.42,91.4,69.7,0,0,4,66.2,3.9,Yes,Yes,0,0
+534,Mechanical,Male,6.05,77.4,66.1,2,0,4,73.3,3.7,Yes,Yes,3,0
+535,Information Technology,Female,6.72,69.1,80.4,0,1,4,52.1,2.9,No,No,1,0
+536,Electronics,Female,7.56,83.6,49.0,0,2,1,65.5,4.4,Yes,Yes,2,1
+537,Information Technology,Male,6.47,86.3,56.3,1,0,2,32.7,3.0,Yes,Yes,0,0
+538,Electronics,Male,7.04,57.3,56.1,2,4,0,78.1,3.9,Yes,No,3,0
+539,Electronics,Female,8.71,79.2,82.4,0,0,3,41.6,3.2,Yes,No,0,1
+540,Electronics,Female,6.81,80.4,92.2,2,4,4,87.6,2.8,No,Yes,1,0
+541,Electronics,Male,8.5,68.4,68.6,2,5,4,60.0,3.0,No,No,0,1
+542,Electronics,Male,6.14,88.5,67.8,3,5,2,61.8,4.1,No,Yes,3,0
+543,Civil,Male,8.14,70.2,70.9,1,3,2,55.6,3.8,Yes,Yes,3,0
+544,Information Technology,Male,9.23,73.5,85.1,1,3,1,60.7,4.3,No,No,0,0
+545,Civil,Female,4.53,69.9,57.9,1,4,1,86.3,3.8,No,No,1,0
+546,Civil,Female,6.54,72.2,73.1,3,2,4,27.7,2.2,Yes,Yes,0,1
+547,Computer Science,Male,8.19,58.8,82.7,3,0,2,84.2,5.0,No,No,1,0
+548,Computer Science,Male,7.26,54.7,76.5,1,0,0,70.1,3.8,Yes,No,0,1
+549,Computer Science,Male,7.95,91.1,72.5,3,3,3,46.9,3.9,No,Yes,3,1
+550,Mechanical,Female,6.78,61.8,83.0,3,4,2,48.9,3.2,No,Yes,0,0
+551,Computer Science,Male,7.6,60.1,40.0,3,0,2,90.1,4.4,No,Yes,0,0
+552,Information Technology,Male,7.31,46.2,78.8,1,0,1,50.8,2.6,No,Yes,3,0
+553,Civil,Male,8.9,64.3,61.5,1,2,3,47.7,4.0,Yes,Yes,1,1
+554,Information Technology,Female,7.81,56.1,46.2,1,1,4,82.1,1.8,Yes,Yes,3,0
+555,Computer Science,Male,7.91,91.7,76.6,3,3,2,70.1,4.0,No,No,0,1
+556,Mechanical,Female,7.01,84.1,87.9,1,3,4,50.9,2.6,Yes,Yes,0,1
+557,Mechanical,Male,6.91,63.7,68.2,3,1,2,68.2,3.7,No,No,0,1
+558,Civil,Male,6.98,99.0,82.4,0,0,4,49.6,4.6,No,No,3,0
+559,Information Technology,Male,7.97,83.8,91.0,3,2,3,81.5,4.2,No,Yes,0,1
+560,Electronics,Female,6.99,68.1,87.1,2,2,1,80.9,4.5,No,No,0,0
+561,Information Technology,Male,7.85,42.0,91.3,1,3,3,73.0,4.4,No,Yes,1,0
+562,Computer Science,Male,9.99,99.5,79.6,1,2,0,70.4,3.1,No,No,1,0
+563,Electronics,Female,8.55,55.3,71.0,2,5,1,91.4,4.0,Yes,Yes,0,0
+564,Mechanical,Female,7.11,52.3,49.2,3,1,3,65.0,2.1,Yes,Yes,0,1
+565,Civil,Female,8.94,84.3,66.8,0,0,0,47.3,3.0,No,Yes,0,0
+566,Civil,Male,7.01,100.0,59.0,2,5,2,71.7,4.6,Yes,Yes,2,1
+567,Mechanical,Female,5.05,88.6,98.2,2,1,2,96.3,3.2,No,No,2,0
+568,Computer Science,Male,6.29,78.8,67.7,3,4,4,49.8,2.0,Yes,No,0,1
+569,Mechanical,Female,5.26,79.1,71.6,1,3,1,59.6,5.0,Yes,No,0,0
+570,Computer Science,Female,7.08,82.2,77.2,3,2,2,71.2,3.9,Yes,No,0,1
+571,Electronics,Female,7.52,81.1,70.6,2,4,1,64.2,4.1,No,No,1,1
+572,Mechanical,Male,9.51,75.4,92.0,2,2,2,50.3,2.7,Yes,Yes,0,0
+573,Computer Science,Male,7.89,73.3,61.9,1,5,4,81.8,3.7,No,Yes,3,1
+574,Electronics,Male,7.24,71.2,72.5,1,0,3,99.8,3.7,No,Yes,0,0
+575,Mechanical,Male,8.5,63.0,60.3,1,0,4,67.9,2.8,No,Yes,3,0
+576,Civil,Male,4.85,68.6,52.8,3,0,0,51.4,3.4,Yes,Yes,2,0
+577,Mechanical,Male,7.78,51.7,62.0,1,2,2,41.8,2.3,Yes,No,3,1
+578,Information Technology,Male,8.43,70.8,69.5,2,4,0,68.9,3.2,Yes,Yes,0,1
+579,Mechanical,Male,5.73,60.1,64.4,2,0,0,81.6,4.3,No,Yes,0,1
+580,Information Technology,Male,8.87,58.8,61.0,0,4,1,72.1,2.9,No,No,3,0
+581,Electronics,Female,7.91,74.2,51.7,3,2,2,65.0,5.0,Yes,No,0,1
+582,Mechanical,Female,7.0,88.7,68.9,0,5,0,56.2,2.4,No,Yes,0,1
+583,Electronics,Male,8.26,83.0,50.4,2,4,3,48.6,3.3,Yes,Yes,0,1
+584,Electronics,Male,10.0,53.2,79.9,0,5,0,77.5,3.0,Yes,No,3,1
+585,Computer Science,Male,7.72,60.1,71.1,2,2,3,78.7,3.4,Yes,Yes,0,1
+586,Electronics,Male,7.8,83.3,51.1,0,2,1,41.8,4.6,Yes,Yes,1,0
+587,Electronics,Female,6.95,60.2,66.0,1,3,0,88.8,2.7,No,Yes,0,1
+588,Mechanical,Female,6.48,69.3,60.2,0,2,4,73.6,3.1,Yes,No,0,0
+589,Mechanical,Male,8.5,78.6,74.1,1,2,1,86.0,4.0,Yes,Yes,3,0
+590,Civil,Female,6.47,60.4,87.4,1,1,3,44.9,3.6,Yes,Yes,2,0
+591,Computer Science,Female,7.59,73.3,45.6,3,0,1,44.5,3.6,Yes,No,3,0
+592,Electronics,Male,6.93,56.0,71.5,1,3,0,62.8,2.7,Yes,No,0,1
+593,Computer Science,Male,8.07,64.8,67.9,1,3,2,72.5,3.4,Yes,No,0,1
+594,Information Technology,Male,7.9,75.8,78.7,0,3,2,91.9,4.4,Yes,Yes,2,1
+595,Electronics,Male,8.75,52.9,72.8,2,1,3,75.6,2.2,No,No,3,0
+596,Computer Science,Female,6.89,77.3,60.2,3,5,3,61.4,2.9,No,Yes,3,0
+597,Civil,Male,7.18,71.8,65.9,1,2,2,49.6,2.0,No,No,0,1
+598,Civil,Female,6.33,78.6,59.7,3,0,3,83.5,3.9,No,Yes,0,1
+599,Electronics,Male,6.97,74.7,84.0,0,4,1,50.5,4.5,Yes,No,1,0
+600,Information Technology,Female,7.95,88.4,70.3,1,5,4,89.4,3.4,No,Yes,3,1

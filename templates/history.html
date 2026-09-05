@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+{% block title %}Prediction Registry – PlaceIQ{% endblock %}
+{% block page_title %}Historical Archives{% endblock %}
+{% block page_sub %}Comprehensive record of all synthesized placement intelligence.{% endblock %}
+
+{% block topbar_actions %}
+<a href="/export/predictions" class="btn btn-outline" style="border-radius:10px;">↓ Export Database</a>
+<a href="/predict" class="btn btn-primary">◈ New Entry</a>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    .search-panel { 
+        background: var(--card-glass); border: 1px solid var(--border-glass); 
+        border-radius: var(--radius-lg); padding: 16px 24px; margin-bottom: 24px;
+        display: flex; gap: 16px; align-items: center; backdrop-filter: blur(10px);
+    }
+    
+    .search-ctrl {
+        background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); 
+        border-radius: 10px; padding: 10px 16px; color: var(--text-high);
+        font-family: var(--font-body); font-size: 14px; outline: none; transition: var(--transition);
+    }
+    .search-ctrl:focus { border-color: var(--primary); background: rgba(0,0,0,0.4); }
+    
+    .search-input { flex: 1; min-width: 280px; }
+    .filter-select { cursor: pointer; min-width: 160px; appearance: none; }
+
+    .history-card { 
+        background: var(--card-glass); border: 1px solid var(--border-glass); 
+        border-radius: var(--radius-lg); overflow: hidden; backdrop-filter: blur(10px);
+    }
+
+    .history-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .history-table th { 
+        background: rgba(255,255,255,0.02); padding: 16px 20px; text-align: left;
+        font-family: var(--font-head); font-size: 11px; font-weight: 700; 
+        color: var(--text-low); text-transform: uppercase; letter-spacing: 0.1em;
+        border-bottom: 1px solid var(--border-glass);
+    }
+    .history-table td { padding: 16px 20px; border-bottom: 1px solid var(--border-glass); color: var(--text-mid); }
+    .history-table tr:last-child td { border-bottom: none; }
+    .history-table tr:hover td { background: rgba(255,255,255,0.01); color: var(--text-high); }
+
+    .prob-tag { font-family: var(--font-mono); font-weight: 700; font-size: 13px; }
+    
+    .status-badge {
+        padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .status-placed { background: rgba(16,185,129,0.1); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+    .status-unplaced { background: rgba(244,63,94,0.1); color: #fb7185; border: 1px solid rgba(244,63,94,0.2); }
+
+    .risk-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px currentColor; }
+
+    .expand-trigger {
+        width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-glass); color: var(--text-low); cursor: pointer;
+        display: flex; align-items: center; justify-content: center; transition: var(--transition);
+    }
+    .expand-trigger:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+    .expand-trigger.active { transform: rotate(180deg); background: var(--primary); color: #000; }
+
+    .details-pane { background: rgba(0,0,0,0.2); padding: 20px 24px; border-bottom: 1px solid var(--border-glass); }
+    .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .rec-pill {
+        background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.1);
+        padding: 8px 12px; border-radius: 8px; font-size: 11.5px; color: var(--primary);
+        display: flex; align-items: center; gap: 8px;
+    }
+
+    @media (max-width: 1024px) {
+        .search-panel { flex-direction: column; align-items: stretch; }
+        .search-input { min-width: 0; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% if not predictions %}
+<div class="card" style="text-align:center; padding:80px 40px; background: rgba(255,255,255,0.01);">
+    <div style="font-size:64px; margin-bottom:24px; opacity:0.5;">📂</div>
+    <h2 style="margin-bottom:12px; font-family:var(--font-head);">Vault is Empty</h2>
+    <p style="color:var(--text-mid); margin-bottom:32px; max-width:400px; margin-left:auto; margin-right:auto;">Historical prediction data will manifest here once the engine synthesizes its first candidate analysis.</p>
+    <a href="/predict" class="btn btn-primary">◈ Initialize Engine</a>
+</div>
+{% else %}
+
+<div class="search-panel">
+    <input type="text" class="search-ctrl search-input" id="search-input" placeholder="🔍 Filter by candidate name, verdict, or focus area..." oninput="filterTable()">
+    <div style="display:flex; gap:12px;">
+        <select class="search-ctrl filter-select" id="filter-pred" onchange="filterTable()">
+            <option value="">All Verdicts</option>
+            <option value="Placed">Verdict: Placed</option>
+            <option value="Not Placed">Verdict: Unplaced</option>
+        </select>
+        <select class="search-ctrl filter-select" id="filter-cat" onchange="filterTable()">
+            <option value="">All Categories</option>
+            <option value="High Chance">Concentration: High</option>
+            <option value="Medium Chance">Concentration: Med</option>
+            <option value="Low Chance">Concentration: Low</option>
+        </select>
+    </div>
+    <div style="margin-left:auto; font-size:12px; font-weight:600; color:var(--text-low); letter-spacing:0.05em;" id="count-label">
+        SCANNED: {{ predictions|length }} ENTRIES
+    </div>
+</div>
+
+<div class="history-card">
+    <table class="history-table" id="history-table">
+        <thead>
+            <tr>
+                <th style="width:50px">ID</th>
+                <th>TIMESTAMP</th>
+                <th>CANDIDATE</th>
+                <th>CGPA</th>
+                <th>PROBABILITY</th>
+                <th>RISK</th>
+                <th>DENSITY</th>
+                <th>VERDICT</th>
+                <th style="width:60px"></th>
+            </tr>
+        </thead>
+        <tbody id="history-body">
+        {% for p in predictions %}
+        <tr class="data-row"
+            data-name="{{ p.student_name|lower }}"
+            data-pred="{{ p.prediction }}"
+            data-cat="{{ p.category }}">
+            <td style="color:var(--text-low); font-family:var(--font-mono); font-size:11px;">#{{ loop.index }}</td>
+            <td style="font-size:11px; white-space:nowrap;">{{ p.timestamp[:16] if p.timestamp else '–' }}</td>
+            <td style="font-weight:700; color:var(--text-high);">{{ p.student_name or 'ANONYMOUS' }}</td>
+            <td>
+                <span class="prob-tag" style="color:{% if p.cgpa >= 8 %}#34d399{% elif p.cgpa >= 6.5 %}#fbbf24{% else %}#fb7185{% endif %}">
+                    {{ p.cgpa or '–' }}
+                </span>
+            </td>
+            <td>
+                <span class="prob-tag" style="color:{% if p.probability >= 70 %}#34d399{% elif p.probability >= 45 %}#fbbf24{% else %}#fb7185{% endif %}">
+                    {{ p.probability or 0 }}%
+                </span>
+            </td>
+            <td>
+                {% if p.risk_score %}
+                <span style="display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-weight:700;">
+                    <span class="risk-indicator" style="color:{% if p.risk_score > 65 %}#fb7185{% elif p.risk_score > 35 %}#fbbf24{% else %}#34d399{% endif %}"></span>
+                    {{ p.risk_score }}
+                </span>
+                {% else %}–{% endif %}
+            </td>
+            <td>
+                {% if p.category == 'High Chance' %}
+                <span style="color:#34d399; font-size:11px; font-weight:800; opacity:0.8;">● HIGH</span>
+                {% elif p.category == 'Medium Chance' %}
+                <span style="color:#fbbf24; font-size:11px; font-weight:800; opacity:0.8;">◑ MEDIUM</span>
+                {% else %}
+                <span style="color:#fb7185; font-size:11px; font-weight:800; opacity:0.8;">○ LOW</span>
+                {% endif %}
+            </td>
+            <td>
+                <span class="status-badge {% if p.prediction == 'Placed' %}status-placed{% else %}status-unplaced{% endif %}">
+                    {{ p.prediction }}
+                </span>
+            </td>
+            <td>
+                <button class="expand-trigger" onclick="toggleDetails(this, {{ loop.index }})">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+            </td>
+        </tr>
+        <tr id="details-row-{{ loop.index }}" style="display:none">
+            <td colspan="9" style="padding:0;">
+                <div class="details-pane">
+                    <div style="margin-bottom:16px; font-family:var(--font-head); font-size:11px; font-weight:700; color:var(--text-low); letter-spacing:0.05em; text-transform:uppercase;">Strategic Intervention Path</div>
+                    <div class="details-grid">
+                        {% if p.recommendations %}
+                            {% for rec in p.recommendations[:4] %}
+                            <div class="rec-pill">
+                                <span>{{ rec.icon }}</span>
+                                <strong>{{ rec.title }}</strong>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p style="color:var(--text-low); font-size:12px; font-style:italic;">No recorded strategic metrics for this entry.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+function toggleDetails(btn, idx) {
+    const row = document.getElementById('details-row-' + idx);
+    const isActive = row.style.display === 'table-row';
+    
+    // Reset all
+    document.querySelectorAll('[id^="details-row-"]').forEach(r => r.style.display = 'none');
+    document.querySelectorAll('.expand-trigger').forEach(b => b.classList.remove('active'));
+    
+    if (!isActive) {
+        row.style.display = 'table-row';
+        btn.classList.add('active');
+    }
+}
+
+function filterTable() {
+    const search = document.getElementById('search-input').value.toLowerCase();
+    const pred = document.getElementById('filter-pred').value;
+    const cat = document.getElementById('filter-cat').value;
+    const rows = document.querySelectorAll('.data-row');
+    let visible = 0;
+    
+    rows.forEach(row => {
+        const matches = (!search || row.dataset.name.includes(search) || row.dataset.pred.toLowerCase().includes(search) || row.dataset.cat.toLowerCase().includes(search))
+                     && (!pred || row.dataset.pred === pred)
+                     && (!cat  || row.dataset.cat  === cat);
+        row.style.display = matches ? '' : 'none';
+        if (matches) visible++;
+        
+        // Always hide details on filter
+        const idx = row.rowIndex / 2; // Approximate
+        const detailId = row.nextElementSibling?.id;
+        if (detailId && detailId.startsWith('details-row-')) {
+            row.nextElementSibling.style.display = 'none';
+        }
+    });
+    
+    document.getElementById('count-label').textContent = 'SCANNED: ' + visible + ' ENTRIES';
+}
+</script>
+{% endif %}
+{% endblock %}

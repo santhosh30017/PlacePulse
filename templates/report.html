@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Intelligence Synthesis – PlaceIQ{% endblock %}
+{% block page_title %}Report Architecture{% endblock %}
+{% block page_sub %}Generate institutional-grade placement analytics and strategic roadmaps.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .report-hero {
+        background: var(--card-glass); border: 1px solid var(--border-glass);
+        border-radius: var(--radius-lg); padding: 64px 32px; text-align: center;
+        margin-bottom: 32px; backdrop-filter: blur(20px); position: relative; overflow: hidden;
+    }
+    .report-hero::before {
+        content: ''; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px;
+        background: var(--primary); opacity: 0.1; filter: blur(60px); border-radius: 50%;
+    }
+
+    .report-icon { font-size: 56px; margin-bottom: 24px; display: block; opacity: 0.9; }
+    .report-title { font-family: var(--font-head); font-size: 28px; color: var(--text-high); margin-bottom: 12px; }
+    .report-desc { color: var(--text-low); font-size: 15px; max-width: 600px; margin: 0 auto 32px; line-height: 1.6; }
+
+    .stat-bridge { display: flex; justify-content: center; gap: 48px; margin-top: 48px; }
+    .bridge-item { text-align: center; }
+    .bridge-val { font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+    .bridge-label { font-size: 11px; font-weight: 700; color: var(--text-low); text-transform: uppercase; letter-spacing: 0.1em; }
+    .bridge-sep { width: 1px; height: 40px; background: var(--border-glass); align-self: center; }
+
+    .manifest-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+    .manifest-item {
+        background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass);
+        padding: 20px; border-radius: 12px; display: flex; gap: 16px; align-items: flex-start;
+    }
+    .manifest-item i { font-size: 20px; opacity: 0.8; }
+    .manifest-item h4 { font-size: 14px; font-weight: 700; color: var(--text-high); margin-bottom: 4px; }
+    .manifest-item p { font-size: 12px; color: var(--text-low); line-height: 1.5; }
+
+    .pro-tip {
+        background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1);
+        border-radius: var(--radius-lg); padding: 32px; position: relative;
+    }
+    .pro-tip::after { content: 'PRO TIP'; position: absolute; top: -10px; left: 24px; background: var(--primary); color: #000; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
+
+    @media (max-width: 768px) { .stat-bridge { flex-direction: column; gap: 24px; } .bridge-sep { display: none; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="report-hero">
+    <span class="report-icon">📄</span>
+    <h2 class="report-title">Comprehensive Intelligence Synthesis</h2>
+    <p class="report-desc">Your strategic placement profile synthesized into a professional institutional document. Includes multiversion risk analysis and recursive improvement protocol.</p>
+    
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="/report/download" class="btn btn-primary" style="padding:16px 32px; font-size:14px; border-radius:12px;">
+            ◈ Download Neural Report (TXT)
+        </a>
+        <button onclick="showToast('PDF_ENGINE_OFFLINE: EXPORT_REDUNDANT', 'info')" class="btn btn-outline" style="padding:16px 32px; font-size:14px; border-radius:12px;">
+            ⚙ Export Metadata (PDF)
+        </button>
+    </div>
+
+    <div class="stat-bridge">
+        <div class="bridge-item">
+            <div class="bridge-val">12+</div>
+            <div class="bridge-label">Feature Vectors</div>
+        </div>
+        <div class="bridge-sep"></div>
+        <div class="bridge-item">
+            <div class="bridge-val">SHAP</div>
+            <div class="bridge-label">Bias Insights</div>
+        </div>
+        <div class="bridge-sep"></div>
+        <div class="bridge-item">
+            <div class="bridge-val">8-WK</div>
+            <div class="bridge-label">Success Path</div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-2">
+    <div class="card" style="padding: 32px;">
+        <div class="card-title">Manifest Contents</div>
+        <div class="manifest-grid">
+            <div class="manifest-item">
+                <i>◈</i>
+                <div>
+                    <h4>Architectural Prediction Breakdown</h4>
+                    <p>Granular success probability across multiple ensemble models with confidence intervals.</p>
+                </div>
+            </div>
+            <div class="manifest-item">
+                <i>🔍</i>
+                <div>
+                    <h4>Vulnerability Root-Cause</h4>
+                    <p>Identification of primary blockers in your institutional candidacy via neural back-propagation.</p>
+                </div>
+            </div>
+            <div class="manifest-item">
+                <i>💡</i>
+                <div>
+                    <h4>Strategic Suggestions</h4>
+                    <p>Curated project architectures and industrial certifications mapped to your unique skill gap.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:24px;">
+        <div class="pro-tip">
+            <p style="font-size:14px; color:var(--text-mid); line-height:1.7; font-style:italic;">
+                "Disseminating a high-efficacy intelligence report to institutional mentors or corporate recruiters can significantly accelerate your referral protocol. Tier-1 placement density is typically achieved with an employability quotient > 0.85."
+            </p>
+            <div style="margin-top:20px; font-weight:800; font-size:11px; color:var(--primary); font-family:var(--font-mono); letter-spacing:0.1em;">PLACEIQ_AGENT_01 // COGNITIVE_INSIGHT</div>
+        </div>
+        
+        <a href="/history" class="btn btn-outline" style="width:100%; justify-content:center; padding:16px; border-radius:12px;">
+            View Sequence History
+        </a>
+    </div>
+</div>
+
+{% endblock %}

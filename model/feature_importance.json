@@ -1,0 +1,21 @@
+{
+  "CGPA": 0.10639123043998652,
+  "SSC_Marks": 0.008735451497057895,
+  "HSC_Marks": 0.0364311101818223,
+  "Internships": 0.07177372586932476,
+  "Projects": 0.1072638681690091,
+  "Workshops_Certifications": 0.0904128779769578,
+  "AptitudeTestScore": 0.016323960963706485,
+  "SoftSkillsRating": 0.028046514861618306,
+  "Backlogs": 0.12602679545090306,
+  "Academic_Score": 0.0645238157771919,
+  "Experience_Score": 0.062351464931780495,
+  "Skill_Score": 0.03719371936239454,
+  "Overall_Score": 0.08945470700455899,
+  "Has_Backlog": 0.007239851306813777,
+  "High_CGPA": 0.06276664586024513,
+  "Stream_Encoded": 0.011154477706734448,
+  "Gender_Encoded": 0.010059295444197274,
+  "ExtracurricularActivities_Enc": 0.047701059126396515,
+  "PlacementTraining_Enc": 0.016149428069300635
+}

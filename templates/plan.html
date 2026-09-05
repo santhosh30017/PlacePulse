@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Strategic Roadmap – PlaceIQ{% endblock %}
+{% block page_title %}Evolutionary Roadmap{% endblock %}
+{% block page_sub %}Weekly tactical execution plan for institutional dominance.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .roadmap-nav { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 24px; scrollbar-width: none; }
+    .roadmap-nav::-webkit-scrollbar { display: none; }
+    .nav-pill {
+        padding: 10px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass);
+        border-radius: 100px; color: var(--text-mid); text-decoration: none; font-size: 13px;
+        font-weight: 600; transition: var(--transition); white-space: nowrap;
+    }
+    .nav-pill:hover { border-color: var(--primary); color: var(--text-high); background: rgba(255,255,255,0.05); }
+    .nav-pill.active { background: rgba(245,158,11,0.1); border-color: var(--primary); color: var(--primary); }
+
+    .evolution-timeline { position: relative; padding-left: 40px; }
+    .evolution-timeline::before {
+        content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px;
+        background: linear-gradient(to bottom, var(--primary), transparent); opacity: 0.3;
+    }
+
+    .timeline-node { position: relative; margin-bottom: 40px; }
+    .node-marker {
+        position: absolute; left: -40px; top: 0; width: 32px; height: 32px;
+        border-radius: 50%; background: #000; border: 2px solid var(--primary);
+        display: flex; align-items: center; justify-content: center; z-index: 2;
+        box-shadow: 0 0 15px rgba(245,158,11,0.3);
+    }
+    .node-marker span { font-family: var(--font-mono); font-size: 11px; font-weight: 800; color: var(--primary); }
+
+    .node-card {
+        background: var(--card-glass); border: 1px solid var(--border-glass);
+        border-radius: 16px; padding: 24px; backdrop-filter: blur(12px);
+        transition: var(--transition); border-left: 4px solid var(--primary);
+    }
+    .node-card:hover { transform: translateX(8px); background: rgba(255,255,255,0.02); }
+
+    .node-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .node-meta h3 { font-family: var(--font-head); font-size: 18px; color: var(--text-high); }
+    .node-meta p { font-size: 12px; color: var(--text-low); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .task-stack { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .task-hex {
+        display: flex; gap: 12px; align-items: flex-start; padding: 12px;
+        background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass);
+        border-radius: 10px; font-size: 13px; color: var(--text-mid);
+    }
+    .task-hex i { color: var(--primary); font-size: 14px; margin-top: 2px; }
+
+    @media (max-width: 768px) { .evolution-timeline { padding-left: 30px; } .node-marker { left: -30px; width: 24px; height: 24px; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="padding: 24px; margin-bottom: 24px;">
+    <div class="card-title">Objective Selection</div>
+    <div class="roadmap-nav">
+        {% for p in plans %}
+        <a href="/plan?skill={{ p.key }}" class="nav-pill {% if selected_plan and selected_plan.plan_key == p.key %}active{% endif %}">
+            {{ p.icon }} {{ p.title }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% if selected_plan %}
+<div class="grid-3" style="margin-bottom: 32px;">
+    <div class="card" style="padding: 20px; border-top: 2px solid var(--primary);">
+        <div style="font-size: 11px; color: var(--text-low); letter-spacing: 0.1em; margin-bottom: 8px;">EPIC_DURATION</div>
+        <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--text-high);">{{ selected_plan.total_weeks }} WEEKS</div>
+    </div>
+    <div class="card" style="padding: 20px; border-top: 2px solid var(--emerald);">
+        <div style="font-size: 11px; color: var(--text-low); letter-spacing: 0.1em; margin-bottom: 8px;">STRATEGIC_GOAL</div>
+        <div style="font-size: 14px; font-weight: 700; color: var(--text-mid);">{{ selected_plan.target }}</div>
+    </div>
+    <div class="card" style="padding: 20px; border-top: 2px solid var(--sky); cursor: pointer;" onclick="window.print()">
+        <div style="font-size: 11px; color: var(--text-low); letter-spacing: 0.1em; margin-bottom: 8px;">OFFLINE_BUFFER</div>
+        <div style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--sky);">PRINT // ⤓</div>
+    </div>
+</div>
+
+<div class="evolution-timeline">
+    {% for week in timeline %}
+    <div class="timeline-node">
+        <div class="node-marker"><span>{{ week.week }}</span></div>
+        <div class="node-card">
+            <div class="node-header">
+                <div class="node-meta">
+                    <p>Phase Sequence {{ week.week }}</p>
+                    <h3>{{ week.themes[0] }}</h3>
+                </div>
+                <div class="tag" style="background:rgba(245,158,11,0.1); color:var(--primary); font-family:var(--font-mono);">{{ week.focuses[0] }}</div>
+            </div>
+            
+            <div class="task-stack">
+                {% for task in week.tasks %}
+                <div class="task-hex">
+                    <i>◈</i>
+                    <span>{{ task }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="card" style="text-align:center; padding:80px 32px;">
+    <div style="font-size:64px; margin-bottom:24px; opacity:0.5;">📋</div>
+    <h2 style="font-family:var(--font-head); font-size:24px; color:var(--text-high); margin-bottom:12px;">Strategic Sequence Required</h2>
+    <p style="color:var(--text-low); margin-bottom:32px; max-width:450px; margin-inline:auto;">Initialize a career evolution roadmap by selecting an objective vector from the terminal above.</p>
+    <div style="display:flex; gap:16px; justify-content:center;">
+        <a href="/plan?skill=low_aptitude" class="btn btn-primary">Initialize Aptitude Protocol</a>
+        <a href="/improvement" class="btn btn-outline">Return to Synthesis</a>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

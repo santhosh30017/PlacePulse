@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% block title %}Predictive Intelligence — PlaceIQ{% endblock %}
+{% block page_title %}Predictive Intelligence{% endblock %}
+{% block page_sub %}System-wide telemetry and neural model performance synthesis.{% endblock %}
+
+{% block topbar_actions %}
+<a href="/export/predictions" class="btn btn-outline">◈ Export Telemetry</a>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.analytics-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+
+.chart-box {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 28px; position: relative; overflow: hidden;
+}
+.chart-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(245,158,11,0.04), transparent 70%);
+    pointer-events: none;
+}
+
+.metrics-wrap { overflow-x: auto; border-radius: var(--r-md); border: 1px solid var(--border); }
+.mtable { width: 100%; border-collapse: separate; border-spacing: 0 6px; padding: 8px; }
+.mtable th {
+    text-align: left; padding: 10px 16px; font-size: 10px; font-weight: 800;
+    color: var(--text-l); text-transform: uppercase; letter-spacing: 0.1em;
+}
+.mtable td { padding: 14px 16px; background: rgba(255,255,255,0.02); font-size: 13px; }
+.mtable tr td:first-child { border-radius: 10px 0 0 10px; }
+.mtable tr td:last-child  { border-radius: 0 10px 10px 0; }
+
+.insight-row {
+    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; gap: 14px; align-items: flex-start; transition: var(--t);
+}
+.insight-row:hover { padding-left: 8px; }
+.insight-row:last-child { border-bottom: none; }
+
+.graph-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+.graph-card {
+    background: rgba(255,255,255,0.012); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 22px; overflow: hidden; transition: var(--t);
+}
+.graph-card:hover { border-color: var(--border-h); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+.graph-card img { width: 100%; border-radius: 8px; display: block; }
+
+@media(max-width:900px) { .analytics-hero, .graph-duo { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- KPI STRIP ──────────────────────────────────────── -->
+<div class="stat-grid">
+    <div class="stat-card" style="--accent-color:var(--amber);--accent-glow:rgba(245,158,11,0.1)">
+        <div class="stat-value"><span class="counter">{{ analytics.total_predictions or 0 }}</span></div>
+        <div class="stat-label">Total Inferences</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--emerald);--accent-glow:rgba(16,185,129,0.1)">
+        <div class="stat-value" style="color:var(--emerald)"><span class="counter">{{ analytics.placed_count or 0 }}</span></div>
+        <div class="stat-label">Positive Verdicts</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--sky);--accent-glow:rgba(56,189,248,0.1)">
+        <div class="stat-value" style="color:var(--sky)"><span class="counter" data-decimals="1">{{ analytics.avg_probability or 0 }}</span>%</div>
+        <div class="stat-label">Median Confidence</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--violet);--accent-glow:rgba(139,92,246,0.1)">
+        <div class="stat-value" style="color:var(--amber)"><span class="counter" data-decimals="1">{{ analytics.placement_rate or 0 }}</span>%</div>
+        <div class="stat-label">System-Wide Efficacy</div>
+    </div>
+</div>
+
+<!-- LIVE CHARTS ─────────────────────────────────────── -->
+<div class="analytics-hero" id="analytics-data"
+     data-placed="{{ analytics.placed_count or 0 }}"
+     data-not-placed="{{ analytics.not_placed_count or 0 }}"
+     data-models='{{ metrics.models|tojson|safe if metrics and metrics.models else "[]" }}'>
+
+    <div class="chart-box">
+        <div class="card-title">Verdict Distribution</div>
+        <div style="height:240px; margin-top:16px;"><canvas id="pred-chart"></canvas></div>
+    </div>
+    <div class="chart-box">
+        <div class="card-title">Neural Convergence</div>
+        <div style="height:240px; margin-top:16px;"><canvas id="model-radar"></canvas></div>
+    </div>
+</div>
+
+<!-- MODEL TABLE ─────────────────────────────────────── -->
+{% if metrics and metrics.models %}
+<div class="card" style="padding:28px; margin-bottom:28px;">
+    <div class="card-title">Ensemble Architecture Performance</div>
+    <div class="metrics-wrap">
+        <table class="mtable">
+            <thead>
+                <tr>
+                    <th>Architecture</th>
+                    <th>Accuracy</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1 Score</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in metrics.models %}
+                <tr>
+                    <td style="font-weight:800;color:var(--text-h);">{{ m.name|upper }}</td>
+                    <td>
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <div style="width:56px;height:4px;background:rgba(255,255,255,0.05);border-radius:100px;overflow:hidden;">
+                                <div class="ai-bar-fill" data-pct="{{ (m.accuracy*100)|round|int }}"
+                                     style="height:100%;border-radius:100px;width:0%;background:var(--amber);transition:width 1.2s ease;"></div>
+                            </div>
+                            <span style="font-family:var(--font-mono);font-size:12px;">{{ (m.accuracy*100)|round(1) }}%</span>
+                        </div>
+                    </td>
+                    <td style="font-family:var(--font-mono);font-size:12px">{{ (m.precision*100)|round(1) }}%</td>
+                    <td style="font-family:var(--font-mono);font-size:12px">{{ (m.recall*100)|round(1) }}%</td>
+                    <td style="font-family:var(--font-mono);font-size:13px;font-weight:800;color:var(--amber)">{{ (m.f1*100)|round(1) }}%</td>
+                    <td>
+                        {% if m.name == metrics.best_model %}
+                        <span class="badge badge-emerald">✓ OPTIMAL</span>
+                        {% else %}
+                        <span style="font-size:10px;color:var(--text-l);text-transform:uppercase;letter-spacing:0.06em">Active</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<!-- GRAPH DUO ───────────────────────────────────────── -->
+<div class="graph-duo">
+    <div class="graph-card">
+        <div class="card-title" style="margin-bottom:16px;">Model Comparison</div>
+        <img src="/static/graphs/model_comparison.png" onerror="this.parentElement.style.display='none'" alt="Model comparison">
+    </div>
+    <div class="graph-card">
+        <div class="card-title" style="margin-bottom:16px;">ROC Characteristic Curve</div>
+        <img src="/static/graphs/roc_curve.png" onerror="this.parentElement.style.display='none'" alt="ROC curve">
+    </div>
+</div>
+
+<!-- INSIGHTS ────────────────────────────────────────── -->
+{% if insights %}
+<div class="card" style="padding:28px;">
+    <div class="card-title">Cognitive Dataset Insights</div>
+    <div style="margin-top:12px;">
+        {% for ins in insights %}
+        <div class="insight-row">
+            <span style="font-size:18px;opacity:0.6;flex-shrink:0">{{ ['✦','⊕','◈','⟡','⬡','◇'][loop.index0%6] }}</span>
+            <div style="font-size:13.5px;color:var(--text-m);line-height:1.6">{{ ins }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+const ChartDefaults = {
+    font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+    legend: { labels: { color: '#f8fafc', usePointStyle: true, boxWidth: 6, padding: 16 } }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.counter').forEach(el => {
+        el.dataset.target = el.textContent;
+        counterObserver.observe(el);
+    });
+    setTimeout(() => {
+        document.querySelectorAll('.ai-bar-fill').forEach(b => { b.style.width = b.dataset.pct + '%'; });
+    }, 500);
+
+    const dataEl = document.getElementById('analytics-data');
+    if (!dataEl) return;
+    const placed    = parseInt(dataEl.dataset.placed);
+    const notPlaced = parseInt(dataEl.dataset.notPlaced);
+    const models    = JSON.parse(dataEl.dataset.models);
+
+    // Donut
+    const predCtx = document.getElementById('pred-chart');
+    if (predCtx) {
+        new Chart(predCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Placed', 'Not Placed'],
+                datasets: [{
+                    data: [placed, notPlaced],
+                    backgroundColor: ['#10b981', '#fb7185'],
+                    hoverBackgroundColor: ['#34d399', '#ff8fa3'],
+                    borderWidth: 0, hoverOffset: 12
+                }]
+            },
+            options: {
+                maintainAspectRatio: false, cutout: '72%',
+                plugins: {
+                    legend: Object.assign({ position: 'bottom' }, ChartDefaults.legend)
+                }
+            }
+        });
+    }
+
+    // Radar
+    const colors   = ['#f59e0b','#fb7185','#34d399','#38bdf8'];
+    const bgColors = ['rgba(245,158,11,0.08)','rgba(251,113,133,0.08)','rgba(52,211,153,0.08)','rgba(56,189,248,0.08)'];
+    const radarCtx = document.getElementById('model-radar');
+    if (radarCtx && models.length) {
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Accuracy','Precision','Recall','F1'],
+                datasets: models.map((m,i) => ({
+                    label: m.name.toUpperCase(),
+                    data: [m.accuracy*100, m.precision*100, m.recall*100, m.f1*100],
+                    borderColor: colors[i%4], backgroundColor: bgColors[i%4],
+                    borderWidth: 2, pointRadius: 3, pointBackgroundColor: colors[i%4]
+                }))
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: { r: {
+                    min: 40, max: 100,
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    angleLines: { color: 'rgba(255,255,255,0.05)' },
+                    pointLabels: { color: '#94a3b8', font: { size: 10 } },
+                    ticks: { display: false }
+                }},
+                plugins: { legend: Object.assign({ position: 'bottom' }, ChartDefaults.legend) }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+git_bulk.py
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+.DS_Store
+instance/
+static/graphs/*.png
+database/*.db
+ai_placement_system/database/*.db
+ai_placement_system/static/graphs/*.png
+ai_placement_system/__pycache__
+search_results
+evaluation/
+ai_placement_system/evaluation/

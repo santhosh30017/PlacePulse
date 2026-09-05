@@ -1,0 +1,249 @@
+{
+  "categories": {
+    "machine_learning": {
+      "label": "Machine Learning & AI",
+      "icon": "🤖",
+      "weakness_tags": ["low_aptitude", "low_projects", "low_experience"],
+      "projects": [
+        {
+          "id": "ml_01",
+          "title": "Student Placement Predictor",
+          "description": "Build an ML model that predicts student placement probability using real college data. Train Logistic Regression, Random Forest, and evaluate with confusion matrix.",
+          "difficulty": "Beginner",
+          "duration": "2 weeks",
+          "tech_stack": ["Python", "scikit-learn", "pandas", "matplotlib"],
+          "skills_gained": ["Data preprocessing", "Model training", "Evaluation metrics"],
+          "github_search": "placement prediction machine learning"
+        },
+        {
+          "id": "ml_02",
+          "title": "Resume Screening System",
+          "description": "NLP-based system that automatically screens resumes and ranks candidates by job relevance using TF-IDF and cosine similarity.",
+          "difficulty": "Intermediate",
+          "duration": "3 weeks",
+          "tech_stack": ["Python", "NLTK", "scikit-learn", "Flask"],
+          "skills_gained": ["NLP", "Text processing", "Web deployment"],
+          "github_search": "resume screening nlp python"
+        },
+        {
+          "id": "ml_03",
+          "title": "Fake News Detector",
+          "description": "Binary text classification using BERT or Logistic Regression on the LIAR dataset. Deploy as a REST API.",
+          "difficulty": "Intermediate",
+          "duration": "3 weeks",
+          "tech_stack": ["Python", "Transformers", "Flask", "pandas"],
+          "skills_gained": ["NLP", "Transformers", "API design"],
+          "github_search": "fake news detection python bert"
+        },
+        {
+          "id": "ml_04",
+          "title": "Crop Yield Prediction",
+          "description": "Predict crop yield using weather and soil data. A great project for showcasing regression and feature engineering skills.",
+          "difficulty": "Beginner",
+          "duration": "2 weeks",
+          "tech_stack": ["Python", "scikit-learn", "seaborn", "pandas"],
+          "skills_gained": ["Regression", "EDA", "Feature engineering"],
+          "github_search": "crop yield prediction machine learning"
+        },
+        {
+          "id": "ml_05",
+          "title": "Customer Churn Predictor",
+          "description": "Predict which telecom customers will churn using classification models. Include SHAP values for explainability.",
+          "difficulty": "Intermediate",
+          "duration": "2-3 weeks",
+          "tech_stack": ["Python", "XGBoost", "SHAP", "Streamlit"],
+          "skills_gained": ["Classification", "XGBoost", "Explainability", "Streamlit"],
+          "github_search": "customer churn prediction xgboost"
+        }
+      ]
+    },
+    "web_development": {
+      "label": "Web Development",
+      "icon": "🌐",
+      "weakness_tags": ["low_projects", "low_experience", "low_soft_skills"],
+      "projects": [
+        {
+          "id": "web_01",
+          "title": "Personal Portfolio Website",
+          "description": "Build a responsive portfolio with your resume, projects, skills, and contact info. Deploy on GitHub Pages or Netlify for free.",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "tech_stack": ["HTML", "CSS", "JavaScript"],
+          "skills_gained": ["HTML/CSS", "Responsive design", "Deployment"],
+          "github_search": "portfolio website html css javascript"
+        },
+        {
+          "id": "web_02",
+          "title": "Student Result Management System",
+          "description": "Full-stack CRUD app to manage student marks, generate grade reports, and export PDFs. Great LinkedIn project.",
+          "difficulty": "Intermediate",
+          "duration": "3 weeks",
+          "tech_stack": ["Flask", "SQLite", "Bootstrap", "Python"],
+          "skills_gained": ["Backend dev", "Database", "PDF generation"],
+          "github_search": "student result management flask python"
+        },
+        {
+          "id": "web_03",
+          "title": "Job Portal Clone",
+          "description": "Build a mini LinkedIn/Naukri clone with job listings, resume upload, and search. Cover authentication, role-based access, and REST APIs.",
+          "difficulty": "Advanced",
+          "duration": "5-6 weeks",
+          "tech_stack": ["React", "Node.js", "MongoDB", "Express"],
+          "skills_gained": ["Full-stack", "REST API", "Auth", "NoSQL"],
+          "github_search": "job portal mern stack"
+        },
+        {
+          "id": "web_04",
+          "title": "E-commerce Product Dashboard",
+          "description": "Build a product management dashboard with charts, inventory tracking, and sales analytics.",
+          "difficulty": "Intermediate",
+          "duration": "3-4 weeks",
+          "tech_stack": ["Django", "Chart.js", "Bootstrap", "PostgreSQL"],
+          "skills_gained": ["Django", "ORM", "Data visualization"],
+          "github_search": "ecommerce dashboard django"
+        }
+      ]
+    },
+    "data_science": {
+      "label": "Data Science & Analytics",
+      "icon": "📊",
+      "weakness_tags": ["low_aptitude", "low_cgpa", "low_projects"],
+      "projects": [
+        {
+          "id": "ds_01",
+          "title": "COVID-19 Data Analysis",
+          "description": "Analyze global COVID-19 data to uncover trends in case fatality rates, vaccination progress, and country comparisons using pandas and Plotly.",
+          "difficulty": "Beginner",
+          "duration": "1-2 weeks",
+          "tech_stack": ["Python", "pandas", "Plotly", "Jupyter"],
+          "skills_gained": ["EDA", "Data visualization", "Storytelling"],
+          "github_search": "covid data analysis python pandas"
+        },
+        {
+          "id": "ds_02",
+          "title": "Stock Price Dashboard",
+          "description": "Interactive dashboard showing stock prices, moving averages, and RSI indicators using yfinance and Streamlit.",
+          "difficulty": "Intermediate",
+          "duration": "2 weeks",
+          "tech_stack": ["Python", "yfinance", "Streamlit", "Plotly"],
+          "skills_gained": ["Time series", "Streamlit", "Finance analytics"],
+          "github_search": "stock price dashboard streamlit python"
+        },
+        {
+          "id": "ds_03",
+          "title": "IPL Match Analysis",
+          "description": "Deep dive into IPL ball-by-ball data. Identify top performers, win factors, and toss impact with Seaborn visualizations.",
+          "difficulty": "Beginner",
+          "duration": "1-2 weeks",
+          "tech_stack": ["Python", "pandas", "seaborn", "Jupyter"],
+          "skills_gained": ["Sports analytics", "Groupby", "Visualization"],
+          "github_search": "IPL data analysis python jupyter"
+        },
+        {
+          "id": "ds_04",
+          "title": "Sales Forecasting with Prophet",
+          "description": "Use Facebook Prophet to forecast quarterly sales for a retail dataset. Visualize seasonal trends and anomalies.",
+          "difficulty": "Intermediate",
+          "duration": "2-3 weeks",
+          "tech_stack": ["Python", "Prophet", "pandas", "Matplotlib"],
+          "skills_gained": ["Time series forecasting", "Prophet", "Business analytics"],
+          "github_search": "sales forecasting facebook prophet python"
+        }
+      ]
+    },
+    "python_automation": {
+      "label": "Python & Automation",
+      "icon": "🐍",
+      "weakness_tags": ["low_projects", "low_experience"],
+      "projects": [
+        {
+          "id": "py_01",
+          "title": "Automated Resume Builder",
+          "description": "Python script that takes a JSON profile and generates a formatted PDF resume using ReportLab or python-docx.",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "tech_stack": ["Python", "ReportLab", "python-docx", "Jinja2"],
+          "skills_gained": ["File I/O", "PDF generation", "Templating"],
+          "github_search": "automated resume generator python pdf"
+        },
+        {
+          "id": "py_02",
+          "title": "Web Scraper + Job Alert Bot",
+          "description": "Scrape Naukri/LinkedIn daily using BeautifulSoup, match keywords to your profile, and send email alerts via smtplib.",
+          "difficulty": "Intermediate",
+          "duration": "2 weeks",
+          "tech_stack": ["Python", "BeautifulSoup", "smtplib", "schedule"],
+          "skills_gained": ["Web scraping", "Automation", "Email API"],
+          "github_search": "web scraper job alert python"
+        },
+        {
+          "id": "py_03",
+          "title": "Expense Tracker CLI",
+          "description": "Command-line expense tracker that stores transactions in SQLite, generates monthly summaries, and exports to CSV.",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "tech_stack": ["Python", "SQLite", "argparse", "pandas"],
+          "skills_gained": ["SQLite", "CLI apps", "File I/O"],
+          "github_search": "expense tracker python sqlite cli"
+        },
+        {
+          "id": "py_04",
+          "title": "PDF Invoice Generator",
+          "description": "Auto-generate professional PDF invoices from CSV order data. Include logo, itemized table, GST calculation, and total.",
+          "difficulty": "Beginner",
+          "duration": "1 week",
+          "tech_stack": ["Python", "ReportLab", "pandas"],
+          "skills_gained": ["Business automation", "PDF generation"],
+          "github_search": "invoice generator python reportlab"
+        }
+      ]
+    },
+    "mini_projects": {
+      "label": "Quick Win Mini Projects",
+      "icon": "⚡",
+      "weakness_tags": ["low_projects", "low_experience", "no_internships"],
+      "projects": [
+        {
+          "id": "mini_01",
+          "title": "Password Strength Checker",
+          "description": "Build a tool that evaluates password strength using regex and gives user feedback. Deploy as a simple Flask web app.",
+          "difficulty": "Beginner",
+          "duration": "2 days",
+          "tech_stack": ["Python", "Flask", "JavaScript"],
+          "skills_gained": ["Regex", "Web basics"],
+          "github_search": "password strength checker python flask"
+        },
+        {
+          "id": "mini_02",
+          "title": "Weather App",
+          "description": "Fetch live weather data from OpenWeatherMap API and display current conditions, forecast, and a city search feature.",
+          "difficulty": "Beginner",
+          "duration": "3 days",
+          "tech_stack": ["Python", "Flask", "OpenWeatherMap API", "HTML/CSS"],
+          "skills_gained": ["REST APIs", "JSON parsing", "Web UI"],
+          "github_search": "weather app python flask openweathermap"
+        },
+        {
+          "id": "mini_03",
+          "title": "Quiz Generator from PDF",
+          "description": "Extract text from a PDF and auto-generate MCQ questions using NLP sentence parsing.",
+          "difficulty": "Intermediate",
+          "duration": "1 week",
+          "tech_stack": ["Python", "PyPDF2", "NLTK", "Flask"],
+          "skills_gained": ["PDF parsing", "NLP", "MCQ generation"],
+          "github_search": "quiz generator pdf python nlp"
+        },
+        {
+          "id": "mini_04",
+          "title": "URL Shortener",
+          "description": "Build a Redis-backed URL shortener with click tracking, expiry, and a dashboard showing analytics.",
+          "difficulty": "Intermediate",
+          "duration": "1 week",
+          "tech_stack": ["Flask", "Redis", "SQLite", "Bootstrap"],
+          "skills_gained": ["Caching", "Hash functions", "Analytics"],
+          "github_search": "url shortener flask redis python"
+        }
+      ]
+    }
+  }
+}

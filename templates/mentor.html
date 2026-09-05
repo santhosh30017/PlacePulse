@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}Mentor Intelligence – PlaceIQ{% endblock %}
+{% block page_title %}Administrative Authority{% endblock %}
+{% block page_sub %}Orchestrate institutional placement readiness and risk mitigation.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .mentor-layout { display: grid; grid-template-columns: 360px 1fr; gap: 24px; }
+    
+    .risk-list { max-height: 640px; overflow-y: auto; padding-right: 8px; }
+    .risk-list::-webkit-scrollbar { width: 4px; }
+    .risk-list::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 10px; }
+
+    .student-entry {
+        background: var(--card-glass); border: 1px solid var(--border-glass);
+        border-radius: 12px; padding: 16px; margin-bottom: 12px;
+        display: flex; justify-content: space-between; align-items: center;
+        transition: var(--transition); cursor: pointer; position: relative;
+    }
+    .student-entry:hover { transform: translateX(4px); border-color: var(--border-hover); background: rgba(255,255,255,0.03); }
+    
+    .student-entry.severity-high { border-left: 4px solid #fb7185; }
+    .student-entry.severity-low { border-left: 4px solid #34d399; }
+
+    .radial-score {
+        width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--border-glass);
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-mono); font-size: 13px; font-weight: 800;
+    }
+
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .action-tile {
+        background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass);
+        padding: 20px; border-radius: 16px; text-align: center; transition: var(--transition);
+        cursor: pointer;
+    }
+    .action-tile:hover { background: rgba(255,255,255,0.05); border-color: var(--primary); transform: translateY(-4px); }
+    .action-tile i { font-size: 24px; margin-bottom: 12px; display: block; opacity: 0.8; }
+    .action-tile strong { display: block; font-size: 13px; color: var(--text-high); margin-bottom: 4px; }
+    .action-tile span { font-size: 11px; color: var(--text-low); }
+
+    .matrix-card { 
+        background: rgba(255,255,255,0.01); border: 1px solid var(--border-glass); 
+        border-radius: var(--radius-lg); padding: 24px; 
+    }
+
+    @media (max-width: 1100px) { .mentor-layout { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="stat-grid" style="margin-bottom: 32px;">
+    <div class="stat-card" style="--accent-color:var(--primary)">
+        <div class="stat-value">{{ total_students }}</div>
+        <div class="stat-label">Active Candidates</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--rose)">
+        <div class="stat-value" style="color:#fb7185">{{ at_risk|length }}</div>
+        <div class="stat-label">Risk Threshold Infractions</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--emerald)">
+        <div class="stat-value" style="color:#34d399">{{ top_students|length }}</div>
+        <div class="stat-label">Elite Performers (Alpha)</div>
+    </div>
+    <div class="stat-card" style="--accent-color:var(--yellow)">
+        <div class="stat-value">{{ common_weaknesses|length }}</div>
+        <div class="stat-label">Shared Vulnerabilities</div>
+    </div>
+</div>
+
+<div class="mentor-layout">
+    <div class="card" style="padding: 24px;">
+        <div class="card-title" style="color:#fb7185">🚨 Critical Interventions</div>
+        <p style="font-size:12px; color:var(--text-low); margin-bottom:20px;">Candidates requiring immediate recursive mentoring due to high risk markers.</p>
+        
+        <div class="risk-list">
+            {% for s in at_risk %}
+            <div class="student-entry severity-high">
+                <div>
+                    <div style="font-weight:700; color:var(--text-high); font-size:15px;">{{ s.student_name }}</div>
+                    <div style="font-size:11px; color:#fb7185; font-weight:700; margin-top:4px; text-transform:uppercase; letter-spacing:0.05em;">{{ s.severity }}</div>
+                </div>
+                <div class="radial-score" style="color:#fb7185; border-color:rgba(251,113,133,0.3)">{{ s.probability|round|int }}%</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:24px;">
+        <div class="grid-2">
+            <div class="matrix-card">
+                <div class="card-title">🔥 Vulnerability Heatmap</div>
+                <div style="margin-top:20px;">
+                    {% for label, count in common_weaknesses %}
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.03)">
+                        <span style="font-size:13px; font-weight:600; color:var(--text-mid)">{{ label|upper }}</span>
+                        <span style="font-family:var(--font-mono); font-size:11px; padding:4px 10px; background:rgba(245,158,11,0.1); color:var(--primary); border-radius:6px; border:1px solid rgba(245,158,11,0.2)">{{ count }} CANDIDATES</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="matrix-card">
+                <div class="card-title" style="color:#34d399">⭐ Elite Cohort</div>
+                <div class="risk-list" style="max-height:300px;">
+                    {% for s in top_students %}
+                    <div class="student-entry severity-low">
+                        <div style="font-weight:700; color:var(--text-high);">{{ s.student_name }}</div>
+                        <div class="radial-score" style="color:#34d399; border-color:rgba(52,211,153,0.3)">{{ s.probability|round|int }}%</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="padding: 24px;">
+            <div class="card-title">◈ Administrative Protocols</div>
+            <div class="action-grid">
+                <div class="action-tile">
+                    <i>📧</i>
+                    <strong>Broad-Spectrum Alert</strong>
+                    <span>Notify all at-risk cohorts via SMTP protocol.</span>
+                </div>
+                <div class="action-tile">
+                    <i>📅</i>
+                    <strong>Orchestrate Workshop</strong>
+                    <span>Schedule synchronous aptitude reinforcement.</span>
+                </div>
+                <a href="/report" class="action-tile" style="text-decoration: none;">
+                    <i>📊</i>
+                    <strong>Aggregate Report</strong>
+                    <span>Synthesize department-level readiness data.</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

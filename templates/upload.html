@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+{% block title %}Data Ingestion – PlaceIQ{% endblock %}
+{% block page_title %}Ingestion Terminal{% endblock %}
+{% block page_sub %}Inject institutional datasets to recalibrate neural architectures.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .upload-container { display: grid; grid-template-columns: 1fr 400px; gap: 32px; align-items: start; }
+    
+    .ingestion-zone {
+        border: 2px dashed var(--border-glass); border-radius: var(--radius-lg);
+        padding: 64px 32px; text-align: center; cursor: pointer;
+        background: rgba(255,255,255,0.01); transition: var(--transition);
+        position: relative; overflow: hidden;
+    }
+    .ingestion-zone:hover, .ingestion-zone.drag-over {
+        border-color: var(--primary); background: rgba(245,158,11,0.03);
+        transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .ingestion-zone i { font-size: 48px; display: block; margin-bottom: 20px; opacity: 0.8; }
+    .ingestion-zone h3 { font-family: var(--font-head); font-size: 18px; color: var(--text-high); margin-bottom: 8px; }
+    .ingestion-zone p { font-size: 13px; color: var(--text-low); }
+
+    .telemetry-pane {
+        display: none; margin-top: 24px; padding: 24px;
+        background: var(--card-glass); border: 1px solid var(--border-glass);
+        border-radius: 16px; backdrop-filter: blur(12px);
+    }
+    
+    .status-bridge { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .status-bridge span { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; }
+
+    .progress-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
+    .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 0 15px rgba(245,158,11,0.4); }
+
+    .schema-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+    .schema-item {
+        background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass);
+        padding: 14px 18px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .schema-item .meta { display: flex; flex-direction: column; gap: 2px; }
+    .schema-item .name { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--primary); }
+    .schema-item .desc { font-size: 11px; color: var(--text-low); }
+    .schema-item .tag { font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+
+    .step-chronology { margin-top: 32px; border-top: 1px solid var(--border-glass); padding-top: 24px; }
+    .chron-item { display: flex; gap: 16px; margin-bottom: 20px; }
+    .chron-marker { 
+        width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.05);
+        display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+        font-size: 11px; font-weight: 800; flex-shrink: 0; color: var(--text-mid);
+    }
+    .chron-text h4 { font-size: 13.5px; color: var(--text-high); margin-bottom: 4px; }
+    .chron-text p { font-size: 12px; color: var(--text-low); line-height: 1.5; }
+
+    @media (max-width: 1000px) { .upload-container { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="upload-container">
+    <div>
+        <div class="card" style="padding: 32px;">
+            <div class="card-title">Neural Data Ingestion</div>
+            <p style="color:var(--text-mid); font-size:14px; margin-bottom:24px;">Drop institutional telemetry files to initiate autonomous model recalibration and global feature synchronization.</p>
+            
+            <div class="ingestion-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+                <i>📊</i>
+                <h3>Upload Institutional Core</h3>
+                <p>Drag & drop institutional CSV or browse internal files<br><span style="color:var(--text-low); font-size:11px; margin-top:8px; display:block;">MAX 16MB • STANDARDIZED CSV FORMAT ONLY</span></p>
+                <input type="file" id="file-input" accept=".csv" style="display:none">
+            </div>
+
+            <div class="telemetry-pane" id="upload-progress">
+                <div class="status-bridge">
+                    <span id="file-name" style="color:var(--text-mid)">DATASET_CORE_2024.CSV</span>
+                    <span id="upload-status" style="color:var(--primary)">SYNCHRONIZING...</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" id="progress-bar"></div></div>
+                <p id="progress-message" style="font-size:12px; color:var(--text-low); font-family:var(--font-mono);">Validating row integrity and feature mapping...</p>
+            </div>
+
+            <div class="step-chronology">
+                <div class="chron-item">
+                    <div class="chron-marker" style="color:var(--primary); background:rgba(245,158,11,0.1)">01</div>
+                    <div class="chron-text">
+                        <h4>Integrity Validation</h4>
+                        <p>Handling missing vectors, standardizing categorical columns, and enforcing architectural data types.</p>
+                    </div>
+                </div>
+                <div class="chron-item">
+                    <div class="chron-marker">02</div>
+                    <div class="chron-text">
+                        <h4>Feature Synthesis</h4>
+                        <p>Recursive engineering of academic, experience, and skill-based vectors from raw institutional telemetry.</p>
+                    </div>
+                </div>
+                <div class="chron-item">
+                    <div class="chron-marker">03</div>
+                    <div class="chron-text">
+                        <h4>Neural Recalibration</h4>
+                        <p>Retraining the ensemble architecture (Logistic, RF, SVM, XGB) on the refined dataset core.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="card" style="padding: 24px;">
+            <div class="card-title">Architectural Schema</div>
+            <p style="font-size:12.5px; color:var(--text-low); margin-bottom:20px;">The system automatically identifies the following feature vectors:</p>
+            
+            <div class="schema-grid">
+                <div class="schema-item">
+                    <div class="meta">
+                        <span class="name">CGPA</span>
+                        <span class="desc">Academic density (0–10)</span>
+                    </div>
+                    <span class="tag" style="background:rgba(251,113,133,0.1); color:#fb7185; border:1px solid rgba(251,113,133,0.2)">Required</span>
+                </div>
+                <div class="schema-item">
+                    <div class="meta">
+                        <span class="name">Internships</span>
+                        <span class="desc">Industrial experience count</span>
+                    </div>
+                    <span class="tag" style="background:rgba(251,113,133,0.1); color:#fb7185; border:1px solid rgba(251,113,133,0.2)">Required</span>
+                </div>
+                <div class="schema-item">
+                    <div class="meta">
+                        <span class="name">AptitudeScore</span>
+                        <span class="desc">Cognitive baseline (0–100)</span>
+                    </div>
+                    <span class="tag" style="background:rgba(251,113,133,0.1); color:#fb7185; border:1px solid rgba(251,113,133,0.2)">Required</span>
+                </div>
+                <div class="schema-item">
+                    <div class="meta">
+                        <span class="name">PlacementStatus</span>
+                        <span class="desc">Training labels (0/1)</span>
+                    </div>
+                    <span class="tag" style="background:rgba(251,113,133,0.1); color:#fb7185; border:1px solid rgba(251,113,133,0.2)">Required</span>
+                </div>
+                <div class="schema-item">
+                    <div class="meta">
+                        <span class="name">Projects</span>
+                        <span class="desc">Architectural portfolios</span>
+                    </div>
+                    <span class="tag" style="background:rgba(255,255,255,0.05); color:var(--text-low);">Optional</span>
+                </div>
+                <div class="schema-item">
+                    <div class="meta">
+                        <span class="name">SoftSkills</span>
+                        <span class="desc">Communication rating (1–5)</span>
+                    </div>
+                    <span class="tag" style="background:rgba(255,255,255,0.05); color:var(--text-low);">Optional</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const zone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+});
+fileInput.addEventListener('change', () => {
+    if (fileInput.files[0]) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file) {
+    if (!file.name.endsWith('.csv')) {
+        showToast('INCORRECT_FORMAT: CSV REQUIRED', 'error');
+        return;
+    }
+
+    document.getElementById('file-name').textContent = file.name.toUpperCase();
+    const progressPane = document.getElementById('upload-progress');
+    progressPane.style.display = 'block';
+
+    const bar = document.getElementById('progress-bar');
+    const msg = document.getElementById('progress-message');
+    const status = document.getElementById('upload-status');
+
+    const steps = [
+        [20, 'INITIALIZING_INGESTION...'],
+        [40, 'VALIDATING_INTEGRITY_VECTORS...'],
+        [70, 'RECALIBRATING_NEURAL_MODELS...'],
+        [90, 'SYNCHRONIZING_TELEMETRY...']
+    ];
+
+    let si = 0;
+    const interval = setInterval(() => {
+        if (si < steps.length) {
+            bar.style.width = steps[si][0] + '%';
+            msg.textContent = steps[si][1];
+            si++;
+        }
+    }, 1200);
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('/upload', { method: 'POST', body: formData })
+        .then(r => r.json())
+        .then(d => {
+            clearInterval(interval);
+            bar.style.width = '100%';
+            if (d.success) {
+                msg.textContent = 'CORE_SYNCHRONIZATION_COMPLETE';
+                status.textContent = 'SUCCESS';
+                status.style.color = '#34d399';
+                showToast('Architectures recalibrated successfully.', 'success');
+                setTimeout(() => window.location.href = '/dashboard', 2000);
+            } else {
+                msg.textContent = 'ERROR: ' + d.error;
+                status.textContent = 'FAILED';
+                status.style.color = '#fb7185';
+                showToast('Ingestion protocol failed.', 'error');
+            }
+        })
+        .catch(() => {
+            clearInterval(interval);
+            showToast('NETWORK_TIMEOUT: SYSTEM_OFFLINE', 'error');
+            status.textContent = 'ERROR';
+            status.style.color = '#fb7185';
+        });
+}
+</script>
+{% endblock %}

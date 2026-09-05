@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Project Explorer – PlaceIQ{% endblock %}
+{% block page_title %}Architecture Explorer{% endblock %}
+{% block page_sub %}Categorized project prototypes to strengthen institutional candidacy.{% endblock %}
+
+{% block extra_head %}
+<style>
+    .project-layout { display: flex; gap: 32px; align-items: start; }
+    .project-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; }
+    .project-main { flex: 1; }
+
+    .cat-stack { display: flex; flex-direction: column; gap: 8px; }
+    .cat-anchor {
+        padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass);
+        border-radius: 12px; color: var(--text-mid); text-decoration: none; font-size: 13.5px;
+        display: flex; align-items: center; gap: 12px; transition: var(--transition);
+    }
+    .cat-anchor:hover { border-color: var(--primary); background: rgba(255,255,255,0.05); transform: translateX(4px); }
+    .cat-anchor.active { background: rgba(245,158,11,0.1); border-color: var(--primary); color: var(--primary); }
+    .cat-anchor .count { margin-left: auto; font-family: var(--font-mono); font-size: 10px; opacity: 0.6; }
+
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 24px; }
+    .proj-card {
+        background: var(--card-glass); border: 1px solid var(--border-glass);
+        border-radius: 20px; padding: 28px; display: flex; flex-direction: column;
+        transition: var(--transition); backdrop-filter: blur(12px);
+    }
+    .proj-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); border-color: var(--primary); }
+
+    .proj-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .proj-difficulty { font-family: var(--font-mono); font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 0.1em; }
+    .proj-time { font-size: 11px; color: var(--text-low); }
+
+    .proj-title { font-family: var(--font-head); font-size: 19px; color: var(--text-high); margin-bottom: 12px; }
+    .proj-desc { font-size: 13.5px; color: var(--text-low); line-height: 1.6; margin-bottom: 20px; flex: 1; }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .tech-pill { font-size: 10px; font-weight: 700; padding: 4px 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 6px; color: var(--text-mid); }
+
+    .benefit-patch {
+        background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.1);
+        padding: 16px; border-radius: 12px;
+    }
+    .benefit-patch label { font-size: 10px; font-weight: 800; color: var(--primary); text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .benefit-patch p { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+
+    @media (max-width: 1000px) { .project-layout { flex-direction: column; } .project-sidebar { width: 100%; position: static; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="project-layout">
+    <aside class="project-sidebar">
+        <div class="card" style="padding: 24px;">
+            <div class="card-title" style="margin-bottom: 16px;">Core Domains</div>
+            <div class="cat-stack">
+                {% for c in categories %}
+                <a href="/projects?cat={{ c.key }}" class="cat-anchor {% if selected_cat and selected_cat.key == c.key %}active{% endif %}">
+                    <span>{{ c.icon }}</span>
+                    <span>{{ c.label }}</span>
+                    <span class="count">{{ c.count }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </aside>
+    
+    <main class="project-main">
+        {% if selected_cat %}
+        <div style="margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+                <p style="font-family: var(--font-mono); font-size: 11px; color: var(--primary); margin-bottom: 4px;">DOMAIN_SYNTHESIS</p>
+                <h2 style="font-family: var(--font-head); font-size: 24px; color: var(--text-high);">{{ selected_cat.icon }} {{ selected_cat.label }}</h2>
+            </div>
+            <a href="/projects" class="btn btn-outline" style="font-size: 12px; padding: 8px 16px; border-radius: 8px;">Reset Filters</a>
+        </div>
+        
+        <div class="proj-grid">
+            {% for p in projects %}
+            <div class="proj-card">
+                <div class="proj-top">
+                    <span class="proj-difficulty">{{ p.difficulty }}</span>
+                    <span class="proj-time">{{ p.time_estimate }}</span>
+                </div>
+                <h3 class="proj-title">{{ p.title }}</h3>
+                <p class="proj-desc">{{ p.description }}</p>
+                
+                <div class="tag-cloud">
+                    {% for tech in p.tech_stack %}
+                    <span class="tech-pill">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="benefit-patch">
+                    <label>Placement Efficacy</label>
+                    <p>{{ p.benefit }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card" style="text-align:center; padding:100px 32px; backdrop-filter: blur(20px);">
+            <div style="font-size:72px; margin-bottom:24px; opacity:0.6;">🛠</div>
+            <h2 style="font-family:var(--font-head); font-size:28px; color:var(--text-high); margin-bottom:12px;">Architecture Synthesis Engine</h2>
+            <p style="max-width:480px; margin-inline:auto; color:var(--text-low); line-height:1.7; margin-bottom:32px;">
+                Select a technological domain from the navigation terminal to extract hand-picked architectural blueprints designed to maximize institutional placement throughput.
+            </p>
+            <div style="display:flex; gap:16px; justify-content:center;">
+                <a href="/projects?cat=machine_learning" class="btn btn-primary">Initialize ML Sequence</a>
+                <a href="/projects?cat=web_development" class="btn btn-outline">Analyze Web Systems</a>
+            </div>
+        </div>
+        {% endif %}
+    </main>
+</div>
+{% endblock %}
