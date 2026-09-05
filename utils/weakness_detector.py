@@ -224,3 +224,116 @@ def detect_weaknesses(data: dict) -> list[dict]:
             "threshold": 1,
             "message": "No workshops or certifications. Certifications show self-driven learning and fill resume gaps.",
             "improvement_hint": "Complete 1 free Kaggle or NPTEL course this month to get a verifiable certificate.",
+            "tag": "low_certifications",
+            "icon": "📜"
+        })
+    elif workshops < THRESHOLDS["workshops"]["low"] + 1:
+        weaknesses.append({
+            "field": "low_certifications",
+            "label": "Few Certifications",
+            "severity": "LOW",
+            "actual_value": workshops,
+            "threshold": 2,
+            "message": f"Only {workshops} certification(s). Getting 2–3 strong certs adds credibility to your profile.",
+            "improvement_hint": "Enrol in a Coursera specialization or Udemy course relevant to your target role.",
+            "tag": "low_certifications",
+            "icon": "📜"
+        })
+
+    # ----------------------------------------------------------------- Soft Skills
+    if soft_skills < THRESHOLDS["soft_skills"]["critical"]:
+        weaknesses.append({
+            "field": "low_soft_skills",
+            "label": "Poor Soft Skills",
+            "severity": "HIGH",
+            "actual_value": soft_skills,
+            "threshold": THRESHOLDS["soft_skills"]["critical"],
+            "message": f"Soft skills rating of {soft_skills}/5 is very low. Poor communication is one of the top reasons for placement failure.",
+            "improvement_hint": "Practice daily spoken English, join a GD group, and do mock HR interviews.",
+            "tag": "low_soft_skills",
+            "icon": "🗣"
+        })
+    elif soft_skills < THRESHOLDS["soft_skills"]["medium"]:
+        weaknesses.append({
+            "field": "low_soft_skills",
+            "label": "Average Soft Skills",
+            "severity": "MEDIUM",
+            "actual_value": soft_skills,
+            "threshold": THRESHOLDS["soft_skills"]["medium"],
+            "message": f"Soft skills rating {soft_skills}/5 is average. Strong communication skills differentiate candidates in HR rounds.",
+            "improvement_hint": "Practice STAR-format answers and improve body language for interviews.",
+            "tag": "low_soft_skills",
+            "icon": "🗣"
+        })
+
+    # ----------------------------------------------------------------- SSC / HSC
+    if ssc < THRESHOLDS["ssc_marks"]["critical"]:
+        weaknesses.append({
+            "field": "low_academic",
+            "label": "Low SSC Marks",
+            "severity": "MEDIUM",
+            "actual_value": ssc,
+            "threshold": THRESHOLDS["ssc_marks"]["critical"],
+            "message": f"SSC marks ({ssc:.1f}%) are low. Some companies check 10th board scores in shortlisting.",
+            "improvement_hint": "Focus on compensating with strong CGPA and more projects.",
+            "tag": "low_cgpa",
+            "icon": "📚"
+        })
+
+    if hsc < THRESHOLDS["hsc_marks"]["critical"]:
+        weaknesses.append({
+            "field": "low_academic",
+            "label": "Low HSC Marks",
+            "severity": "MEDIUM",
+            "actual_value": hsc,
+            "threshold": THRESHOLDS["hsc_marks"]["critical"],
+            "message": f"HSC marks ({hsc:.1f}%) are low. Some companies use 10+2 marks as secondary filter.",
+            "improvement_hint": "Strengthen your profile with certs and projects to compensate.",
+            "tag": "low_cgpa",
+            "icon": "📚"
+        })
+
+    # ----------------------------------------------------------------- Extracurriculars
+    if extracurr in ("no", "0", "false", "none"):
+        weaknesses.append({
+            "field": "no_extracurriculars",
+            "label": "No Extracurricular Activities",
+            "severity": "LOW",
+            "actual_value": 0,
+            "threshold": 1,
+            "message": "No extracurricular activities. Clubs, sports, and competitions show leadership and teamwork.",
+            "improvement_hint": "Join a technical club, participate in hackathons, or volunteer for college events.",
+            "tag": "no_extracurriculars",
+            "icon": "🏅"
+        })
+
+    # ----------------------------------------------------------------- Placement Training
+    if placement_tr in ("no", "0", "false", "none"):
+        weaknesses.append({
+            "field": "no_training",
+            "label": "No Placement Training",
+            "severity": "LOW",
+            "actual_value": 0,
+            "threshold": 1,
+            "message": "You have not attended placement training. Training bridges the gap between academics and industry expectations.",
+            "improvement_hint": "Attend your college TPO pre-placement training or enrol in an online bootcamp.",
+            "tag": "no_training",
+            "icon": "🎯"
+        })
+
+    # Sort by severity
+    weaknesses.sort(key=lambda w: SEVERITY_ORDER.get(w["severity"], 99))
+    return weaknesses
+
+
+def weakness_summary(weaknesses: list[dict]) -> dict:
+    """Return a counts-by-severity summary dict."""
+    summary = {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "total": len(weaknesses)}
+    for w in weaknesses:
+        summary[w["severity"]] = summary.get(w["severity"], 0) + 1
+    return summary
+
+
+def get_weakness_tags(weaknesses: list[dict]) -> list[str]:
+    """Return unique tag strings for matching against JSON data."""
+    return list({w["tag"] for w in weaknesses})
