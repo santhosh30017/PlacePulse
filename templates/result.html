@@ -141,3 +141,147 @@
     </div>
 
     <!-- DETAIL CARDS ─────────────────────────────────── -->
+    <div class="details-grid" id="detail-cards"></div>
+
+    <!-- CAREER SCORE ─────────────────────────────────── -->
+    <div class="card" style="padding:28px;margin-bottom:28px;" id="career-block">
+        <div class="card-title">Employability Score</div>
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:14px;">
+            <div style="font-family:var(--font-h);font-size:40px;font-weight:900;letter-spacing:-0.04em;" id="career-score-val">0</div>
+            <div style="flex:1">
+                <div class="career-bar-wrap"><div class="career-bar-fill" id="career-bar" style="width:0%"></div></div>
+                <div style="font-size:11px;color:var(--text-l);margin-top:8px;" id="career-label"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RECS ─────────────────────────────────────────── -->
+    <div class="card-title" style="margin-bottom:16px;">Personalised Recommendations</div>
+    <div class="rec-grid" id="rec-grid"></div>
+
+    <!-- SHAP / STRENGTH / GAPS ───────────────────────── -->
+    <div class="grid-2" style="margin-top:28px;">
+        <div class="card" style="padding:28px;">
+            <div class="card-title">Key Drivers</div>
+            <div id="positives-list"></div>
+        </div>
+        <div class="card" style="padding:28px;">
+            <div class="card-title">Improvement Areas</div>
+            <div id="negatives-list"></div>
+        </div>
+    </div>
+
+    <!-- AI SUMMARY ────────────────────────────────────── -->
+    <div class="card" style="padding:28px;margin-top:24px;" id="ai-sum-block">
+        <div class="card-title">AI Narrative Summary</div>
+        <p style="font-size:14px;color:var(--text-m);line-height:1.8;" id="ai-summary-text"></p>
+    </div>
+</div>
+
+<div id="no-result">
+    <div class="big">⬡</div>
+    <h2>No Result Data Found</h2>
+    <p style="font-size:14px;margin-bottom:28px;">Run a prediction first to see your detailed analysis here.</p>
+    <a href="/predict" class="btn btn-primary">✦ Start Prediction</a>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+const REC_COLORS = ['#f59e0b','#10b981','#38bdf8','#ec4899','#8b5cf6','#fb7185'];
+
+function buildResult(r) {
+    document.getElementById('result-content').style.display = '';
+    document.getElementById('no-result').style.display = 'none';
+
+    const placed = r.prediction === 'Placed';
+
+    // Hero fields
+    document.getElementById('r-name').textContent    = '🎓 ' + (r.student_name||'Student');
+    document.getElementById('r-verdict').className   = 'result-verdict ' + (placed ? 'verdict-placed' : 'verdict-notplaced');
+    document.getElementById('r-verdict').textContent = r.prediction;
+    document.getElementById('r-sub').textContent     = placed
+        ? `Congratulations! The AI engine projects a high likelihood of placement. Review your personalised roadmap below.`
+        : `The model identified growth areas. Follow the recommendations below - a stronger profile can significantly raise this score.`;
+
+    document.getElementById('r-cat-badge').textContent = r.category || '';
+    document.getElementById('r-model-badge').textContent = '🤖 ' + (r.model_used || 'Ensemble');
+
+    // Probability ring
+    const pct    = parseFloat(r.probability) || 0;
+    const color  = placed ? '#10b981' : '#fb7185';
+    const circle = document.getElementById('ring-circle');
+    circle.style.stroke = color;
+    circle.style.setProperty('--ring-color', color);
+    document.getElementById('r-pct').textContent = pct.toFixed(1) + '%';
+    document.getElementById('r-pct').style.color = color;
+    setTimeout(() => {
+        const dashOffset = 502 * (1 - pct / 100);
+        circle.style.strokeDashoffset = dashOffset;
+    }, 300);
+
+    // Detail cards
+    const dc = document.getElementById('detail-cards');
+    const details = [
+        { val: (r.input_data?.cgpa||'—'), lbl: 'CGPA', color: '#f59e0b' },
+        { val: (r.input_data?.internships||0),  lbl: 'Internships', color: '#10b981' },
+        { val: (r.input_data?.projects||0),     lbl: 'Projects', color: '#38bdf8' },
+        { val: (r.risk_score||'—'),             lbl: 'Risk Score', color: r.risk_score > 50 ? '#fb7185' : '#10b981' },
+    ];
+    dc.innerHTML = details.map(d => `
+        <div class="detail-card">
+            <div class="detail-val" style="color:${d.color}">${d.val}</div>
+            <div class="detail-lbl">${d.lbl}</div>
+        </div>`).join('');
+
+    // Career score
+    const cs = r.career_score;
+    if (cs) {
+        document.getElementById('career-score-val').textContent = cs.score || '';
+        document.getElementById('career-label').textContent = cs.band || '';
+        setTimeout(() => {
+            document.getElementById('career-bar').style.width = (cs.score || 0) + '%';
+        }, 400);
+    }
+
+    // Recommendations
+    const rg = document.getElementById('rec-grid');
+    const recs = r.recommendations || [];
+    rg.innerHTML = recs.map((rec, i) => `
+        <div class="rec-card" style="--rc-color:${REC_COLORS[i%6]}">
+            <div class="rec-header">
+                <div class="rec-icon">${rec.icon || '📌'}</div>
+                <div>
+                    <div class="rec-title">${rec.title}</div>
+                    <div class="rec-area">${rec.area || ''}</div>
+                </div>
+            </div>
+            <ul class="rec-steps">${(rec.steps||[]).map(s=>`<li>${s}</li>`).join('')}</ul>
+        </div>`).join('');
+
+    // Positives / Negatives
+    const pos = r.top_positive || [];
+    const neg = r.top_negative || [];
+    document.getElementById('positives-list').innerHTML = pos.length
+        ? pos.map(f=>`<div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;display:flex;gap:10px;align-items:center"><span style="color:#10b981;font-size:16px">↑</span><span>${f}</span></div>`).join('')
+        : '<div style="color:var(--text-l);font-size:13px;padding:16px 0">No strong positive signals detected.</div>';
+    document.getElementById('negatives-list').innerHTML = neg.length
+        ? neg.map(f=>`<div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;display:flex;gap:10px;align-items:center"><span style="color:#fb7185;font-size:16px">↓</span><span>${f}</span></div>`).join('')
+        : '<div style="color:var(--text-l);font-size:13px;padding:16px 0">No major negative signals detected.</div>';
+
+    // AI Summary
+    if (r.ai_summary) {
+        document.getElementById('ai-summary-text').textContent = r.ai_summary;
+    } else {
+        document.getElementById('ai-sum-block').style.display = 'none';
+    }
+}
+
+// Try session storage first
+const stored = sessionStorage.getItem('placeiq_result');
+if (stored) {
+    buildResult(JSON.parse(stored));
+}
+</script>
+{% endblock %}
