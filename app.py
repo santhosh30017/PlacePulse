@@ -403,3 +403,51 @@ def goal_analysis():
     current_prob = float(data.get('current', 50))
     
     gap = target - current_prob
+    if gap <= 0:
+        return jsonify({'message': 'You have already achieved your goal!', 'gap': 0})
+    
+    # Simple recommendation based on gap
+    tips = []
+    if gap > 20:
+        tips.append("Large improvement needed. Focus on both academics and technical projects.")
+    
+    return jsonify({
+        'gap': round(gap, 2),
+        'tips': tips,
+        'status': 'Analysis complete'
+    })
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ORIGINAL EXPORT ROUTE
+# ─────────────────────────────────────────────────────────────────────────────
+def export_predictions():
+    predictions = get_all_predictions()
+    if not predictions:
+        return "No predictions to export", 404
+    
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=[
+        'id', 'timestamp', 'student_name', 'cgpa', 'internships', 'projects',
+        'aptitude_score', 'probability', 'risk_score', 'category', 'prediction'
+    ])
+    writer.writeheader()
+    for p in predictions:
+        writer.writerow({k: p.get(k, '') for k in writer.fieldnames})
+    
+    output.seek(0)
+    return send_file(
+        io.BytesIO(output.getvalue().encode()),
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name='placement_predictions.csv'
+    )
+
+@app.route('/api/status')
+def status():
+    return jsonify({'ready': pipeline_ready, 'model_trained': os.path.exists(
+        os.path.join(app.root_path, 'model', 'best_model.pkl'))})
+
+if __name__ == '__main__':
+    init_db()
+    initialize_pipeline()
+    app.run(debug=True, port=5050, use_reloader=False)
