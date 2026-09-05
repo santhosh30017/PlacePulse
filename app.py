@@ -313,3 +313,48 @@ def mentor_dashboard():
     common_weaknesses = sorted(common_weaknesses.items(), key=lambda x: x[1], reverse=True)[:5]
     
     return render_template('mentor.html', 
+                           at_risk=at_risk[:10], 
+                           top_students=top_students[:10],
+                           common_weaknesses=common_weaknesses,
+                           total_students=len(predictions))
+
+@app.route('/report')
+def report_page():
+    return render_template('report.html')
+
+@app.route('/report/download')
+def download_report():
+    # In a real app, we'd pass the result data via session or ID
+    # For now, we'll try to reconstruct from the latest prediction
+    predictions = get_all_predictions()
+    if not predictions:
+        return "No report found", 404
+    
+    latest = predictions[0]
+    
+    # Re-build the full result for the report generator
+    from utils.weakness_detector import detect_weaknesses
+    from utils.career_score import compute_employability_score
+    from utils.recommendation_engine import generate_advanced_recommendations
+    
+    w = detect_weaknesses(latest)
+    cs = compute_employability_score(latest)
+    recs = generate_advanced_recommendations(latest, latest['probability'], w)
+    
+    latest['weaknesses'] = w
+    latest['career_score'] = cs
+    latest['recommendations'] = recs
+    
+    from utils.report_generator import generate_txt_report
+    from utils.llm_service import get_report_summary
+    
+    # Add AI summary to latest if missing
+    if not latest.get('ai_summary'):
+        latest['ai_summary'] = get_report_summary(latest, latest)
+
+    report_txt = generate_txt_report(latest)
+    
+    return send_file(
+        io.BytesIO(report_txt.encode()),
+        mimetype='text/plain',
+        as_attachment=True,
