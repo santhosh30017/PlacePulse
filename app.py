@@ -178,3 +178,48 @@ def dashboard():
         ('feature_importance', 'Feature Importance'),
         ('roc_curve', 'ROC Curve'),
         ('confusion_matrix', 'Confusion Matrix'),
+        ('model_comparison', 'Model Comparison'),
+    ]
+    existing_graphs = [(g, l) for g, l in graphs if os.path.exists(
+        os.path.join(app.root_path, 'static', 'graphs', f'{g}.png'))]
+    
+    return render_template('dashboard.html', 
+                           stats=stats, metrics=metrics, fi=fi,
+                           analytics=analytics, graphs=existing_graphs,
+                           insights=insights_global)
+
+@app.route('/analytics')
+def analytics_page():
+    analytics = get_analytics()
+    model_metrics = get_model_metrics()
+    from model.train import get_metrics
+    metrics = get_metrics()
+    return render_template('analytics.html', analytics=analytics, 
+                           model_metrics=model_metrics, metrics=metrics,
+                           insights=insights_global)
+
+@app.route('/history')
+def history_page():
+    predictions = get_all_predictions()
+    for p in predictions:
+        try:
+            p['recommendations'] = json.loads(p['recommendations']) if p['recommendations'] else []
+        except:
+            p['recommendations'] = []
+        try:
+            p['feature_importance'] = json.loads(p['feature_importance']) if p['feature_importance'] else {}
+        except:
+            p['feature_importance'] = {}
+    return render_template('history.html', predictions=predictions)
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_page():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file uploaded'}), 400
+        f = request.files['file']
+        if f.filename == '' or not f.filename.endswith('.csv'):
+            return jsonify({'error': 'Please upload a valid CSV file'}), 400
+        
+        filename = secure_filename('placement_data.csv')
+        save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
