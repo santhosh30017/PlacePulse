@@ -133,3 +133,48 @@ def predict_api():
         }
 
         db_data = {**data, **{
+            'probability': round(prob * 100, 2),
+            'risk_score': risk_score,
+            'category': category,
+            'prediction': prediction,
+            'recommendations': recommendations,
+            'feature_importance': dict(top_features),
+            'ai_summary': ai_summary
+        }}
+        save_prediction(db_data)
+
+        return jsonify(result)
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/result')
+def result_page():
+    return render_template('result.html')
+
+@app.route('/dashboard')
+def dashboard():
+    stats = {}
+    stats_path = os.path.join(app.root_path, 'data', 'stats.json')
+    if os.path.exists(stats_path):
+        with open(stats_path) as f:
+            stats = json.load(f)
+    
+    from model.train import get_metrics, get_feature_importance
+    metrics = get_metrics()
+    fi = get_feature_importance()
+    analytics = get_analytics()
+    
+    graphs = [
+        ('cgpa_placement', 'CGPA vs Placement'),
+        ('internships_placement', 'Internships vs Placement'),
+        ('skills_placement', 'Aptitude Score Distribution'),
+        ('projects_placement', 'Projects vs Placement'),
+        ('placement_distribution', 'Placement Distribution'),
+        ('heatmap', 'Correlation Heatmap'),
+        ('stream_placement', 'Stream-wise Placement'),
+        ('feature_importance', 'Feature Importance'),
+        ('roc_curve', 'ROC Curve'),
+        ('confusion_matrix', 'Confusion Matrix'),
