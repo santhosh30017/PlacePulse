@@ -43,3 +43,48 @@ def initialize_pipeline(df=None):
     X, y, feature_cols = encode_and_normalize(df_global)
     results, best_name, best_model = train_all_models(X, y)
     save_model_metrics(results, best_name)
+    insights_global = generate_auto_insights(df_global)
+    pipeline_ready = True
+    print("Pipeline ready!")
+
+def get_model():
+    from model.train import load_best_model
+    return load_best_model()
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ROUTES
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.route('/')
+def index():
+    stats = {}
+    stats_path = os.path.join(app.root_path, 'data', 'stats.json')
+    if os.path.exists(stats_path):
+        with open(stats_path) as f:
+            stats = json.load(f)
+    return render_template('index.html', stats=stats, ready=pipeline_ready)
+
+@app.route('/predict', methods=['GET'])
+def predict_page():
+    return render_template('predict.html')
+
+@app.route('/predict', methods=['POST'])
+def predict_api():
+    try:
+        data = request.get_json() or request.form.to_dict()
+        model, scaler, feature_cols, model_name = get_model()
+        if model is None:
+            return jsonify({'error': 'Model not trained yet. Please wait for initialization.'}), 503
+
+        from utils.predictor import prepare_input, compute_shap_approximation, generate_recommendations, compute_risk_score, get_performance_category
+        from utils.eda import generate_shap_bar
+        from model.train import get_feature_importance
+
+        X_scaled, row = prepare_input(data, feature_cols, scaler)
+        prob = float(model.predict_proba(X_scaled)[0][1])
+        prediction = 'Placed' if prob >= 0.5 else 'Not Placed'
+        risk_score = compute_risk_score(prob, data)
+        category, color, icon = get_performance_category(prob)
+        
+        shap_vals = compute_shap_approximation(model, X_scaled, feature_cols)
+        generate_shap_bar(feature_cols, shap_vals)
