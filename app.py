@@ -223,3 +223,48 @@ def upload_page():
         
         filename = secure_filename('placement_data.csv')
         save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        f.save(save_path)
+        
+        try:
+            df = pd.read_csv(save_path)
+            initialize_pipeline(df)
+            return jsonify({'success': True, 'message': f'Dataset uploaded ({len(df)} rows). Model retrained successfully!', 'rows': len(df)})
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    
+    return render_template('upload.html')
+
+@app.route('/metrics')
+def metrics_api():
+    from model.train import get_metrics
+    return jsonify(get_metrics())
+
+@app.route('/api/history')
+def history_api():
+    predictions = get_all_predictions()
+    return jsonify(predictions)
+
+@app.route('/api/analytics')
+def analytics_api():
+    return jsonify(get_analytics())
+
+@app.route('/api/insights')
+def insights_api():
+    return jsonify({'insights': insights_global})
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NEW AI UPGRADE ROUTES
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.route('/improvement')
+def improvement_hub():
+    return render_template('improvement.html')
+
+@app.route('/plan')
+def plan_page():
+    skill = request.args.get('skill')
+    from utils.skill_plan import get_all_plan_keys, get_plan, generate_combined_timeline
+    plans_list = get_all_plan_keys()
+    
+    selected_plan = None
+    timeline = []
