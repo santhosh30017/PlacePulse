@@ -17,9 +17,10 @@ from database.db import init_db, save_prediction, get_all_predictions, get_analy
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'ai_placement_secret_2024'
+
 app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'data')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-
+init_db()
 # Global state
 pipeline_ready = False
 df_global = None
